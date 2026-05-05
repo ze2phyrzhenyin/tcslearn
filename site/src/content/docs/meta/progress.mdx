@@ -23,6 +23,11 @@ description: "Current learning progress and state."
 current_phase: "week01_generated"
 current_week: "week01-foundations"
 current_day: null
+web_site:
+  status: "built"
+  framework: "Astro + Starlight"
+  last_built: "2026-05-06"
+  local_preview_checked: true
 completed_weeks: []
 completed_days: []
 active_modules:
@@ -32,6 +37,7 @@ last_updated: "2026-05-06"
 notes:
   - "Week 1 generated but not completed."
   - "Primary focus: mathematical and conceptual foundations for theoretical computer science."
+  - "Astro + Starlight web documentation site created under site/."
 generated_weeks:
   - week_id: "week01-foundations"
     status: "generated_not_completed"
@@ -54,6 +60,7 @@ generated_weeks:
 2. Handwrite Day 1 definitions and quantifier negation rules.
 3. Attempt `exercises/week01/day01_exercises.tex` before reading any solution.
 4. If you want a smaller first session, do Day 1 exercises 1-6 only, then request diagnostic feedback.
+5. To read in the browser, run `make site-dev` and open the local URL printed by Astro.
 
 ## After Day 1 Study
 
@@ -68,3 +75,9 @@ generated_weeks:
 2. Take `review/week01/self_test_week01.md` under a 90-minute timer.
 3. Use `review/week01/mistakes_to_watch.md` to classify errors.
 4. Ask Codex for targeted repair drills before generating Week 2.
+
+## Web Site
+
+1. Run `make site-sync` after changing notes, exercises, labs, review, resources, or state.
+2. Run `make site-build` before deployment.
+3. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
