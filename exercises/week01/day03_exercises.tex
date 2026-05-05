@@ -1,0 +1,31 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Day 3 Exercises: Asymptotics and Recurrences}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+State the variable tending to infinity. For $\Theta$ claims, prove both upper and lower bounds.
+
+\begin{enumerate}[label=\textbf{D3.\arabic*.}]
+\item Prove $5n^3+2n^2+17\in O(n^3)$ from the definition.
+\item Prove $n^2\in\Omega(n\log n)$ for $n\ge2$.
+\item Prove $3n^2+4n+1\in\Theta(n^2)$.
+\item Prove $\log n\in o(n^\alpha)$ for fixed $\alpha>0$ using a standard growth fact or limit.
+\item Solve $T(n)=T(n-1)+n$, $T(1)=1$.
+\item Solve $T(n)=2T(n/2)+n$, $T(1)=1$, for powers of two.
+\item Solve $T(n)=T(n/2)+1$, $T(1)=1$.
+\item Use substitution to prove $T(n)=3T(n/2)+n\in O(n^{\log_2 3})$ for powers of two.
+\item Give a counterexample to ``if $f\in O(g)$ then $g\in O(f)$''.
+\item Give a counterexample to ``$f\in O(g)$ and $g\in O(h)$ implies $h\in O(f)$''.
+\item Analyze worst-case time of linear search on an array of length $n$.
+\item Analyze binary search time and state the input model assumptions.
+\item Explain why any comparison algorithm for finding the maximum of $n$ numbers needs at least $n-1$ comparisons.
+\item Give a lower-bound intuition for searching an unsorted array.
+\end{enumerate}
+
+\end{document}
+

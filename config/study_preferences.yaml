@@ -1,0 +1,19 @@
+default_week_length_days: 5
+review_day: 6
+rest_or_buffer_day: 7
+daily_note_format: "Markdown"
+solutions_format: "LaTeX"
+lab_language: "Python"
+max_new_topics_per_day: 2
+max_exercises_per_day: 8
+preferred_difficulty_mix:
+  warmup: 0.3
+  core: 0.5
+  challenge: 0.2
+flashcard_format: "Markdown Q/A"
+retrospective_questions:
+  - "Which definitions can I state without looking?"
+  - "Which proof steps did I fail to justify?"
+  - "Which examples or non-examples changed my understanding?"
+  - "Which topics block next week?"
+

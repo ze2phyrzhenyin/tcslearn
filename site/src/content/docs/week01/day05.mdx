@@ -1,0 +1,143 @@
+---
+title: "Day 5: Probability"
+description: "Week 1 Day 5 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week01/day05-probability-random-variables-concentration.md`
+
+# Day 5 - Probability, Random Variables, Concentration
+
+## 1. 今日目标
+
+今天建立 randomized algorithms 和 learning theory 需要的概率语言。学完后你应该能：
+
+- 定义 sample space、event、probability measure；
+- 区分 conditional probability、independence 和 disjointness；
+- 使用 random variable、expectation、variance、indicator random variable；
+- 应用 linearity of expectation、union bound、Markov、Chebyshev、Hoeffding；
+- 说明 randomized algorithm 的 failure probability 和 learning theory 中 probability over samples。
+
+## 2. 为什么这个主题对 TCS 重要
+
+随机算法的正确性通常是“以高概率成立”。Learning theory 的 generalization bound 是关于随机样本的概率 statement。DP 的 mechanism 也依赖随机性。概率证明若不说明随机性来自哪里，就没有可检查对象。
+
+## 3. 预备概念
+
+需要 sets、functions、counting、Big-O。今天所有概率 statement 都要先写 sample space `Omega`。Random variable 是从 `Omega` 到数值集合的 function。
+
+## 4. 核心定义
+
+- **sample space**：随机实验所有 possible outcomes 的集合 `Omega`。
+- **event**：`Omega` 的 subset。
+- **probability measure**：给 events 分配 `[0,1]` 数值，满足总概率为 1 和 disjoint union 可加。
+- **conditional probability**：若 `Pr[B]>0`，`Pr[A|B]=Pr[A cap B]/Pr[B]`。
+- **independence**：`A` 与 `B` independent iff `Pr[A cap B]=Pr[A]Pr[B]`。
+- **disjoint events**：`A cap B=emptyset`。若两个非零概率事件 disjoint，则它们不 independent。
+- **random variable**：function `X: Omega -> R`。
+- **expectation**：离散情形 `E[X]=sum_x x Pr[X=x]`。
+- **linearity of expectation**：`E[X+Y]=E[X]+E[Y]`，不要求 independence。
+- **variance**：`Var(X)=E[(X-E[X])^2]`。
+- **indicator random variable**：事件 `A` 的 indicator `1_A`，发生时为 1，否则为 0；`E[1_A]=Pr[A]`。
+- **union bound**：`Pr[union_i A_i] &lt;= sum_i Pr[A_i]`。
+- **Markov inequality**：若 `X>=0`，则 `Pr[X>=a] &lt;= E[X]/a`。
+- **Chebyshev inequality**：`Pr[|X-E[X]|>=t] &lt;= Var(X)/t^2`。
+- **Hoeffding inequality**：独立 bounded variables 的 empirical mean 偏离 true mean 的概率指数下降。
+- **Chernoff bound**：sum of independent Bernoulli variables 的强 tail bound；本周只作为 intuition。
+- **randomized algorithm failure probability**：算法内部随机性导致错误的概率，必须说明 over which random choices。
+- **generalization bound preview**：训练样本随机抽取，bound 的概率通常 over samples。
+
+## 5. 最小例子
+
+掷一枚 fair coin 两次。`Omega=\{HH,HT,TH,TT\}`。令 `X` 为 heads 数量。则 `X(HH)=2`，`X(HT)=1`，`X(TH)=1`，`X(TT)=0`。`E[X]=2*(1/4)+1*(2/4)+0*(1/4)=1`。
+
+用 indicator：令 `X_i` 表示第 `i` 次是否为 heads，则 `X=X_1+X_2`，`E[X]=E[X_1]+E[X_2]=1/2+1/2=1`。
+
+## 6. 反例或 non-example
+
+- Independent 不等于 disjoint。一次掷 coin 中事件 `H` 和 `T` disjoint，但不是 independent，因为 `Pr[H cap T]=0` 而 `Pr[H]Pr[T]=1/4`。
+- `E[XY]=E[X]E[Y]` 通常需要 independence；linearity 不需要。
+- Union bound 给 upper bound，不要求 events independent，也不保证 tight。
+- 模拟 coin flips 的结果接近 1/2 不是 proof；proof 来自 probability model 和 inequality。
+
+## 7. 关键定理或命题
+
+**Claim 1: Linearity of expectation.**
+
+Assumptions: `X,Y` 是同一 sample space 上有有限 expectation 的 random variables。  
+Goal: `E[X+Y]=E[X]+E[Y]`。  
+Proof idea: 对所有 outcomes 求和，`sum_omega (X(omega)+Y(omega))Pr[omega]` 拆成两个 sums。
+
+**Claim 2: Union bound.**
+
+Assumptions: events `A_1,...,A_m` 在同一 probability space。  
+Goal: `Pr[union_i A_i] &lt;= sum_i Pr[A_i]`。  
+Proof idea: indicator random variables。`1_\{union A_i\} &lt;= sum_i 1_\{A_i\}`，取 expectation。
+
+## 8. 证明模板
+
+### Probability proof
+
+1. Define sample space `Omega`.
+2. Define randomness source.
+3. Define events and random variables.
+4. State assumptions such as independence or boundedness.
+5. Apply theorem with parameters.
+6. Interpret probability statement.
+
+### Tail bound application
+
+Statement: bound `Pr[|X-E[X]| >= t]` or `Pr[|mean-mu| >= epsilon]`。  
+Check: variable nonnegative for Markov; variance known for Chebyshev; independence and bounded range for Hoeffding。
+
+## 9. 常见错误
+
+- 没写 sample space。
+- 把 disjoint 当 independent。
+- 以为 linearity 需要 independence。
+- Union bound 忘记是 upper bound。
+- Markov 用在可能为负的 variable 上。
+- Hoeffding 没检查 independence 或 boundedness。
+- Learning theory 中忘记 probability 是 over random training samples。
+
+## 10. 与 algorithms / strings / learning theory 的联系
+
+- Randomized algorithms 需要声明 success probability，例如至少 `1-delta`。
+- String hashing 和 randomized pattern matching 依赖 collision probability。
+- Learning theory 的 empirical risk 是 random variable，generalization bound 控制它偏离 true risk。
+- DP 中 mechanism 的输出随机，privacy proof 比较相邻数据集下输出 event 的概率。
+
+## 11. 必做练习
+
+见 `exercises/week01/day05_exercises.tex`：1-10，并运行：
+
+```bash
+python3 labs/week01/probability_simulations.py
+```
+
+## 12. 选做练习
+
+见 `exercises/week01/day05_exercises.tex`：11-14。选做题包括 Hoeffding 和 learning theory preview。
+
+## 13. 自测问题
+
+- Random variable 是 event 吗？
+- Linearity of expectation 为什么不需要 independence？
+- Union bound 何时很松但仍有用？
+- Markov 和 Chebyshev 分别需要什么条件？
+- Generalization bound 的 randomness 通常来自哪里？
+
+## 14. 明天复习什么
+
+明天进入 linear algebra 和 convexity。复习 expectation 和 distance intuition，因为 norm、inner product 和 loss function 会把 learning theory 变成几何问题。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week01/day04/">Previous</a>
+  <a class="button-link" href="/week01/day06/">Next</a>
+  <a class="button-link" href="/review/week01-review/">Review</a>
+  <a class="button-link" href="/exercises/week01-problem-set/">Exercises</a>
+</div>

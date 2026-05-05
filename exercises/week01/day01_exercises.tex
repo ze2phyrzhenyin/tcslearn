@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Day 1 Exercises: Logic, Sets, Functions}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+Write domains for all variables. For proof questions, state assumptions and proof strategy before the proof.
+
+\begin{enumerate}[label=\textbf{D1.\arabic*.}]
+\item Negate: $\forall x\in\mathbb{Z}\ \exists y\in\mathbb{Z}\ (x<y)$.
+\item Negate: $\exists f:A\to B\ \forall b\in B\ \exists a\in A\ (f(a)=b)$.
+\item Negate: $\forall \epsilon>0\ \exists N\in\mathbb{N}\ \forall n\ge N\ (|a_n-L|<\epsilon)$.
+\item Prove $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ by double inclusion.
+\item Prove $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$.
+\item For $f:\mathbb{Z}\to\mathbb{Z}$, $f(x)=3x+2$, prove injective and decide whether it is surjective.
+\item For $g:\mathbb{R}\to\mathbb{R}$, $g(x)=x^3-x$, decide injective and surjective with proof or counterexample.
+\item Give a counterexample to ``if $P\Rightarrow Q$ then $Q\Rightarrow P$'' using an arithmetic predicate.
+\item Give a counterexample to ``every symmetric relation is transitive''.
+\item Prove that congruence modulo $m$ is an equivalence relation on $\mathbb{Z}$.
+\item Prove that divisibility $\mid$ is a partial order on positive integers.
+\item Let $f:A\to B$ and $S,T\subseteq B$. Prove $f^{-1}(S\cap T)=f^{-1}(S)\cap f^{-1}(T)$.
+\end{enumerate}
+
+\end{document}
+

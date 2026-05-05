@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Day 6 Exercises: Linear Algebra and Convexity}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+State which norm or inner product is being used.
+
+\begin{enumerate}[label=\textbf{D6.\arabic*.}]
+\item For $x=(1,-2,2)$, compute $\|x\|_1,\|x\|_2,\|x\|_\infty$.
+\item Prove $\|x\|_\infty\le \|x\|_2\le \|x\|_1$ for $x\in\mathbb{R}^d$.
+\item Show that $d(x,y)=\|x-y\|_2$ is a distance.
+\item Prove Cauchy-Schwarz for $x=(1,2)$ and arbitrary $y=(a,b)$ by direct algebra.
+\item Use Cauchy-Schwarz to prove $|\sum_i x_i|\le \sqrt{d}\|x\|_2$.
+\item For $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, compute $Ax$ for $x=(x_1,x_2)$ and decide if the map is linear.
+\item Give a matrix for projection onto the first coordinate in $\mathbb{R}^2$ and state its rank.
+\item Prove the interval $[a,b]$ is convex.
+\item Prove $f(x)=x^2$ is convex on $\mathbb{R}$.
+\item Show $\{0,1\}$ is not convex.
+\item Explain why linear classifiers $x\mapsto \mathrm{sign}(\langle w,x\rangle)$ form a geometric hypothesis class.
+\item Explain how a norm constraint $\|w\|_2\le B$ limits a hypothesis space.
+\end{enumerate}
+
+\end{document}
+

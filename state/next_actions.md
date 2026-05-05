@@ -1,0 +1,29 @@
+# Next Actions
+
+## Immediate
+
+1. Start with `notes/week01/day01-logic-sets-functions.md`.
+2. Handwrite Day 1 definitions and quantifier negation rules.
+3. Attempt `exercises/week01/day01_exercises.tex` before reading any solution.
+4. If you want a smaller first session, do Day 1 exercises 1-6 only, then request diagnostic feedback.
+5. To read in the browser, run `make site-dev` and open the local URL printed by Astro.
+
+## After Day 1 Study
+
+1. Record mistakes in `state/mistakes_log.md`.
+2. Record unclear definitions in `state/open_questions.md`.
+3. Review `review/week01/flashcards_week01.md` cards tagged `logic`, `sets`, and `functions`.
+4. Copy `context/next_codex_prompt.md` to ask Codex for Day 1 or whole-week diagnostic feedback.
+
+## Weekly
+
+1. Run all Week 1 labs after Day 7.
+2. Take `review/week01/self_test_week01.md` under a 90-minute timer.
+3. Use `review/week01/mistakes_to_watch.md` to classify errors.
+4. Ask Codex for targeted repair drills before generating Week 2.
+
+## Web Site
+
+1. Run `make site-sync` after changing notes, exercises, labs, review, resources, or state.
+2. Run `make site-build` before deployment.
+3. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.

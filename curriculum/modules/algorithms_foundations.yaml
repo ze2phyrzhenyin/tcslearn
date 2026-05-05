@@ -1,0 +1,17 @@
+module_id: "algorithms_foundations"
+title: "Algorithms and Data Structures"
+purpose: "Develop correctness proofs and complexity analysis for core algorithms."
+depends_on:
+  - "mathematical_foundations"
+core_topics:
+  - "asymptotic notation"
+  - "loop invariants"
+  - "recurrences"
+  - "sorting and selection"
+  - "graphs"
+  - "amortized analysis"
+typical_outputs:
+  - "algorithm analysis notes"
+  - "problem sets"
+  - "Python reference implementations"
+

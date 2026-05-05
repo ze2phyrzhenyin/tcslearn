@@ -1,0 +1,28 @@
+current_phase: "week01_generated"
+current_week: "week01-foundations"
+current_day: null
+web_site:
+  status: "built"
+  framework: "Astro + Starlight"
+  last_built: "2026-05-06"
+  local_preview_checked: true
+completed_weeks: []
+completed_days: []
+active_modules:
+  - "mathematical_foundations"
+next_target: "Study Week 1 Day 1 and then request diagnostic feedback or whole-week weakness repair."
+last_updated: "2026-05-06"
+notes:
+  - "Week 1 generated but not completed."
+  - "Primary focus: mathematical and conceptual foundations for theoretical computer science."
+  - "Astro + Starlight web documentation site created under site/."
+generated_weeks:
+  - week_id: "week01-foundations"
+    status: "generated_not_completed"
+    generated_on: "2026-05-06"
+    outputs:
+      - "curriculum/weeks/week01-foundations.yaml"
+      - "notes/week01/"
+      - "exercises/week01/"
+      - "labs/week01/"
+      - "review/week01/"

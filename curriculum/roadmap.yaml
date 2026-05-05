@@ -1,0 +1,87 @@
+roadmap_id: "tcs-selfstudy-roadmap"
+version: "0.1"
+purpose: "长期理论计算机科学自学路线图。只定义阶段、目标和依赖，不生成完整课程内容。"
+
+phases:
+  - id: "mathematical_foundations"
+    title: "Mathematical foundations for TCS"
+    goals:
+      - "Build precise definitions and proof fluency."
+      - "Review sets, relations, functions, induction, counting, graphs, and discrete probability."
+    depends_on: []
+    prepares_for:
+      - "algorithms_foundations"
+      - "learning_theory"
+      - "complexity_theory"
+
+  - id: "algorithms_foundations"
+    title: "Algorithms and data structures"
+    goals:
+      - "Analyze correctness and complexity."
+      - "Practice invariants, recurrences, graph algorithms, and amortized analysis."
+    depends_on:
+      - "mathematical_foundations"
+    prepares_for:
+      - "string_algorithms"
+      - "complexity_theory"
+
+  - id: "discrete_probability_randomized_algorithms"
+    title: "Discrete probability and randomized algorithms"
+    goals:
+      - "Use sample spaces, random variables, expectation, concentration, and failure probability."
+      - "Connect probabilistic tools to algorithms and learning theory."
+    depends_on:
+      - "mathematical_foundations"
+      - "algorithms_foundations"
+    prepares_for:
+      - "learning_theory"
+      - "differential_privacy"
+
+  - id: "string_algorithms"
+    title: "String algorithms and combinatorics on words"
+    goals:
+      - "Prepare for CPM/string topics through pattern matching, suffix structures, and word combinatorics."
+    depends_on:
+      - "algorithms_foundations"
+    prepares_for:
+      - "advanced_topics_paper_reading"
+
+  - id: "learning_theory"
+    title: "Learning theory"
+    goals:
+      - "Understand PAC learning, ERM, VC dimension, and generalization bounds."
+    depends_on:
+      - "mathematical_foundations"
+      - "discrete_probability_randomized_algorithms"
+    prepares_for:
+      - "advanced_topics_paper_reading"
+
+  - id: "differential_privacy"
+    title: "Differential privacy"
+    goals:
+      - "Understand neighboring relations, sensitivity, mechanisms, and proof sketches for privacy guarantees."
+    depends_on:
+      - "discrete_probability_randomized_algorithms"
+    prepares_for:
+      - "advanced_topics_paper_reading"
+
+  - id: "complexity_theory"
+    title: "Complexity theory"
+    goals:
+      - "Study reductions, P/NP, space complexity, randomized complexity, and completeness."
+    depends_on:
+      - "mathematical_foundations"
+      - "algorithms_foundations"
+    prepares_for:
+      - "advanced_topics_paper_reading"
+
+  - id: "advanced_topics_paper_reading"
+    title: "Advanced topics and paper reading"
+    goals:
+      - "Read research papers with definitions, theorem maps, proof sketches, and open questions."
+    depends_on:
+      - "string_algorithms"
+      - "learning_theory"
+      - "differential_privacy"
+      - "complexity_theory"
+

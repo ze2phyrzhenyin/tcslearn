@@ -1,0 +1,45 @@
+---
+title: Learning System Overview
+description: The layers that make up the TCS Self-Study OS.
+---
+
+The TCS Self-Study OS is a repository, a content system, a web reader, and a feedback loop. The goal is not to collect notes. The goal is to repeatedly generate, study, test, repair, and extend rigorous TCS material.
+
+## Repository Layer
+
+The repository keeps the source of truth:
+
+- `curriculum/` for plans and module structure;
+- `notes/` for daily learning material;
+- `exercises/` for problem sets and solutions;
+- `labs/` for Python experiments;
+- `review/` for glossary, flashcards, self-tests, and retrospectives;
+- `resources/` for legal source tracking;
+- `state/` for progress, mistakes, questions, and next actions.
+
+## Content Layer
+
+The content layer is generated and maintained over time. Every learning unit should contain precise definitions, examples, non-examples, theorem statements, proof ideas, exercises, self-tests, and connections to larger TCS goals.
+
+## Web Layer
+
+The web layer lives in `site/` and uses Astro + Starlight. It exists for comfortable reading, navigation, search, dark mode, code highlighting, and a stable table of contents. It does not replace the source files.
+
+## Feedback Layer
+
+Feedback starts from your attempts. Codex should inspect your mistakes, proof gaps, and open questions, then generate targeted repair drills or clarify definitions.
+
+## State Tracking Layer
+
+The state files are the memory of the system:
+
+- `state/progress.yaml`;
+- `state/next_actions.md`;
+- `state/open_questions.md`;
+- `state/mistakes_log.md`;
+- `state/proof_weaknesses.md`.
+
+## Codex Prompting Layer
+
+Prompts in `prompts/` are reusable operating procedures. Use them to generate weeks, days, problem sets, labs, review packs, source audits, web updates, and visual polish passes.
+

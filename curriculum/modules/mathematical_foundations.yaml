@@ -1,0 +1,16 @@
+module_id: "mathematical_foundations"
+title: "Mathematical Foundations for TCS"
+purpose: "Build the language of definitions, proofs, discrete structures, and probability used throughout TCS."
+depends_on: []
+core_topics:
+  - "sets, relations, functions"
+  - "logic and quantifiers"
+  - "induction and structural induction"
+  - "counting"
+  - "graphs"
+  - "discrete probability"
+typical_outputs:
+  - "definition drills"
+  - "proof exercises"
+  - "small probability labs"
+

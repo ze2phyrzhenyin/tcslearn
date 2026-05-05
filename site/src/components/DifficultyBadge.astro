@@ -1,0 +1,11 @@
+---
+interface Props {
+  level: 'Basic' | 'Medium' | 'Challenge' | 'Hard' | string;
+}
+
+const { level } = Astro.props;
+const normalized = String(level).toLowerCase();
+---
+
+<span class={`difficulty-badge difficulty-badge--${normalized}`}>{level}</span>
+

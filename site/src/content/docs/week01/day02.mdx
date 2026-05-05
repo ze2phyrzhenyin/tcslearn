@@ -1,0 +1,138 @@
+---
+title: "Day 2: Induction and Invariants"
+description: "Week 1 Day 2 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week01/day02-induction-recursion-invariants.md`
+
+# Day 2 - Induction, Recursion, Structural Definitions, Invariants
+
+## 1. 今日目标
+
+今天练习 TCS 中最常用的证明武器：`induction` 和 `invariant`。学完后你应该能：
+
+- 写出普通归纳、强归纳和结构归纳的完整 proof skeleton；
+- 区分 correctness proof 和 running time analysis；
+- 证明递归定义对象和递归算法的性质；
+- 为 loop 写出 initialization、maintenance、termination；
+- 说明 Euclidean algorithm 和 binary search 的终止与正确性。
+
+## 2. 为什么这个主题对 TCS 重要
+
+算法经常通过循环、递归或递归定义的数据结构运行。Induction 证明“所有规模都成立”，invariant 证明“每一步都保持关键事实”。没有这两个工具，几乎无法严谨证明 sorting、graph traversal、dynamic programming、automata、string algorithms 或 complexity constructions。
+
+## 3. 预备概念
+
+你需要 Day 1 的 predicate 和 implication。Induction statement 通常形如 `forall n >= n0, P(n)`。Loop invariant 通常形如：在每次循环开始时，某个 predicate `I(state)` 成立。
+
+## 4. 核心定义
+
+- **ordinary induction**：证明 base case `P(n0)`，再证明 `P(k) -> P(k+1)`。
+- **strong induction**：证明 base case，并在 step 中假设 `P(n0),...,P(k)` 全部成立，推出 `P(k+1)`。
+- **structural induction**：对 recursively defined object 证明性质；base 对 primitive objects，step 对 construction rules。
+- **recursive definition**：对象或函数通过 base rules 和 recursive rules 定义。
+- **well-ordering principle**：非空自然数集合有最小元素；常用于证明 induction 的合理性或终止。
+- **loop invariant**：循环过程中始终为真的 statement，用于 correctness proof。
+- **termination argument**：说明算法不会无限运行，通常给出一个严格下降且有下界的 measure。
+- **correctness proof**：证明算法满足 specification，不等于证明它快。
+- **recursive algorithm proof**：证明 recursive calls 终止，并假设小规模调用正确来证明当前规模正确。
+
+## 5. 最小例子
+
+Claim: 对所有 `n >= 0`，`0+1+...+n = n(n+1)/2`。
+
+Base: `n=0` 时两边都是 `0`。  
+Induction hypothesis: 假设对某个 `k >= 0`，`0+...+k = k(k+1)/2`。  
+Step: `0+...+k+(k+1)=k(k+1)/2+(k+1)=(k+1)(k+2)/2`。  
+Conclusion: 对所有 `n >= 0` 成立。
+
+## 6. 反例或 non-example
+
+- “Base case 很简单所以省略”不是 proof；没有 base case，step 可能只证明了一个空链条。
+- “循环结束时答案正确”不是 invariant；invariant 必须在每次循环开始或结束保持。
+- 对 Fibonacci recurrence 用 ordinary induction 可能不够自然，因为 `F(n+1)` 依赖两个之前值；strong induction 或同时假设两个前值更合适。
+
+## 7. 关键定理或命题
+
+**Claim 1: Strong induction is valid over natural numbers.**
+
+Assumptions: `P(n)` 是自然数上的 predicate；base 覆盖起点；step 能从所有较小 case 推出当前 case。  
+Goal: 对所有目标自然数 `n`，`P(n)` 成立。  
+Proof idea: 用 contradiction。若存在失败的 `n`，well-ordering 给出最小失败 `m`。所有小于 `m` 的 case 成立，于是 step 推出 `P(m)`，矛盾。
+
+**Claim 2: Loop invariant proves partial correctness.**
+
+Assumptions: invariant `I` initialization 成立；每次循环 maintenance 成立；循环退出条件为 `not G`。  
+Goal: 退出时 `I and not G` 推出 postcondition。  
+Proof idea: induction over number of loop iterations。
+
+## 8. 证明模板
+
+### Ordinary induction
+
+Statement: `forall n >= n0, P(n)`。  
+Base: prove `P(n0)`。  
+Induction hypothesis: assume `P(k)` for arbitrary `k >= n0`。  
+Step: prove `P(k+1)`。  
+Check: 不要在 step 中假设 `P(k+1)`。
+
+### Strong induction
+
+Statement: `forall n >= n0, P(n)`。  
+Base: prove enough initial cases。  
+Hypothesis: assume `P(j)` for all `n0 &lt;= j &lt;= k`。  
+Step: prove `P(k+1)` using only smaller cases。
+
+### Loop invariant
+
+1. Initialization: before first iteration, `I` holds.
+2. Maintenance: if `I` holds and guard is true before an iteration, it holds after the iteration.
+3. Termination: when guard false, combine `I` and exit condition to prove postcondition.
+
+## 9. 常见错误
+
+- Induction hypothesis 写成要证明的结论本身。
+- Step 中没有说明 `k` 是任意的。
+- Strong induction 使用了尚未证明的 future case。
+- Termination proof 只说“看起来会结束”，没有 decreasing measure。
+- Invariant 太弱，退出时不能推出答案正确。
+- 把 running time recurrence 当 correctness proof。
+
+## 10. 与 algorithms / strings / learning theory 的联系
+
+- Binary search correctness 是 invariant proof。
+- Euclidean algorithm correctness 依赖 gcd invariant。
+- String algorithms 常对 string length 做 induction，或者对 trie/tree 做 structural induction。
+- Learning theory 的 sample complexity proof 常对事件集合和 union bound 组织证明；结构化 proof habit 很重要。
+
+## 11. 必做练习
+
+见 `exercises/week01/day02_exercises.tex`：1-9。特别注意每题写出 induction hypothesis 或 invariant。
+
+## 12. 选做练习
+
+见 `exercises/week01/day02_exercises.tex`：10-12。选做题要求你自己选择 ordinary、strong 或 structural induction，并说明原因。
+
+## 13. 自测问题
+
+- Induction hypothesis 是对哪个变量、哪个范围的假设？
+- Strong induction 比 ordinary induction 多假设了什么？
+- Recursive algorithm 的 correctness 和 termination 分别证明什么？
+- Binary search 的 invariant 应该排除什么错误？
+- 为什么 invariant 不能只描述最终答案？
+
+## 14. 明天复习什么
+
+明天进入 algorithm analysis。复习 recursive algorithm proof，因为 recurrence 和 recursion tree 会把“程序结构”转成“数学递推”。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week01/day01/">Previous</a>
+  <a class="button-link" href="/week01/day03/">Next</a>
+  <a class="button-link" href="/review/week01-review/">Review</a>
+  <a class="button-link" href="/exercises/week01-problem-set/">Exercises</a>
+</div>

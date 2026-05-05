@@ -1,0 +1,30 @@
+---
+interface ResourceItem {
+  title: string;
+  author?: string;
+  type?: string;
+  status?: string;
+  url?: string;
+  note?: string;
+}
+
+interface Props {
+  items: ResourceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="source-list">
+  {items.map((item) => (
+    <article class="source-list__item">
+      <h3>{item.url ? <a href={item.url}>{item.title}</a> : item.title}</h3>
+      <p>{item.author}</p>
+      <p>
+        <strong>Type:</strong> {item.type} · <strong>Status:</strong> {item.status}
+      </p>
+      {item.note && <p>{item.note}</p>}
+    </article>
+  ))}
+</div>
+

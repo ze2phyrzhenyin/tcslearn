@@ -1,0 +1,16 @@
+- source_id: "{{short_stable_id}}"
+  title: "{{title}}"
+  author_or_owner: "{{author_or_owner}}"
+  url: "{{official_url}}"
+  source_type: "{{official_open_webpage|author_public_lecture_notes|arxiv|open_courseware|conference_official|publisher_open_access}}"
+  access_status: "{{open|unavailable|needs_audit}}"
+  used_for:
+    - "{{module_or_week}}"
+  citation_note: "{{how_to_cite_or_use}}"
+  summary_rule: "Use only rewritten summaries and short marked quotes when necessary."
+  audit:
+    checked_on: "{{YYYY-MM-DD}}"
+    checked_by: "Codex"
+    result: "{{allowed|disallowed|unclear}}"
+    notes: "{{audit_notes}}"
+

@@ -1,0 +1,17 @@
+module_id: "string_algorithms"
+title: "String Algorithms and Combinatorics on Words"
+purpose: "Prepare for CPM/string-related summer school topics."
+depends_on:
+  - "algorithms_foundations"
+core_topics:
+  - "pattern matching"
+  - "prefix function and KMP"
+  - "suffix arrays"
+  - "suffix trees"
+  - "LCP"
+  - "periodicity and combinatorics on words"
+typical_outputs:
+  - "worked string examples"
+  - "algorithm correctness proofs"
+  - "small Python string labs"
+

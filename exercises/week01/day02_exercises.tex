@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Day 2 Exercises: Induction, Recursion, Invariants}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+For every induction proof, explicitly name the induction hypothesis. For every algorithm proof, separate termination, correctness, and running time.
+
+\begin{enumerate}[label=\textbf{D2.\arabic*.}]
+\item Prove by ordinary induction that $\sum_{i=1}^n i^2=n(n+1)(2n+1)/6$.
+\item Prove by ordinary induction that $2^n\ge n+1$ for all $n\ge0$.
+\item Prove by ordinary induction that $7^n-1$ is divisible by $6$ for all $n\ge0$.
+\item Prove by strong induction that every integer $n\ge2$ is a product of primes.
+\item Prove by strong induction that every amount $n\ge12$ can be formed using 4-cent and 5-cent stamps.
+\item Define binary strings recursively by $\epsilon\in S$ and if $w\in S$ then $0w,1w\in S$. Prove structurally that every $w\in S$ has finite length.
+\item For full binary trees recursively defined by leaf or node with two subtrees, prove leaves = internal nodes + 1.
+\item State and prove a loop invariant for computing the sum of an array prefix by prefix.
+\item State and prove a loop invariant for insertion sort's outer loop.
+\item Prove Euclidean algorithm correctness using the invariant $\gcd(a,b)=\gcd(b,a\bmod b)$.
+\item Prove binary search correctness using an interval invariant.
+\item Define strings over $\{a,b\}$ recursively. Prove structurally that reversing twice gives the original string.
+\end{enumerate}
+
+\end{document}
+

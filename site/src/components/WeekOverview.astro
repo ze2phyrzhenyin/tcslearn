@@ -1,0 +1,39 @@
+---
+interface DayItem {
+  day: string;
+  title: string;
+  goal: string;
+  difficulty: string;
+  output: string;
+  link: string;
+}
+
+interface Props {
+  days: DayItem[];
+}
+
+const { days } = Astro.props;
+---
+
+<div class="week-overview">
+  {days.map((item) => (
+    <a class="week-overview__item" href={item.link}>
+      <span class="week-overview__day">{item.day}</span>
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.goal}</p>
+        <dl>
+          <div>
+            <dt>Difficulty</dt>
+            <dd>{item.difficulty}</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd>{item.output}</dd>
+          </div>
+        </dl>
+      </div>
+    </a>
+  ))}
+</div>
+

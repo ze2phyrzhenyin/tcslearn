@@ -1,0 +1,320 @@
+---
+title: "Week 1 Problem Set"
+description: "Browser-readable Week 1 problem set without solutions."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `exercises/week01/week01_problem_set.tex`
+
+## Instructions
+This problem set has 42 problems, six for each day of Week 1. Each problem lists its difficulty and required concepts. Do not use results beyond Week 1. For proof problems, state the assumptions and proof strategy before the proof. For probability problems, define the sample space and random variables.
+## Day 1: Logic, Sets, Functions, Relations
+[label=**1.\arabic*.**]
+### Problem 1
+
+**Difficulty:** Basic
+
+**Concepts:** quantifier negation
+
+Negate
+$$\forall x\in\mathbb{Z}\ \exists y\in\mathbb{Z}\ \forall z\in\mathbb{Z}\ (x+y<z).$$
+### Problem 2
+
+**Difficulty:** Basic
+
+**Concepts:** implication, converse, contrapositive
+
+For $P(n): n$ is divisible by $4$ and $Q(n): n$ is even, state $P\Rightarrow Q$, its converse, inverse, and contrapositive. Identify which are true over $\mathbb{Z}$.
+### Problem 3
+
+**Difficulty:** Medium
+
+**Concepts:** set equality
+
+Prove $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$.
+### Problem 4
+
+**Difficulty:** Medium
+
+**Concepts:** injective, surjective
+
+Let $f:\mathbb{Z}\to\mathbb{Z}$ be $f(x)=3x+2$. Prove $f$ is injective and determine whether it is surjective.
+### Problem 5
+
+**Difficulty:** Medium
+
+**Concepts:** relation properties
+
+Prove congruence modulo $m$ is an equivalence relation on $\mathbb{Z}$.
+### Problem 6
+
+**Difficulty:** Challenge
+
+**Concepts:** preimage, set operations
+
+Let $f:A\to B$ and $S,T\subseteq B$. Prove $f^{-1}(S\cap T)=f^{-1}(S)\cap f^{-1}(T)$.
+## Day 2: Induction, Recursion, Invariants
+[label=**2.\arabic*.**]
+### Problem 7
+
+**Difficulty:** Basic
+
+**Concepts:** ordinary induction
+
+Prove $\sum_{i=1}^n i=n(n+1)/2$ for all $n\ge1$.
+### Problem 8
+
+**Difficulty:** Basic
+
+**Concepts:** divisibility induction
+
+Prove $7^n-1$ is divisible by $6$ for all $n\ge0$.
+### Problem 9
+
+**Difficulty:** Medium
+
+**Concepts:** strong induction
+
+Prove every integer $n\ge2$ is a product of primes.
+### Problem 10
+
+**Difficulty:** Medium
+
+**Concepts:** structural induction
+
+Binary strings are defined by $\epsilon\in S$ and if $w\in S$, then $0w,1w\in S$. Prove every $w\in S$ has finite length.
+### Problem 11
+
+**Difficulty:** Medium
+
+**Concepts:** loop invariant
+
+Give a loop invariant proving correctness of a prefix-sum loop that computes $\sum_{i=0}^{n-1}a_i$.
+### Problem 12
+
+**Difficulty:** Challenge
+
+**Concepts:** recursive algorithm correctness
+
+Prove Euclidean algorithm correctness using $\gcd(a,b)=\gcd(b,a\bmod b)$.
+## Day 3: Asymptotics, Recurrences, Algorithm Analysis
+[label=**3.\arabic*.**]
+### Problem 13
+
+**Difficulty:** Basic
+
+**Concepts:** Big-O definition
+
+Prove $5n^3+2n^2+17\in O(n^3)$.
+### Problem 14
+
+**Difficulty:** Basic
+
+**Concepts:** Big-Omega definition
+
+Prove $n^2\in\Omega(n\log n)$ for $n\ge2$.
+### Problem 15
+
+**Difficulty:** Medium
+
+**Concepts:** Big-Theta
+
+Prove $3n^2+4n+1\in\Theta(n^2)$.
+### Problem 16
+
+**Difficulty:** Medium
+
+**Concepts:** recurrence, recursion tree
+
+Solve $T(n)=2T(n/2)+n$, $T(1)=1$, for powers of two.
+### Problem 17
+
+**Difficulty:** Medium
+
+**Concepts:** algorithm analysis
+
+Analyze worst-case running time of linear search on an array of length $n$.
+### Problem 18
+
+**Difficulty:** Challenge
+
+**Concepts:** lower bound intuition
+
+Explain why finding the maximum of $n$ numbers by comparisons requires at least $n-1$ comparisons.
+## Day 4: Counting, Discrete Structures, Graphs
+[label=**4.\arabic*.**]
+### Problem 19
+
+**Difficulty:** Basic
+
+**Concepts:** product rule
+
+Count length-5 strings over $\{0,1,2\}$.
+### Problem 20
+
+**Difficulty:** Basic
+
+**Concepts:** combinations
+
+Count 3-element subsets of a 10-element set.
+### Problem 21
+
+**Difficulty:** Medium
+
+**Concepts:** inclusion-exclusion
+
+Count integers in $\{1,\ldots,100\}$ divisible by 2 or 5.
+### Problem 22
+
+**Difficulty:** Medium
+
+**Concepts:** pigeonhole principle
+
+Prove any 6 integers contain two whose difference is divisible by 5.
+### Problem 23
+
+**Difficulty:** Medium
+
+**Concepts:** trees
+
+Prove every finite tree with $n\ge1$ vertices has $n-1$ edges.
+### Problem 24
+
+**Difficulty:** Challenge
+
+**Concepts:** graph modeling
+
+Model binary strings of length at most 3 as a rooted tree and state its number of vertices and edges.
+## Day 5: Probability, Random Variables, Concentration
+[label=**5.\arabic*.**]
+### Problem 25
+
+**Difficulty:** Basic
+
+**Concepts:** conditional probability
+
+Roll two fair dice. Compute the probability that the sum is 7 given that the first die is 3.
+### Problem 26
+
+**Difficulty:** Basic
+
+**Concepts:** independence versus disjointness
+
+Give two disjoint nonzero-probability events and prove they are not independent.
+### Problem 27
+
+**Difficulty:** Medium
+
+**Concepts:** expectation
+
+Let $X$ be the number of heads in $n$ fair coin flips. Compute $\mathbb{E}[X]$.
+### Problem 28
+
+**Difficulty:** Medium
+
+**Concepts:** indicator variables
+
+Compute the expected number of empty bins after throwing $m$ balls independently into $n$ bins.
+### Problem 29
+
+**Difficulty:** Medium
+
+**Concepts:** union bound
+
+If each of $m$ tests fails with probability at most $\delta/m$, bound the probability that at least one test fails.
+### Problem 30
+
+**Difficulty:** Challenge
+
+**Concepts:** Hoeffding, learning preview
+
+If $X_1,\ldots,X_n\in[0,1]$ are independent with mean $\mu$, use Hoeffding to bound $\Pr[|\frac1n\sum_i X_i-\mu|\ge\epsilon]$ and explain why this resembles a generalization statement.
+## Day 6: Linear Algebra and Convexity
+[label=**6.\arabic*.**]
+### Problem 31
+
+**Difficulty:** Basic
+
+**Concepts:** norms
+
+For $x=(1,-2,2)$, compute $\|x\|_1,\|x\|_2,\|x\|_\infty$.
+### Problem 32
+
+**Difficulty:** Basic
+
+**Concepts:** norm comparison
+
+Prove $\|x\|_\infty\le \|x\|_2\le \|x\|_1$ for $x\in\mathbb{R}^d$.
+### Problem 33
+
+**Difficulty:** Medium
+
+**Concepts:** Cauchy-Schwarz
+
+Use Cauchy-Schwarz to prove $|\sum_i x_i|\le\sqrt d\|x\|_2$.
+### Problem 34
+
+**Difficulty:** Medium
+
+**Concepts:** linear maps
+
+For $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, compute $Ax$ and prove the map is linear.
+### Problem 35
+
+**Difficulty:** Medium
+
+**Concepts:** convex sets and functions
+
+Prove $[a,b]$ is convex and $f(x)=x^2$ is convex on $\mathbb{R}$.
+### Problem 36
+
+**Difficulty:** Challenge
+
+**Concepts:** hypothesis geometry
+
+Explain why $x\mapsto \mathrm{sign}(\langle w,x\rangle)$ with $\|w\|_2\le B$ describes a constrained geometric hypothesis class.
+## Day 7: Models, Languages, Reductions
+[label=**7.\arabic*.**]
+### Problem 37
+
+**Difficulty:** Basic
+
+**Concepts:** formalization
+
+Formalize duplicate detection as a decision problem.
+### Problem 38
+
+**Difficulty:** Basic
+
+**Concepts:** language
+
+Let $\Sigma=\{0,1\}$. Define the language of strings ending in 01 and list all members of length at most 3.
+### Problem 39
+
+**Difficulty:** Medium
+
+**Concepts:** DFA
+
+Specify a DFA for binary strings with an even number of 1s.
+### Problem 40
+
+**Difficulty:** Medium
+
+**Concepts:** encoding and complexity
+
+Explain why unary versus binary encoding of integers can change input size.
+### Problem 41
+
+**Difficulty:** Medium
+
+**Concepts:** reduction intuition
+
+Give a reduction intuition from duplicate detection to sorting.
+### Problem 42
+
+**Difficulty:** Challenge
+
+**Concepts:** theorem design
+
+Write a theorem statement and proof roadmap for binary search correctness.

@@ -1,0 +1,30 @@
+---
+interface Props {
+  current: string;
+  generated: string;
+  completed: string;
+  next: string;
+}
+
+const { current, generated, completed, next } = Astro.props;
+---
+
+<section class="progress-panel" aria-label="Study progress">
+  <div>
+    <span>Current</span>
+    <strong>{current}</strong>
+  </div>
+  <div>
+    <span>Generated</span>
+    <strong>{generated}</strong>
+  </div>
+  <div>
+    <span>Completed</span>
+    <strong>{completed}</strong>
+  </div>
+  <div>
+    <span>Next</span>
+    <strong>{next}</strong>
+  </div>
+</section>
+

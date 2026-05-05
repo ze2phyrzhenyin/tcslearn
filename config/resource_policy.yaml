@@ -1,0 +1,55 @@
+allowed_sources:
+  - type: "official_open_webpage"
+    examples:
+      - "University course pages"
+      - "Instructor-maintained lecture notes"
+      - "Official documentation"
+  - type: "author_public_lecture_notes"
+    examples:
+      - "PDFs or HTML notes publicly posted by the author"
+  - type: "arxiv"
+    examples:
+      - "arXiv preprints and survey papers"
+  - type: "open_courseware"
+    examples:
+      - "MIT OCW"
+      - "Public university OCW pages"
+  - type: "conference_official"
+    examples:
+      - "Conference websites, proceedings pages, accepted paper lists"
+  - type: "publisher_open_access"
+    examples:
+      - "Open access articles with clear license or official access"
+
+disallowed_sources:
+  - "Pirated textbooks, scans, mirrors, file sharing uploads, or unofficial PDF collections."
+  - "Homework solution dumps without clear license or instructor permission."
+  - "Paywalled content copied from inaccessible sources."
+  - "Forum answers used as authoritative sources without verification."
+  - "Any source whose legality or authorship is unclear."
+
+citation_rules:
+  - "Every generated week should list the resources it used in curriculum/weeks/weekXX-*.yaml."
+  - "Every source entry must include title, author_or_owner, url, source_type, access_status, and notes."
+  - "Use stable official URLs when possible."
+  - "Do not cite a source that was not actually consulted in the current task."
+  - "For arXiv, cite the arXiv URL and version when relevant."
+
+summary_rules:
+  - "Do not copy long passages."
+  - "Rewrite definitions and explanations in original wording."
+  - "Short direct quotes are allowed only when needed and must be clearly marked."
+  - "Prefer concept maps, examples, proof skeletons, and exercises over paraphrasing a text line by line."
+
+source_audit_rules:
+  - "Before adding a resource, classify it as allowed or disallowed."
+  - "If a source looks unofficial, find an official alternative."
+  - "If multiple sources disagree, record the discrepancy in state/open_questions.md."
+  - "Run scripts/validate_sources.py after editing resources/sources.yaml."
+
+what_to_do_if_source_unavailable:
+  - "Do not invent citations."
+  - "Mark the resource as unavailable in resources/sources.yaml only if it is already listed."
+  - "Use a different allowed source."
+  - "If no source is available, generate only prerequisite questions or a source search plan, not authoritative notes."
+

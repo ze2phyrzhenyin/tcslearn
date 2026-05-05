@@ -1,0 +1,17 @@
+module_id: "differential_privacy"
+title: "Differential Privacy"
+purpose: "Build basic DP language and mechanism proof skills."
+depends_on:
+  - "discrete_probability_randomized_algorithms"
+core_topics:
+  - "neighboring databases"
+  - "sensitivity"
+  - "Laplace mechanism"
+  - "Gaussian mechanism"
+  - "composition"
+  - "utility"
+typical_outputs:
+  - "privacy proof sketches"
+  - "mechanism examples"
+  - "sensitivity drills"
+

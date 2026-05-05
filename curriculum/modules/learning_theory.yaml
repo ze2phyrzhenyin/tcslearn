@@ -1,0 +1,18 @@
+module_id: "learning_theory"
+title: "Learning Theory"
+purpose: "Prepare for learning theory summer school through PAC, ERM, VC dimension, and generalization."
+depends_on:
+  - "mathematical_foundations"
+  - "discrete_probability_randomized_algorithms"
+core_topics:
+  - "PAC learning"
+  - "loss and risk"
+  - "ERM"
+  - "finite hypothesis classes"
+  - "VC dimension"
+  - "uniform convergence"
+typical_outputs:
+  - "bound statement templates"
+  - "proof sketches"
+  - "sample complexity exercises"
+

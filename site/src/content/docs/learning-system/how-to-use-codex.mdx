@@ -1,0 +1,51 @@
+---
+title: How to Use Codex
+description: Use Codex as a learning-system maintainer, not an answer machine.
+---
+
+Codex should support the learning system. It should not replace your proof work.
+
+## Use Codex As
+
+### Curriculum Generator
+
+Ask Codex to create structured weeks and days from the curriculum schema.
+
+### Proof Feedback Assistant
+
+Paste your attempted proof and ask Codex to identify missing assumptions, invalid implications, weak induction hypotheses, or skipped cases.
+
+### Exercise Generator
+
+Ask for additional problems by topic and difficulty after you have attempted the original set.
+
+### Lab Builder
+
+Ask for small Python labs that test intuition. Require `assert` tests and a statement that the lab is not proof.
+
+### Review Pack Builder
+
+Ask Codex to generate flashcards, repair drills, and retrospectives from your actual mistakes.
+
+### Source Auditor
+
+Ask Codex to check whether resources are official, open, and legal. Never substitute unauthorized mirrors.
+
+## Do Not Use Codex As
+
+- a shortcut to avoid writing proofs;
+- a source of uncited textbook summaries;
+- a way to skip definitions;
+- an authority for legal source access;
+- a generator of large unreviewed content dumps.
+
+## Prompt Pattern
+
+```text
+Read context/current_context.md and AGENTS.md.
+Use prompts/{prompt_name}.md.
+Here is my attempt or current state:
+...
+Generate targeted feedback and update context/state.
+```
+

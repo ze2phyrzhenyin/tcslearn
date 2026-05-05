@@ -1,0 +1,139 @@
+# Week 1 Glossary
+
+Each entry has English term, Chinese, one-sentence explanation, related day, and common confusion.
+
+| # | English term | 中文 | One-sentence explanation | Related day | Common confusion |
+|---:|---|---|---|---|---|
+| 1 | proposition | 命题 | A statement with a definite truth value. | Day 1 | Confused with predicate containing free variables. |
+| 2 | predicate | 谓词 | A statement template whose truth depends on variables. | Day 1 | Forgetting to specify the domain. |
+| 3 | universal quantifier | 全称量词 | `forall x in S` says every element of `S` satisfies the predicate. | Day 1 | Negating without changing to exists. |
+| 4 | existential quantifier | 存在量词 | `exists x in S` says at least one element of `S` satisfies the predicate. | Day 1 | Treating exists as unique existence. |
+| 5 | implication | 蕴含 | `P -> Q` is false only when `P` is true and `Q` is false. | Day 1 | Treating it as converse. |
+| 6 | converse | 逆命题 | The converse of `P -> Q` is `Q -> P`. | Day 1 | Assuming it is equivalent to the original. |
+| 7 | inverse | 否命题 | The inverse of `P -> Q` is `not P -> not Q`. | Day 1 | Confused with contrapositive. |
+| 8 | contrapositive | 逆否命题 | The contrapositive of `P -> Q` is `not Q -> not P`. | Day 1 | Reversing only one side. |
+| 9 | contradiction | 反证法 | A proof by contradiction assumes the claim false and derives an impossible statement. | Day 1 | Not identifying the contradiction. |
+| 10 | contraposition | 逆否证明 | A proof by contraposition proves `not Q -> not P`. | Day 1 | Using contradiction without structure. |
+| 11 | direct proof | 直接证明 | A direct proof derives the goal from assumptions and definitions. | Day 1 | Skipping definitions. |
+| 12 | set | 集合 | A collection whose membership relation is well-defined. | Day 1 | Not declaring the universe. |
+| 13 | subset | 子集 | `A subseteq B` means every element of `A` is in `B`. | Day 1 | Confused with proper subset. |
+| 14 | power set | 幂集 | The power set of `A` is the set of all subsets of `A`. | Day 1 | Forgetting empty set and `A` itself. |
+| 15 | union | 并集 | `A union B` contains elements in at least one of `A` and `B`. | Day 1 | Treating or as exclusive. |
+| 16 | intersection | 交集 | `A cap B` contains elements in both `A` and `B`. | Day 1 | Forgetting both conditions are required. |
+| 17 | complement | 补集 | Complement is taken relative to a fixed universe. | Day 1 | Omitting the universe. |
+| 18 | Cartesian product | 笛卡尔积 | `A x B` is the set of ordered pairs from `A` and `B`. | Day 1 | Treating pairs as unordered. |
+| 19 | relation | 关系 | A relation from `A` to `B` is a subset of `A x B`. | Day 1 | Assuming every relation is a function. |
+| 20 | equivalence relation | 等价关系 | A relation that is reflexive, symmetric, and transitive. | Day 1 | Checking only symmetry. |
+| 21 | partial order | 偏序 | A relation that is reflexive, antisymmetric, and transitive. | Day 1 | Confusing antisymmetric with asymmetric. |
+| 22 | function | 函数 | A function assigns each domain element exactly one codomain element. | Day 1 | Ignoring codomain. |
+| 23 | injective | 单射 | Equal outputs imply equal inputs. | Day 1 | Testing examples instead of proof. |
+| 24 | surjective | 满射 | Every codomain element is hit by some domain element. | Day 1 | Looking only at the image. |
+| 25 | bijective | 双射 | A function that is both injective and surjective. | Day 1 | Assuming injective means bijective. |
+| 26 | image | 像 | The image of `S` is all outputs of elements in `S`. | Day 1 | Confused with codomain. |
+| 27 | preimage | 原像 | The preimage of `T` is all inputs whose outputs lie in `T`. | Day 1 | Assuming inverse function exists. |
+| 28 | counterexample | 反例 | A specific valid object that makes a universal claim false. | Day 1 | Choosing an object outside the domain. |
+| 29 | ordinary induction | 普通归纳 | Proves `P(n0)` and `P(k) -> P(k+1)`. | Day 2 | Missing base case. |
+| 30 | strong induction | 强归纳 | Uses all smaller cases to prove the next case. | Day 2 | Using future cases. |
+| 31 | structural induction | 结构归纳 | Proves properties over recursively defined objects. | Day 2 | Not matching constructors. |
+| 32 | induction hypothesis | 归纳假设 | The exact statement assumed for smaller or previous cases. | Day 2 | Assuming the goal itself. |
+| 33 | base case | 基础情形 | The starting case that anchors induction. | Day 2 | Treating it as optional. |
+| 34 | induction step | 归纳步 | The argument that moves from assumed cases to the next case. | Day 2 | Not making the variable arbitrary. |
+| 35 | recursive definition | 递归定义 | A definition with base objects and construction rules. | Day 2 | Forgetting base objects. |
+| 36 | well-ordering principle | 良序原理 | Every nonempty set of natural numbers has a least element. | Day 2 | Applying it to arbitrary sets. |
+| 37 | loop invariant | 循环不变式 | A statement preserved through loop iterations. | Day 2 | Writing only the postcondition. |
+| 38 | initialization | 初始化 | The invariant holds before the first loop iteration. | Day 2 | Skipping empty cases. |
+| 39 | maintenance | 保持性 | One iteration preserves the invariant. | Day 2 | Assuming what must be shown. |
+| 40 | termination | 终止 | The argument that an algorithm eventually stops. | Day 2 | Saying it is obvious. |
+| 41 | partial correctness | 部分正确性 | If the algorithm terminates, the output satisfies the specification. | Day 2 | Confused with total correctness. |
+| 42 | total correctness | 完全正确性 | Partial correctness plus termination. | Day 2 | Ignoring termination. |
+| 43 | recursive algorithm | 递归算法 | An algorithm that calls itself on smaller instances. | Day 2 | Not proving smaller measure. |
+| 44 | Euclidean algorithm | 欧几里得算法 | Computes gcd by repeated remainder replacement. | Day 2 | Not proving gcd invariant. |
+| 45 | binary search | 二分查找 | Searches a sorted sequence by halving the candidate interval. | Day 2 | Forgetting sortedness assumption. |
+| 46 | Big-O | 渐近上界 | `f in O(g)` means `f` is eventually bounded above by a constant times `g`. | Day 3 | Treating it as equality. |
+| 47 | Big-Omega | 渐近下界 | `f in Omega(g)` means `f` is eventually at least a constant times `g`. | Day 3 | Reversing inequality direction. |
+| 48 | Big-Theta | 渐近紧界 | `Theta` means both Big-O and Big-Omega. | Day 3 | Proving only upper bound. |
+| 49 | little-o | 严格小阶 | `f in o(g)` means `f/g` tends to zero. | Day 3 | Confused with Big-O. |
+| 50 | little-omega | 严格大阶 | `f in omega(g)` means `f/g` tends to infinity. | Day 3 | Confused with Big-Omega. |
+| 51 | worst-case | 最坏情况 | Maximum running time over inputs of the same size. | Day 3 | Using typical input. |
+| 52 | average-case | 平均情况 | Expected running time under a specified input distribution. | Day 3 | Omitting distribution. |
+| 53 | amortized analysis | 摊还分析 | Bounds average cost per operation over a sequence. | Day 3 | Confused with average-case. |
+| 54 | recurrence | 递推式 | Defines a quantity using smaller instances. | Day 3 | Missing base case. |
+| 55 | recursion tree | 递归树 | Expands recursive calls level by level. | Day 3 | Treating it as proof without checking. |
+| 56 | substitution method | 替换法 | Guesses a bound and proves it by induction. | Day 3 | Not verifying base cases. |
+| 57 | Master theorem | 主定理 | Gives asymptotic solutions for certain divide-and-conquer recurrences. | Day 3 | Applying outside its form. |
+| 58 | lower bound | 下界 | A statement that any algorithm or object needs at least some resource. | Day 3 | Based only on intuition. |
+| 59 | input size | 输入规模 | The length or measure of encoded input used in complexity. | Day 3 | Confusing value with encoding length. |
+| 60 | RAM model | RAM 模型 | A simplified model where basic operations take constant time. | Day 3 | Treating it as real hardware. |
+| 61 | sum rule | 加法原则 | Counts disjoint cases by adding their sizes. | Day 4 | Adding overlapping cases. |
+| 62 | product rule | 乘法原则 | Counts sequential choices by multiplying choices. | Day 4 | Using when choices are dependent without care. |
+| 63 | permutation | 排列 | An ordered arrangement of distinct objects. | Day 4 | Confused with combination. |
+| 64 | combination | 组合 | An unordered selection of objects. | Day 4 | Counting order accidentally. |
+| 65 | binomial coefficient | 二项式系数 | `binom(n,k)` counts `k`-subsets of an `n`-set. | Day 4 | Forgetting no repetition. |
+| 66 | binomial theorem | 二项式定理 | Expands `(x+y)^n` using binomial coefficients. | Day 4 | Misindexing powers. |
+| 67 | pigeonhole principle | 鸽巢原理 | More objects than boxes forces a shared box. | Day 4 | Not defining boxes. |
+| 68 | inclusion-exclusion | 容斥原理 | Counts unions by adding sets and subtracting overlaps. | Day 4 | Forgetting intersections. |
+| 69 | graph | 图 | A set of vertices and edges. | Day 4 | Assuming direction by default. |
+| 70 | directed graph | 有向图 | A graph whose edges are ordered pairs. | Day 4 | Treating edges as symmetric. |
+| 71 | vertex | 顶点 | An object or state in a graph. | Day 4 | Not specifying vertex set. |
+| 72 | edge | 边 | A connection or transition between vertices. | Day 4 | Confusing edge with path. |
+| 73 | path | 路径 | A sequence of vertices connected by edges. | Day 4 | Allowing invalid transitions. |
+| 74 | cycle | 环 | A path returning to its start with no repeated internal vertices. | Day 4 | Confused with any closed walk. |
+| 75 | tree | 树 | A connected acyclic undirected graph. | Day 4 | Checking only acyclic. |
+| 76 | rooted tree | 有根树 | A tree with a distinguished root giving parent-child structure. | Day 4 | Assuming all trees are rooted. |
+| 77 | degree | 度 | Number of incident edges at a vertex. | Day 4 | Mixing in-degree and out-degree. |
+| 78 | connectivity | 连通性 | Every pair of vertices has a path between them. | Day 4 | Confusing with complete graph. |
+| 79 | bipartite graph | 二分图 | Vertices split into two sides and edges cross sides. | Day 4 | Odd cycles break bipartiteness. |
+| 80 | state graph | 状态图 | A graph whose vertices are states and edges are transitions. | Day 4 | Treating it as only a drawing. |
+| 81 | sample space | 样本空间 | The set of all possible outcomes. | Day 5 | Not defining it. |
+| 82 | event | 事件 | A subset of the sample space. | Day 5 | Confused with random variable. |
+| 83 | probability measure | 概率测度 | Assigns probabilities to events consistently. | Day 5 | Treating all spaces as uniform. |
+| 84 | conditional probability | 条件概率 | Probability of an event after conditioning on another positive-probability event. | Day 5 | Dividing by the original space. |
+| 85 | independence | 独立性 | Events are independent if joint probability factors. | Day 5 | Confused with disjointness. |
+| 86 | disjoint events | 互斥事件 | Events with empty intersection. | Day 5 | Assuming independence. |
+| 87 | random variable | 随机变量 | A function from outcomes to values. | Day 5 | Treating it as an event. |
+| 88 | expectation | 期望 | The probability-weighted average of a random variable. | Day 5 | Confusing with most likely value. |
+| 89 | linearity of expectation | 期望线性性 | Expectation of a sum is sum of expectations. | Day 5 | Thinking independence is required. |
+| 90 | variance | 方差 | Expected squared deviation from the mean. | Day 5 | Confusing with standard deviation. |
+| 91 | indicator variable | 指示随机变量 | A 0-1 random variable for event occurrence. | Day 5 | Forgetting its expectation is event probability. |
+| 92 | union bound | 并集界 | Probability of a union is at most sum of probabilities. | Day 5 | Treating it as equality. |
+| 93 | Markov inequality | Markov 不等式 | Bounds upper tail of a nonnegative random variable by expectation. | Day 5 | Applying to negative variables. |
+| 94 | Chebyshev inequality | Chebyshev 不等式 | Bounds deviation using variance. | Day 5 | Forgetting the square in the denominator. |
+| 95 | Hoeffding inequality | Hoeffding 不等式 | Gives exponential concentration for independent bounded variables. | Day 5 | Forgetting boundedness. |
+| 96 | Chernoff bound | Chernoff 界 | Gives strong concentration for sums of independent Bernoulli variables. | Day 5 | Applying without independence. |
+| 97 | failure probability | 失败概率 | Probability a randomized algorithm returns an incorrect result. | Day 5 | Not specifying randomness source. |
+| 98 | generalization bound | 泛化界 | A bound connecting empirical and population performance. | Day 5 | Ignoring probability over samples. |
+| 99 | vector | 向量 | An ordered tuple in a vector space such as `R^d`. | Day 6 | Confused with set. |
+| 100 | matrix | 矩阵 | A rectangular array representing a linear map. | Day 6 | Treating as just a table. |
+| 101 | inner product | 内积 | A scalar measuring alignment between vectors. | Day 6 | Confused with elementwise product. |
+| 102 | norm | 范数 | A function satisfying axioms for length. | Day 6 | Treating any size measure as norm. |
+| 103 | L1 norm | L1 范数 | Sum of absolute coordinate values. | Day 6 | Dropping absolute values. |
+| 104 | L2 norm | L2 范数 | Euclidean length from square root of sum of squares. | Day 6 | Confused with squared norm. |
+| 105 | Linf norm | L infinity 范数 | Maximum absolute coordinate. | Day 6 | Confused with sum. |
+| 106 | distance | 距离 | A nonnegative measure between points, often induced by a norm. | Day 6 | Forgetting triangle inequality. |
+| 107 | Cauchy-Schwarz inequality | Cauchy-Schwarz 不等式 | `|<x,y>| <= ||x||_2 ||y||_2`. | Day 6 | Not naming the inner product. |
+| 108 | triangle inequality | 三角不等式 | Norm of a sum is at most sum of norms. | Day 6 | Assuming equality. |
+| 109 | linear map | 线性映射 | A map preserving addition and scalar multiplication. | Day 6 | Checking only one example. |
+| 110 | rank | 秩 | Dimension of the image of a linear map. | Day 6 | Confused with matrix size. |
+| 111 | eigenvalue | 特征值 | A scalar by which a matrix scales a special direction. | Day 6 | Assuming every vector is eigenvector. |
+| 112 | convex set | 凸集 | A set containing every segment between its points. | Day 6 | Confused with connected. |
+| 113 | convex function | 凸函数 | A function below the chord between any two points. | Day 6 | Confused with increasing. |
+| 114 | Jensen inequality | Jensen 不等式 | Convex function of an average is at most average of function values. | Day 6 | Reversing inequality. |
+| 115 | gradient | 梯度 | Vector of partial derivatives giving local steepest ascent direction. | Day 6 | Treating intuition as proof. |
+| 116 | Lipschitz continuity | Lipschitz 连续 | Output changes are bounded by a constant times input changes. | Day 6 | Confused with bounded function. |
+| 117 | projection | 投影 | Nearest-point operation back to a set under a distance. | Day 6 | Assuming projection is always unique. |
+| 118 | alphabet | 字母表 | A finite set of symbols. | Day 7 | Confused with natural language alphabet only. |
+| 119 | string | 字符串 | A finite sequence of symbols from an alphabet. | Day 7 | Confused with set of symbols. |
+| 120 | language | 语言 | A set of strings over an alphabet. | Day 7 | Confused with programming language. |
+| 121 | decision problem | 判定问题 | A problem with yes/no output. | Day 7 | Confused with search problem. |
+| 122 | search problem | 搜索问题 | A problem asking for a witness or solution object. | Day 7 | Treating it as yes/no. |
+| 123 | optimization problem | 优化问题 | A problem asking for a best feasible solution or value. | Day 7 | Forgetting objective function. |
+| 124 | computational model | 计算模型 | A formal rule system for allowed computation and cost. | Day 7 | Treating code language as model. |
+| 125 | deterministic algorithm | 确定性算法 | Same input gives same computation path and output. | Day 7 | Confused with correctness. |
+| 126 | randomized algorithm | 随机算法 | Algorithm using internal random choices. | Day 7 | Not stating failure probability. |
+| 127 | finite automaton | 有限自动机 | A finite-state model recognizing languages. | Day 7 | Assuming it captures all computation. |
+| 128 | Turing machine | 图灵机 | A formal model with finite control and unbounded tape. | Day 7 | Overusing details before needed. |
+| 129 | reduction | 归约 | A transformation using one problem to solve another. | Day 7 | Reversing direction. |
+| 130 | many-one reduction | 多一归约 | A mapping `f` with `x in A iff f(x) in B`. | Day 7 | Proving only one direction. |
+| 131 | encoding | 编码 | Representation of mathematical inputs as strings. | Day 7 | Confusing value and length. |
+| 132 | correctness specification | 正确性规格 | Precise statement of required input-output behavior. | Day 7 | Writing implementation details instead. |
+

@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Problem Set: Foundations for Theoretical Computer Science}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+This problem set has 42 problems, six for each day of Week 1. Each problem lists its difficulty and required concepts. Do not use results beyond Week 1. For proof problems, state the assumptions and proof strategy before the proof. For probability problems, define the sample space and random variables.
+
+\section{Day 1: Logic, Sets, Functions, Relations}
+\begin{enumerate}[label=\textbf{1.\arabic*.}]
+\item \textbf{Basic. Concepts: quantifier negation.} Negate
+$$\forall x\in\mathbb{Z}\ \exists y\in\mathbb{Z}\ \forall z\in\mathbb{Z}\ (x+y<z).$$
+\item \textbf{Basic. Concepts: implication, converse, contrapositive.} For $P(n): n$ is divisible by $4$ and $Q(n): n$ is even, state $P\Rightarrow Q$, its converse, inverse, and contrapositive. Identify which are true over $\mathbb{Z}$.
+\item \textbf{Medium. Concepts: set equality.} Prove $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$.
+\item \textbf{Medium. Concepts: injective, surjective.} Let $f:\mathbb{Z}\to\mathbb{Z}$ be $f(x)=3x+2$. Prove $f$ is injective and determine whether it is surjective.
+\item \textbf{Medium. Concepts: relation properties.} Prove congruence modulo $m$ is an equivalence relation on $\mathbb{Z}$.
+\item \textbf{Challenge. Concepts: preimage, set operations.} Let $f:A\to B$ and $S,T\subseteq B$. Prove $f^{-1}(S\cap T)=f^{-1}(S)\cap f^{-1}(T)$.
+\end{enumerate}
+
+\section{Day 2: Induction, Recursion, Invariants}
+\begin{enumerate}[label=\textbf{2.\arabic*.}]
+\item \textbf{Basic. Concepts: ordinary induction.} Prove $\sum_{i=1}^n i=n(n+1)/2$ for all $n\ge1$.
+\item \textbf{Basic. Concepts: divisibility induction.} Prove $7^n-1$ is divisible by $6$ for all $n\ge0$.
+\item \textbf{Medium. Concepts: strong induction.} Prove every integer $n\ge2$ is a product of primes.
+\item \textbf{Medium. Concepts: structural induction.} Binary strings are defined by $\epsilon\in S$ and if $w\in S$, then $0w,1w\in S$. Prove every $w\in S$ has finite length.
+\item \textbf{Medium. Concepts: loop invariant.} Give a loop invariant proving correctness of a prefix-sum loop that computes $\sum_{i=0}^{n-1}a_i$.
+\item \textbf{Challenge. Concepts: recursive algorithm correctness.} Prove Euclidean algorithm correctness using $\gcd(a,b)=\gcd(b,a\bmod b)$.
+\end{enumerate}
+
+\section{Day 3: Asymptotics, Recurrences, Algorithm Analysis}
+\begin{enumerate}[label=\textbf{3.\arabic*.}]
+\item \textbf{Basic. Concepts: Big-O definition.} Prove $5n^3+2n^2+17\in O(n^3)$.
+\item \textbf{Basic. Concepts: Big-Omega definition.} Prove $n^2\in\Omega(n\log n)$ for $n\ge2$.
+\item \textbf{Medium. Concepts: Big-Theta.} Prove $3n^2+4n+1\in\Theta(n^2)$.
+\item \textbf{Medium. Concepts: recurrence, recursion tree.} Solve $T(n)=2T(n/2)+n$, $T(1)=1$, for powers of two.
+\item \textbf{Medium. Concepts: algorithm analysis.} Analyze worst-case running time of linear search on an array of length $n$.
+\item \textbf{Challenge. Concepts: lower bound intuition.} Explain why finding the maximum of $n$ numbers by comparisons requires at least $n-1$ comparisons.
+\end{enumerate}
+
+\section{Day 4: Counting, Discrete Structures, Graphs}
+\begin{enumerate}[label=\textbf{4.\arabic*.}]
+\item \textbf{Basic. Concepts: product rule.} Count length-5 strings over $\{0,1,2\}$.
+\item \textbf{Basic. Concepts: combinations.} Count 3-element subsets of a 10-element set.
+\item \textbf{Medium. Concepts: inclusion-exclusion.} Count integers in $\{1,\ldots,100\}$ divisible by 2 or 5.
+\item \textbf{Medium. Concepts: pigeonhole principle.} Prove any 6 integers contain two whose difference is divisible by 5.
+\item \textbf{Medium. Concepts: trees.} Prove every finite tree with $n\ge1$ vertices has $n-1$ edges.
+\item \textbf{Challenge. Concepts: graph modeling.} Model binary strings of length at most 3 as a rooted tree and state its number of vertices and edges.
+\end{enumerate}
+
+\section{Day 5: Probability, Random Variables, Concentration}
+\begin{enumerate}[label=\textbf{5.\arabic*.}]
+\item \textbf{Basic. Concepts: conditional probability.} Roll two fair dice. Compute the probability that the sum is 7 given that the first die is 3.
+\item \textbf{Basic. Concepts: independence versus disjointness.} Give two disjoint nonzero-probability events and prove they are not independent.
+\item \textbf{Medium. Concepts: expectation.} Let $X$ be the number of heads in $n$ fair coin flips. Compute $\mathbb{E}[X]$.
+\item \textbf{Medium. Concepts: indicator variables.} Compute the expected number of empty bins after throwing $m$ balls independently into $n$ bins.
+\item \textbf{Medium. Concepts: union bound.} If each of $m$ tests fails with probability at most $\delta/m$, bound the probability that at least one test fails.
+\item \textbf{Challenge. Concepts: Hoeffding, learning preview.} If $X_1,\ldots,X_n\in[0,1]$ are independent with mean $\mu$, use Hoeffding to bound $\Pr[|\frac1n\sum_i X_i-\mu|\ge\epsilon]$ and explain why this resembles a generalization statement.
+\end{enumerate}
+
+\section{Day 6: Linear Algebra and Convexity}
+\begin{enumerate}[label=\textbf{6.\arabic*.}]
+\item \textbf{Basic. Concepts: norms.} For $x=(1,-2,2)$, compute $\|x\|_1,\|x\|_2,\|x\|_\infty$.
+\item \textbf{Basic. Concepts: norm comparison.} Prove $\|x\|_\infty\le \|x\|_2\le \|x\|_1$ for $x\in\mathbb{R}^d$.
+\item \textbf{Medium. Concepts: Cauchy-Schwarz.} Use Cauchy-Schwarz to prove $|\sum_i x_i|\le\sqrt d\|x\|_2$.
+\item \textbf{Medium. Concepts: linear maps.} For $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, compute $Ax$ and prove the map is linear.
+\item \textbf{Medium. Concepts: convex sets and functions.} Prove $[a,b]$ is convex and $f(x)=x^2$ is convex on $\mathbb{R}$.
+\item \textbf{Challenge. Concepts: hypothesis geometry.} Explain why $x\mapsto \mathrm{sign}(\langle w,x\rangle)$ with $\|w\|_2\le B$ describes a constrained geometric hypothesis class.
+\end{enumerate}
+
+\section{Day 7: Models, Languages, Reductions}
+\begin{enumerate}[label=\textbf{7.\arabic*.}]
+\item \textbf{Basic. Concepts: formalization.} Formalize duplicate detection as a decision problem.
+\item \textbf{Basic. Concepts: language.} Let $\Sigma=\{0,1\}$. Define the language of strings ending in 01 and list all members of length at most 3.
+\item \textbf{Medium. Concepts: DFA.} Specify a DFA for binary strings with an even number of 1s.
+\item \textbf{Medium. Concepts: encoding and complexity.} Explain why unary versus binary encoding of integers can change input size.
+\item \textbf{Medium. Concepts: reduction intuition.} Give a reduction intuition from duplicate detection to sorting.
+\item \textbf{Challenge. Concepts: theorem design.} Write a theorem statement and proof roadmap for binary search correctness.
+\end{enumerate}
+
+\end{document}
+

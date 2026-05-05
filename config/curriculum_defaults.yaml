@@ -1,0 +1,24 @@
+week_id_format: "weekXX-slug"
+day_id_format: "dayDD-slug"
+default_sections:
+  - "Learning goals"
+  - "Prerequisites"
+  - "Precise definitions"
+  - "Intuition"
+  - "Examples and non-examples"
+  - "Theorems or claims"
+  - "Proof work"
+  - "Common mistakes"
+  - "Exercises"
+  - "Self-test"
+  - "Connections"
+default_outputs:
+  - "weekly plan"
+  - "daily notes"
+  - "problem set"
+  - "solutions"
+  - "lab"
+  - "review pack"
+  - "flashcards"
+quality_gate_required: true
+

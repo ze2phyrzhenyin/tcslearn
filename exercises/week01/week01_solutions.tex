@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Week 1 Solutions: Foundations for Theoretical Computer Science}
+\author{TCS Selfstudy OS}
+\date{2026-05-06}
+\begin{document}
+\maketitle
+
+\section*{Solution Standard}
+Each solution gives a strategy, a complete argument, and a common mistake. Probability solutions state the sample space and random variables. Algorithm solutions separate correctness and complexity.
+
+\section{Day 1 Solutions}
+\begin{enumerate}[label=\textbf{1.\arabic*.}]
+\item \textbf{Strategy.} Flip each quantifier and negate the predicate. \textbf{Solution.}
+$$\exists x\in\mathbb{Z}\ \forall y\in\mathbb{Z}\ \exists z\in\mathbb{Z}\ (x+y\ge z).$$
+The domains remain unchanged. \textbf{Common mistake.} Negating only the inequality while leaving quantifiers unchanged.
+
+\item \textbf{Strategy.} Write each implication explicitly. \textbf{Solution.} $P\Rightarrow Q$: if $n$ is divisible by 4, then $n$ is even; true. Converse: if $n$ is even, then $n$ is divisible by 4; false, $n=2$. Inverse: if $n$ is not divisible by 4, then $n$ is not even; false, $n=2$. Contrapositive: if $n$ is not even, then $n$ is not divisible by 4; true. \textbf{Common mistake.} Treating the converse as logically equivalent to the original implication.
+
+\item \textbf{Strategy.} Prove double inclusion using membership definitions. \textbf{Solution.} If $x\in A\cap(B\cup C)$, then $x\in A$ and $(x\in B$ or $x\in C)$. Hence $(x\in A\cap B)$ or $(x\in A\cap C)$, so $x$ is in the right side. Conversely, if $x$ is in the right side, then either $x\in A\cap B$ or $x\in A\cap C$. In both cases $x\in A$ and $x\in B\cup C$, so $x$ is in the left side. \textbf{Common mistake.} Proving only one inclusion.
+
+\item \textbf{Strategy.} For injective, equate outputs. For surjective, solve $3x+2=y$ in integers. \textbf{Solution.} If $f(a)=f(b)$, then $3a+2=3b+2$, so $a=b$; $f$ is injective. It is not surjective onto $\mathbb{Z}$: $0$ would require $3x+2=0$, so $x=-2/3\notin\mathbb{Z}$. \textbf{Common mistake.} Showing many values are hit instead of every codomain value.
+
+\item \textbf{Strategy.} Check reflexive, symmetric, transitive. \textbf{Solution.} Define $a\sim b$ iff $m$ divides $a-b$. Reflexive: $m\mid a-a=0$. Symmetric: if $m\mid a-b$, then $m\mid -(a-b)=b-a$. Transitive: if $m\mid a-b$ and $m\mid b-c$, then $m\mid(a-b)+(b-c)=a-c$. Thus $\sim$ is an equivalence relation. \textbf{Common mistake.} Forgetting to state $m$ is a fixed positive integer.
+
+\item \textbf{Strategy.} Use the definition of preimage. \textbf{Solution.} For $x\in A$,
+\[
+x\in f^{-1}(S\cap T)\iff f(x)\in S\cap T\iff f(x)\in S\text{ and }f(x)\in T
+\]
+\[
+\iff x\in f^{-1}(S)\text{ and }x\in f^{-1}(T)\iff x\in f^{-1}(S)\cap f^{-1}(T).
+\]
+Therefore the sets are equal. \textbf{Common mistake.} Assuming $f^{-1}$ is an inverse function.
+\end{enumerate}
+
+\section{Day 2 Solutions}
+\begin{enumerate}[label=\textbf{2.\arabic*.}]
+\item \textbf{Strategy.} Ordinary induction on $n$. \textbf{Solution.} Base $n=1$: both sides are $1$. Assume $\sum_{i=1}^k i=k(k+1)/2$. Then
+\[
+\sum_{i=1}^{k+1}i=\frac{k(k+1)}2+(k+1)=\frac{(k+1)(k+2)}2.
+\]
+Thus the claim holds for all $n\ge1$. \textbf{Common mistake.} Using the formula for $k+1$ inside the induction step.
+
+\item \textbf{Strategy.} Induct on $n$ and preserve divisibility. \textbf{Solution.} Base $n=0$: $7^0-1=0$ is divisible by $6$. Assume $6\mid 7^k-1$. Then $7^{k+1}-1=7(7^k-1)+6$, a sum of multiples of $6$. \textbf{Common mistake.} Forgetting that $0$ is divisible by $6$.
+
+\item \textbf{Strategy.} Strong induction; if $n$ is composite, factor into smaller integers. \textbf{Solution.} Base $n=2$ is prime. Assume every integer $2,\ldots,k$ is a product of primes. For $k+1$, if prime, done. If composite, $k+1=ab$ with $2\le a,b\le k$. By the hypothesis, $a$ and $b$ are products of primes, so $k+1$ is. \textbf{Common mistake.} Using only $P(k)$ when the factor could be much smaller.
+
+\item \textbf{Strategy.} Structural induction on the recursive definition. \textbf{Solution.} Base: $\epsilon$ has length $0$, finite. Step: assume $w$ has finite length $\ell$. Then $0w$ and $1w$ have length $\ell+1$, finite. Therefore every generated string has finite length. \textbf{Common mistake.} Inducting on length without first connecting length to the recursive definition.
+
+\item \textbf{Strategy.} Use prefix invariant. \textbf{Solution.} Consider loop: $s=0$; for $i=0$ to $n-1$, set $s=s+a_i$. Invariant before iteration $i$: $s=\sum_{j=0}^{i-1}a_j$. Initialization: before $i=0$, empty sum is $0$. Maintenance: after adding $a_i$, $s=\sum_{j=0}^{i}a_j$, which is the invariant for $i+1$. Termination: at $i=n$, $s=\sum_{j=0}^{n-1}a_j$. Complexity is $O(n)$ additions. \textbf{Common mistake.} Stating only the final postcondition as the invariant.
+
+\item \textbf{Strategy.} Prove invariant and termination. \textbf{Solution.} Euclid repeatedly replaces $(a,b)$ by $(b,a\bmod b)$ until $b=0$. The invariant is $\gcd(a,b)$ is unchanged because common divisors of $a,b$ are exactly common divisors of $b,a-qb=a\bmod b$. Termination holds because the second component strictly decreases and remains nonnegative. At termination $(d,0)$ has gcd $d$, so the algorithm returns the original gcd. Complexity is separate from correctness and is not required here. \textbf{Common mistake.} Saying the numbers get smaller without identifying the decreasing measure.
+\end{enumerate}
+
+\section{Day 3 Solutions}
+\begin{enumerate}[label=\textbf{3.\arabic*.}]
+\item \textbf{Strategy.} Find constants $c,n_0$. \textbf{Solution.} For $n\ge1$, $2n^2\le2n^3$ and $17\le17n^3$, so $5n^3+2n^2+17\le24n^3$. Take $c=24,n_0=1$. \textbf{Common mistake.} Choosing a constant that depends on $n$.
+
+\item \textbf{Strategy.} Lower-bound $n^2$ by a constant times $n\log n$. \textbf{Solution.} For $n\ge2$, $\log_2 n\le n$. Hence $n\log_2 n\le n^2$. Take $c=1,n_0=2$, so $n^2\in\Omega(n\log n)$. \textbf{Common mistake.} Not specifying the logarithm base; any fixed base changes only constants.
+
+\item \textbf{Strategy.} Prove upper and lower bounds. \textbf{Solution.} For $n\ge1$, $3n^2\le3n^2+4n+1$, so it is $\Omega(n^2)$ with $c=3$. Also $4n\le4n^2$ and $1\le n^2$, so $3n^2+4n+1\le8n^2$, giving $O(n^2)$. Therefore it is $\Theta(n^2)$. \textbf{Common mistake.} Proving only Big-O.
+
+\item \textbf{Strategy.} Expand recursion tree. \textbf{Solution.} For $n=2^k$, level $i$ has $2^i$ subproblems of size $n/2^i$, each contributing $n/2^i$, so each level costs $n$. There are $k+1=\log_2 n+1$ levels including leaves. Thus $T(n)=n(\log_2 n+1)$ up to the base normalization, so $T(n)\in\Theta(n\log n)$. \textbf{Common mistake.} Counting only recursive calls and ignoring nonrecursive work.
+
+\item \textbf{Strategy.} Define the worst-case input. \textbf{Solution.} Linear search checks entries until it finds the target or reaches the end. Worst case occurs when the target is absent or at the last position, requiring $n$ comparisons. Therefore time is $\Theta(n)$ in the RAM model with constant-time comparisons. Correctness is that if the target appears, the scan eventually reaches it; if the scan ends, no position contained it. \textbf{Common mistake.} Reporting average behavior without a distribution.
+
+\item \textbf{Strategy.} Use adversary intuition. \textbf{Solution.} An element cannot be certified non-maximum until it loses a comparison. Each comparison can make at most one element lose. To identify one maximum among $n$ elements, the other $n-1$ elements must each lose at least once. Hence at least $n-1$ comparisons are necessary. \textbf{Common mistake.} Treating this as a statement about a particular algorithm rather than all comparison algorithms.
+\end{enumerate}
+
+\section{Day 4 Solutions}
+\begin{enumerate}[label=\textbf{4.\arabic*.}]
+\item \textbf{Strategy.} Product rule; order matters, repetition allowed. \textbf{Solution.} Each of 5 positions has 3 choices, so there are $3^5=243$ strings. \textbf{Common mistake.} Using combinations even though positions are ordered.
+
+\item \textbf{Strategy.} Use combinations. \textbf{Solution.} A 3-element subset is unordered and has no repetition, so the count is $\binom{10}{3}=120$. \textbf{Common mistake.} Counting ordered triples $10\cdot9\cdot8$.
+
+\item \textbf{Strategy.} Inclusion-exclusion. \textbf{Solution.} Multiples of 2: $\lfloor100/2\rfloor=50$. Multiples of 5: $20$. Multiples of both are multiples of 10: $10$. Count is $50+20-10=60$. \textbf{Common mistake.} Forgetting to subtract the intersection.
+
+\item \textbf{Strategy.} Boxes are residues modulo 5. \textbf{Solution.} Six integers have six residues among five residue classes. By pigeonhole, two have the same residue modulo 5. Their difference is divisible by 5. \textbf{Common mistake.} Not defining the boxes.
+
+\item \textbf{Strategy.} Induct using a leaf. \textbf{Solution.} Base $n=1$: zero edges. For $n>1$, a finite tree has a leaf. Remove the leaf and its incident edge; the remaining graph is a tree on $n-1$ vertices. By induction it has $n-2$ edges. Adding back the leaf adds one edge, so the original has $n-1$ edges. \textbf{Common mistake.} Using the theorem itself to justify the existence of a leaf.
+
+\item \textbf{Strategy.} Define the rooted tree by prefix extension. \textbf{Solution.} Vertices are all binary strings of length at most 3: $1+2+4+8=15$ vertices. Edges connect $w$ to $w0$ and $w1$ when $|w|<3$. Since this is a tree, edges are $15-1=14$; directly, $2+4+8=14$. \textbf{Common mistake.} Counting only strings of length exactly 3.
+\end{enumerate}
+
+\section{Day 5 Solutions}
+\begin{enumerate}[label=\textbf{5.\arabic*.}]
+\item \textbf{Strategy.} Condition on a smaller sample space. \textbf{Solution.} Sample space is ordered pairs $(i,j)$ with $i,j\in\{1,\ldots,6\}$. Given first die is 3, possible outcomes are $(3,1),\ldots,(3,6)$, equally likely. Sum 7 occurs only at $(3,4)$, so probability is $1/6$. \textbf{Common mistake.} Continuing to divide by 36 after conditioning.
+
+\item \textbf{Strategy.} Use one coin flip. \textbf{Solution.} Sample space $\Omega=\{H,T\}$. Events $A=\{H\}$ and $B=\{T\}$ are disjoint and have probability $1/2$. Since $\Pr[A\cap B]=0$ but $\Pr[A]\Pr[B]=1/4$, they are not independent. \textbf{Common mistake.} Thinking disjoint means unrelated and therefore independent.
+
+\item \textbf{Strategy.} Use indicators. \textbf{Solution.} Sample space is $\{H,T\}^n$. Let $I_i=1$ if flip $i$ is heads and $0$ otherwise. Then $X=\sum_{i=1}^n I_i$ and $\mathbb{E}[I_i]=1/2$. By linearity, $\mathbb{E}[X]=n/2$. \textbf{Common mistake.} Claiming linearity requires independence; it does not.
+
+\item \textbf{Strategy.} Indicator for each empty bin. \textbf{Solution.} Sample space is all functions from $m$ balls to $n$ bins, with independent uniform choices. Let $I_j=1$ if bin $j$ is empty. Then $\Pr[I_j=1]=(1-1/n)^m$. The number of empty bins is $X=\sum_{j=1}^n I_j$, so $\mathbb{E}[X]=n(1-1/n)^m$. \textbf{Common mistake.} Assuming the empty-bin events are independent; expectation does not need that.
+
+\item \textbf{Strategy.} Apply union bound. \textbf{Solution.} Let $A_i$ be the event that test $i$ fails. Then
+\[
+\Pr[\text{some failure}]=\Pr\left[\bigcup_{i=1}^m A_i\right]\le\sum_{i=1}^m\Pr[A_i]\le m(\delta/m)=\delta.
+\]
+\textbf{Common mistake.} Multiplying success probabilities without independence.
+
+\item \textbf{Strategy.} State Hoeffding and interpret randomness. \textbf{Solution.} The sample space is the product space generating independent $X_1,\ldots,X_n\in[0,1]$ with common mean $\mu$. Hoeffding gives
+\[
+\Pr\left[\left|\frac1n\sum_{i=1}^n X_i-\mu\right|\ge\epsilon\right]\le2e^{-2n\epsilon^2}.
+\]
+This resembles generalization because empirical averages over random samples concentrate near population expectations. \textbf{Common mistake.} Forgetting independence and boundedness assumptions.
+\end{enumerate}
+
+\section{Day 6 Solutions}
+\begin{enumerate}[label=\textbf{6.\arabic*.}]
+\item \textbf{Strategy.} Apply definitions. \textbf{Solution.} For $x=(1,-2,2)$, $\|x\|_1=1+2+2=5$, $\|x\|_2=\sqrt{1+4+4}=3$, and $\|x\|_\infty=2$. \textbf{Common mistake.} Dropping absolute values in $\|x\|_1$.
+
+\item \textbf{Strategy.} Compare max, square root of sum of squares, and sum of absolute values. \textbf{Solution.} Since every $|x_i|\le\sqrt{\sum_j x_j^2}$, $\|x\|_\infty\le\|x\|_2$. Also $\sum_i x_i^2\le(\sum_i |x_i|)^2$, so taking square roots gives $\|x\|_2\le\|x\|_1$. \textbf{Common mistake.} Assuming all norms are equal.
+
+\item \textbf{Strategy.} Use Cauchy-Schwarz with the all-ones vector. \textbf{Solution.} Let $\mathbf{1}=(1,\ldots,1)$. Then $\sum_i x_i=\langle x,\mathbf{1}\rangle$, so
+\[
+|\sum_i x_i|=|\langle x,\mathbf{1}\rangle|\le\|x\|_2\|\mathbf{1}\|_2=\sqrt d\|x\|_2.
+\]
+\textbf{Common mistake.} Using Cauchy-Schwarz without naming the second vector.
+
+\item \textbf{Strategy.} Compute and check linearity. \textbf{Solution.} For $x=(x_1,x_2)$, $Ax=(x_1+2x_2,x_2)$. Matrix multiplication satisfies $A(\alpha x+\beta y)=\alpha Ax+\beta Ay$, so the map is linear. \textbf{Common mistake.} Checking only one vector example.
+
+\item \textbf{Strategy.} Use definitions. \textbf{Solution.} If $x,y\in[a,b]$ and $\lambda\in[0,1]$, then $\lambda x+(1-\lambda)y$ lies between $a$ and $b$, so $[a,b]$ is convex. For $f(x)=x^2$,
+\[
+(\lambda x+(1-\lambda)y)^2\le \lambda x^2+(1-\lambda)y^2
+\]
+because the difference equals $\lambda(1-\lambda)(x-y)^2\ge0$. Thus $f$ is convex. \textbf{Common mistake.} Relying only on a graph.
+
+\item \textbf{Strategy.} Interpret parameters geometrically. \textbf{Solution.} Each $w$ defines a hyperplane decision boundary through $\langle w,x\rangle=0$. The constraint $\|w\|_2\le B$ restricts $w$ to a ball in parameter space, limiting the hypothesis class. This is geometric because hypotheses are indexed by vectors and predictions depend on inner products. \textbf{Common mistake.} Treating the norm bound as a guarantee of correctness; it is a capacity constraint, not a proof of accuracy.
+\end{enumerate}
+
+\section{Day 7 Solutions}
+\begin{enumerate}[label=\textbf{7.\arabic*.}]
+\item \textbf{Strategy.} Specify input, output, and yes condition. \textbf{Solution.} Input: a finite sequence $(a_1,\ldots,a_n)$ of integers encoded in binary with delimiters. Output: yes/no. Yes-instance condition: there exist $i\ne j$ such that $a_i=a_j$. Size can be total encoding length or number of elements plus bit lengths. \textbf{Common mistake.} Giving an algorithm before defining the problem.
+
+\item \textbf{Strategy.} Define a subset of $\Sigma^*$. \textbf{Solution.} $L=\{w\in\{0,1\}^*: w \text{ ends with }01\}$. Members of length at most 3 are $01,001,101$. The empty string and strings of length 1 are not in $L$. \textbf{Common mistake.} Including strings that contain 01 but do not end in 01.
+
+\item \textbf{Strategy.} Track parity of ones. \textbf{Solution.} States are $E,O$ for even and odd number of ones seen. Start $E$; accepting state $E$. On symbol $0$, stay in the same state. On symbol $1$, switch $E\leftrightarrow O$. This DFA accepts exactly strings with even number of ones by invariant: current state records parity of ones in the prefix read. \textbf{Common mistake.} Forgetting that the empty string has zero ones and should be accepted.
+
+\item \textbf{Strategy.} Compare representation lengths. \textbf{Solution.} Integer $N$ has unary length $\Theta(N)$ but binary length $\Theta(\log N)$. An algorithm polynomial in unary input length may be exponential in binary input length. Thus encoding affects the formal input size used in complexity statements. \textbf{Common mistake.} Treating the numerical value and encoding length as the same.
+
+\item \textbf{Strategy.} Reduce duplicate detection to sorting. \textbf{Solution.} Given a list, sort it, then scan adjacent entries. If any adjacent pair is equal, output yes; otherwise no. Correctness: equal values become adjacent in sorted order; if no adjacent equality exists after sorting, no duplicate exists. Complexity is sorting time plus linear scan. \textbf{Common mistake.} Saying sorting reduces to duplicate detection; that is the reverse direction.
+
+\item \textbf{Strategy.} State theorem, invariant, and termination. \textbf{Solution.} Theorem: Given a sorted array $A[0..n-1]$ and target $t$, binary search returns an index $i$ with $A[i]=t$ if one exists, and reports absent otherwise, in $O(\log n)$ comparisons. Proof roadmap: maintain invariant that if $t$ occurs, it occurs in the current interval $[L,R)$. Initialization: $[0,n)$ contains all positions. Maintenance: comparing with the middle safely discards the half that cannot contain $t$ by sortedness. Termination: interval length strictly decreases to zero or a match is returned. Complexity: interval length halves each iteration, so $O(\log n)$. \textbf{Common mistake.} Proving the interval shrinks but not that it still contains all possible target positions.
+\end{enumerate}
+
+\section{Self-Test Answer Key}
+
+\subsection*{Short Answer}
+\begin{enumerate}[label=\textbf{SA\arabic*.}]
+\item $\exists x\ \forall y\ \neg P(x,y)$, with the original domains preserved.
+\item $P\to Q$ fails only when $P$ true and $Q$ false; $Q\to P$ is a different statement and can fail even when $P\to Q$ is true.
+\item Injective means $f(a)=f(b)\Rightarrow a=b$; surjective means every codomain element has a preimage.
+\item Initialization, maintenance, and termination.
+\item There exist $c>0$ and $n_0$ such that for all $n\ge n_0$, $0\le f(n)\le c g(n)$.
+\item Ordered counting treats positions or order as distinct; unordered counting treats only the selected set or multiset as relevant.
+\item A sample space is the set of outcomes; a random variable is a function from outcomes to values.
+\item Because expectation sums over outcomes and addition distributes over that sum.
+\item $|\langle x,y\rangle|\le \|x\|_2\|y\|_2$.
+\item A language is a subset of $\Sigma^*$, the set of all finite strings over an alphabet $\Sigma$.
+\end{enumerate}
+
+\subsection*{Proofs}
+\begin{enumerate}[label=\textbf{SP\arabic*.}]
+\item Same as Solution 1.3.
+\item Same as Solution 2.1.
+\item Same as Solution 2.3.
+\item Same as Solution 4.5.
+\item For events $A,B$ in sample space $\Omega$, $\mathbf{1}_{A\cup B}\le \mathbf{1}_A+\mathbf{1}_B$ pointwise. Taking expectations gives $\Pr[A\cup B]\le\Pr[A]+\Pr[B]$.
+\item Same parity invariant as Solution 7.3: after reading any prefix, the DFA state records whether the number of ones in that prefix is even or odd.
+\end{enumerate}
+
+\subsection*{Calculations}
+\begin{enumerate}[label=\textbf{SC\arabic*.}]
+\item For $x=(2,-1,2)$, $\|x\|_1=5$, $\|x\|_2=3$, and $\|x\|_\infty=2$.
+\item For powers of two, $T(n)=n(\log_2 n+1)$ under $T(1)=1$, so $T(n)\in\Theta(n\log n)$.
+\item There are $4^6=4096$ length-6 strings over a 4-symbol alphabet.
+\item Given the first die is 2, the second die must be 6 for sum 8, so the probability is $1/6$.
+\end{enumerate}
+
+\subsection*{Modeling}
+\begin{enumerate}[label=\textbf{SM\arabic*.}]
+\item Input: strings $p,t\in\Sigma^*$. Output yes iff there exists index $i$ such that $t_i\cdots t_{i+|p|-1}=p$, with edge case $p=\epsilon$ specified by convention.
+\item Vertices are $\epsilon,0,1,00,01,10,11$. Edges connect each string of length less than 2 to its one-symbol extensions. There are 7 vertices and 6 edges.
+\end{enumerate}
+
+\subsection*{Integrated Problem}
+Theorem: Given a sorted array $A[0..n-1]$ and target $t$, binary search returns an index containing $t$ if one exists and otherwise reports absent, using $O(\log n)$ comparisons. Invariant: if $t$ occurs, then it occurs in the current half-open interval $[L,R)$. Initialization holds because $[0,n)$ contains all positions. Maintenance follows from sortedness: comparing $t$ with the middle element discards only positions that cannot contain $t$. Termination holds because interval length strictly decreases; at a match the algorithm returns, and at empty interval no candidate remains. Complexity follows because each iteration halves the interval.
+
+\end{document}

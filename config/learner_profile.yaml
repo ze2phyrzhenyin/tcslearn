@@ -1,0 +1,77 @@
+# Editable learner profile. Update this before asking Codex to generate a new week.
+background_assumptions:
+  math:
+    - "Undergraduate-level comfort with calculus and linear algebra is assumed but should be checked."
+    - "Proof fluency is developing; do not skip quantifiers, definitions, or edge cases."
+  computer_science:
+    - "Basic programming experience is assumed."
+    - "Algorithms background may be uneven; prefer explicit invariants and complexity variables."
+
+current_goal: "为理论计算机科学打基础，建立可持续的证明、算法分析和数学建模能力。"
+
+near_term_goals:
+  - "在一个多月后参加 Copenhagen 的 CPM/string 相关暑校前，补足 string algorithms 所需基础。"
+  - "在 learning theory 暑校前，补足概率、离散结构、PAC learning 和 generalization bound 的前置知识。"
+  - "第一阶段先补数学、证明、算法分析、概率、离散结构。"
+
+summer_school_context:
+  location: "Copenhagen"
+  topics:
+    - "CPM / string algorithms"
+    - "learning theory"
+  preparation_focus:
+    - "mathematical foundations"
+    - "discrete probability"
+    - "algorithm analysis"
+    - "string algorithms basics"
+    - "learning theory basics"
+
+preferred_language:
+  explanations: "Chinese"
+  terminology: "English terms for mathematical objects, theorem names, algorithms, and field names"
+  notation: "Standard mathematical notation"
+
+daily_time_budget:
+  default_hours: "3-4"
+  preferred_structure:
+    - "30-45 min definitions and examples"
+    - "60-90 min proofs"
+    - "45-60 min exercises"
+    - "30-45 min review, flashcards, and mistake repair"
+
+proof_level: "Beginner-to-intermediate; require explicit assumptions, proof strategy, and step validation."
+coding_level: "Comfortable with Python basics; prefer small experiments over complex software projects."
+
+math_weaknesses:
+  - "Quantifiers and exact definitions"
+  - "Induction and structural induction"
+  - "Probability sample spaces and conditioning"
+  - "Asymptotic analysis variables"
+  - "Turning intuition into rigorous proof"
+
+preferred_outputs:
+  - "能直接学习的中文笔记"
+  - "正式 exercises / problem sets"
+  - "详细 LaTeX solutions"
+  - "小型 Python labs with asserts"
+  - "错题复盘和 proof weakness repair"
+  - "flashcards"
+  - "下一轮 Codex prompt"
+
+avoid:
+  - "大段教材摘抄"
+  - "没有来源的权威断言"
+  - "跳过定义直接讲技巧"
+  - "过度抽象的高级概念"
+  - "一次生成太多无法消化的内容"
+
+review_style:
+  cadence:
+    daily: "End each day with mistakes, flashcards, and a short self-test."
+    weekly: "End each week with a retrospective and repair plan."
+  emphasis:
+    - "主动回忆"
+    - "错题重做"
+    - "证明骨架复写"
+    - "概念连接图"
+

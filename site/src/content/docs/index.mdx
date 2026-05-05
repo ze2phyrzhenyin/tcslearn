@@ -1,0 +1,72 @@
+---
+title: TCS Self-Study OS
+description: A rigorous self-study system for theoretical computer science.
+template: splash
+---
+
+import StudyCard from '../../components/StudyCard.astro';
+import ProgressPanel from '../../components/ProgressPanel.astro';
+
+<section class="hero-block">
+  <p class="eyebrow">Current phase: Mathematical Foundations</p>
+  <h1>TCS Self-Study OS</h1>
+  <p class="subtitle">A rigorous self-study system for theoretical computer science.</p>
+  <div class="hero-actions">
+    <a class="button-link primary" href="/week01/overview/">Start Week 1</a>
+    <a class="button-link" href="/learning-system/daily-workflow/">View Study Workflow</a>
+  </div>
+</section>
+
+This site is the browser front-end for a long-term theoretical computer science self-study repository. Codex helps generate and maintain structured materials, but the learning work remains yours: reading definitions, writing proofs, solving exercises, running labs, recording mistakes, and requesting targeted feedback.
+
+<ProgressPanel
+  current="Mathematical foundations"
+  generated="Week 1"
+  completed="Not completed"
+  next="Study Day 1"
+/>
+
+## Main Paths
+
+<div class="study-grid">
+  <StudyCard
+    title="Mathematical Foundations"
+    label="Current"
+    description="Logic, sets, functions, induction, asymptotics, counting, probability, and formal models."
+    href="/week01/overview/"
+  />
+  <StudyCard
+    title="Proof Training"
+    description="Use assumptions, goals, proof strategy, step checks, and common mistake repair."
+    href="/week01/day01/"
+  />
+  <StudyCard
+    title="Algorithms"
+    description="Build the analysis language needed for correctness, recurrences, and running time."
+    href="/week01/day03/"
+  />
+  <StudyCard
+    title="Probability"
+    description="Prepare for randomized algorithms and learning theory through sample spaces and concentration."
+    href="/week01/day05/"
+  />
+  <StudyCard
+    title="Learning Theory Preparation"
+    description="Connect probability, linear algebra, convexity, and hypothesis spaces."
+    href="/week01/day06/"
+  />
+  <StudyCard
+    title="Strings and Privacy Preparation"
+    description="Keep future modules visible without rushing into summer-school topics too early."
+    href="/week01/day07/"
+  />
+</div>
+
+## What to Do Next
+
+1. Open [Start Here](/start-here/).
+2. Read [Week 1 Overview](/week01/overview/).
+3. Begin with [Day 1: Logic, Sets, Functions](/week01/day01/).
+4. Attempt the exercises before opening the solutions.
+5. Record mistakes and ask Codex for feedback only after doing the work.
+

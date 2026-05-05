@@ -1,0 +1,10 @@
+[project]
+name = "tcs-selfstudy-os"
+version = "0.1.0"
+description = "A reusable Codex-driven self-study operating system for theoretical computer science."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+

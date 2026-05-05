@@ -1,0 +1,140 @@
+---
+title: "Day 4: Counting and Graphs"
+description: "Week 1 Day 4 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week01/day04-counting-discrete-structures-graphs.md`
+
+# Day 4 - Counting, Discrete Structures, Graphs
+
+## 1. 今日目标
+
+今天补齐离散数学工具。学完后你应该能：
+
+- 判断 counting problem 是否有序、无序、允许重复；
+- 使用 sum rule、product rule、permutations、combinations；
+- 应用 pigeonhole principle 和 basic inclusion-exclusion；
+- 定义 graph、directed graph、path、cycle、tree、degree、connectivity、bipartite graph；
+- 用图表示算法状态、自动机状态和依赖结构。
+
+## 2. 为什么这个主题对 TCS 重要
+
+计数告诉我们对象空间有多大，图告诉我们对象之间如何连接。Complexity、randomized algorithms、learning theory 和 string algorithms 都会频繁使用组合对象、图结构和树结构。很多 lower bound 和 probability proof 的第一步就是计数。
+
+## 3. 预备概念
+
+需要 Day 1 的 sets、functions、relations，以及 Day 2 的 induction。Graph 可视为 vertex set 上的 relation；tree 的性质常用 induction 证明。
+
+## 4. 核心定义
+
+- **sum rule**：互不重叠的选择类大小相加。
+- **product rule**：连续独立选择的数量相乘。
+- **permutation**：有序排列，通常不重复。
+- **combination**：无序选择，通常不重复。
+- **binomial coefficient**：`binom(n,k)` 是从 `n` 个元素中选 `k` 个 unordered subset 的数量。
+- **binomial theorem**：`(x+y)^n=sum_k binom(n,k)x^k y^\{n-k\}`。
+- **pigeonhole principle**：若 `m` 个对象放入 `k` 个盒子且 `m>k`，至少一个盒子有至少两个对象。
+- **inclusion-exclusion basic version**：`|A union B|=|A|+|B|-|A cap B|`。
+- **graph**：`G=(V,E)`，undirected graph 的 edge 是 unordered pair。
+- **directed graph**：edge 是 ordered pair。
+- **path**：相邻 edge 连接的 vertex sequence。
+- **cycle**：起点终点相同且中间不重复的 path。
+- **tree**：connected 且 acyclic 的 undirected graph。
+- **rooted tree**：指定 root 后有 parent/child 方向的 tree。
+- **degree**：vertex incident edges 数量；directed graph 有 in-degree 和 out-degree。
+- **connectivity**：任意两个 vertices 之间有 path。
+- **bipartite graph**：`V=L union R`，所有 edges 跨越 `L` 和 `R`。
+- **state graph intuition**：算法或系统的 states 作为 vertices，合法 transitions 作为 edges。
+
+## 5. 最小例子
+
+从 5 个元素中选 2 个 unordered subset：`binom(5,2)=10`。如果顺序重要，则是 `5*4=20`。同一问题的“对象是否有序”会改变答案。
+
+Graph 例子：`V=\{a,b,c\}`，`E=\{\{a,b\},\{b,c\}\}` 是 tree。它 connected、acyclic，且有 `n-1=2` 条 edges。
+
+## 6. 反例或 non-example
+
+- 把 password 的字符选择当 combination 通常错，因为位置有序且可能重复。
+- `V=\{1,2,3\}`，`E=\{\{1,2\},\{2,3\},\{1,3\}\}` 不是 tree，因为有 cycle。
+- Directed graph 中 `u -> v` 不代表 `v -> u`。
+- Inclusion-exclusion 中若 `A` 与 `B` 不 disjoint，直接加 `|A|+|B|` 会重复计数交集。
+
+## 7. 关键定理或命题
+
+**Claim 1: Every tree with `n >= 1` vertices has `n-1` edges.**
+
+Assumptions: finite undirected connected acyclic graph。  
+Goal: `|E|=|V|-1`。  
+Proof idea: induction on `n`。任何非单点 tree 有 leaf；删去 leaf 和 incident edge 后仍是 tree。用 induction 得到剩余有 `n-2` 条 edges，加回一条得到 `n-1`。
+
+**Claim 2: Basic pigeonhole principle.**
+
+Assumptions: `m>k` objects assigned to `k` boxes。  
+Goal: some box contains at least two objects。  
+Proof idea: contradiction。若每盒最多一个，总对象数最多 `k`，与 `m>k` 矛盾。
+
+## 8. 证明模板
+
+### Counting proof
+
+1. Define exactly what object is counted.
+2. Ask: ordered or unordered?
+3. Ask: repetition allowed?
+4. Decompose into disjoint cases or sequential choices.
+5. Check no object is missed and no object is counted twice.
+
+### Graph modeling proof
+
+1. Define vertices.
+2. Define edges or transitions.
+3. Translate the original question into graph language.
+4. Prove property using definitions.
+5. Translate conclusion back.
+
+## 9. 常见错误
+
+- 没说明是否允许重复。
+- 将 ordered tuple 和 unordered set 混用。
+- Inclusion-exclusion 漏减交集。
+- Pigeonhole 没定义 boxes。
+- 证明 tree 性质时忘记 connected 或 acyclic。
+- Graph traversal intuition 当作 traversal correctness proof。
+
+## 10. 与 algorithms / strings / learning theory 的联系
+
+- Trie、suffix tree、automaton 都是 graph/tree-like structures。
+- Learning theory 中 hypothesis class size 是 counting 对象。
+- State graph 能表示 dynamic programming 状态和 automata transition。
+- Graph connectivity 是算法设计与证明的核心 playground。
+
+## 11. 必做练习
+
+见 `exercises/week01/day04_exercises.tex`：1-10。重点写清 ordered/unordered、repetition/no repetition、vertices/edges。
+
+## 12. 选做练习
+
+见 `exercises/week01/day04_exercises.tex`：11-14。选做题强调建模和避免重复计数。
+
+## 13. 自测问题
+
+- `binom(n,k)` 计数的是 ordered 还是 unordered？
+- Inclusion-exclusion 为什么要减交集？
+- Pigeonhole proof 中 boxes 是什么？
+- 为什么 finite tree 有 leaf？
+- 如何把算法状态表示成 graph？
+
+## 14. 明天复习什么
+
+明天进入 probability。复习 counting，因为 uniform sample space 的概率常常是“有利 outcomes 数量 / 总 outcomes 数量”。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week01/day03/">Previous</a>
+  <a class="button-link" href="/week01/day05/">Next</a>
+  <a class="button-link" href="/review/week01-review/">Review</a>
+  <a class="button-link" href="/exercises/week01-problem-set/">Exercises</a>
+</div>
