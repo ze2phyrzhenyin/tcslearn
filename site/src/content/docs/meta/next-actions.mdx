@@ -35,4 +35,12 @@ description: "Concrete next actions for study and Codex feedback."
 
 1. Run `make site-sync` after changing notes, exercises, labs, review, resources, or state.
 2. Run `make site-build` before deployment.
-3. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
+3. Production site is deployed at `https://tcs-selfstudy-os.vercel.app`.
+4. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
+
+## Deployment Maintenance
+
+1. Git remote: `git@github.com:ze2phyrzhenyin/tcslearn.git`.
+2. Vercel project: `tcs-selfstudy-os`.
+3. Root deployment uses `vercel.json` to build `site/` and publish `site/dist`.
+4. If Vercel install fails with `Invalid Version`, inspect `site/package-lock.json` for incomplete optional package entries before redeploying.

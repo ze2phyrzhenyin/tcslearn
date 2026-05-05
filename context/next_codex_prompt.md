@@ -18,7 +18,12 @@ Copy this for the next web-focused pass:
 - context/current_context.md
 
 目标：
-运行视觉 polish pass，并在浏览器中检查首页、Week 1 overview、Day 1、Problem Set、Lab 页面。
+运行视觉 polish pass，并在浏览器中检查线上站点：
+- https://tcs-selfstudy-os.vercel.app/
+- https://tcs-selfstudy-os.vercel.app/week01/overview/
+- https://tcs-selfstudy-os.vercel.app/week01/day01/
+- https://tcs-selfstudy-os.vercel.app/exercises/week01-problem-set/
+- https://tcs-selfstudy-os.vercel.app/labs/week01-asymptotics/
 
 要求：
 - 使用 prompts/13_visual_polish_pass.md。
@@ -26,6 +31,7 @@ Copy this for the next web-focused pass:
 - 只修复间距、排版层级、移动端、暗色模式、长文可读性和导航清晰度。
 - 遵守 docs/WEB_DESIGN_SYSTEM.md。
 - 不引入新视觉风格、随机颜色、随机图标、复杂动画、Tailwind 或重型 UI 库。
+- 如果发现问题，做最小修复并重新部署 Vercel。
 
 验证：
 - python3 scripts/sync_site_content.py

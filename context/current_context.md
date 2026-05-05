@@ -292,10 +292,13 @@ current_phase: "week01_generated"
 current_week: "week01-foundations"
 current_day: null
 web_site:
-  status: "built"
+  status: "deployed"
   framework: "Astro + Starlight"
   last_built: "2026-05-06"
+  last_deployed: "2026-05-06"
+  production_url: "https://tcs-selfstudy-os.vercel.app"
   local_preview_checked: true
+  production_http_checked: true
 completed_weeks: []
 completed_days: []
 active_modules:
@@ -349,7 +352,15 @@ generated_weeks:
 
 1. Run `make site-sync` after changing notes, exercises, labs, review, resources, or state.
 2. Run `make site-build` before deployment.
-3. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
+3. Production site is deployed at `https://tcs-selfstudy-os.vercel.app`.
+4. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
+
+## Deployment Maintenance
+
+1. Git remote: `git@github.com:ze2phyrzhenyin/tcslearn.git`.
+2. Vercel project: `tcs-selfstudy-os`.
+3. Root deployment uses `vercel.json` to build `site/` and publish `site/dist`.
+4. If Vercel install fails with `Invalid Version`, inspect `site/package-lock.json` for incomplete optional package entries before redeploying.
 ```
 
 ## Manual Notes

@@ -4,50 +4,36 @@ Date: 2026-05-06
 
 ## Modified Files
 
-- `site/`: added Astro + Starlight documentation site.
-- `site/src/content/docs/`: added hand-maintained core pages and generated Week 1 web pages.
-- `site/src/components/`: added small reusable components.
-- `site/src/styles/custom.css`: added restrained Starlight design-system overrides.
-- `scripts/sync_site_content.py`: added source-to-MDX sync.
-- `scripts/validate_site_content.py`: added site structure and sidebar validation.
-- `docs/WEB_DEV_GUIDE.md`, `docs/WEB_DESIGN_SYSTEM.md`, `docs/DEPLOYMENT.md`, `docs/CONTENT_SYNC.md`: added web maintenance docs.
-- `prompts/11_build_web_site.md` through `prompts/14_deploy_debug.md`: added web workflow prompts.
-- `.github/workflows/deploy-site.yml`: added GitHub Pages deployment workflow.
-- `Makefile`: added site commands.
-- `.gitignore`: added site build/cache/dependency outputs.
-- `state/progress.yaml`, `state/next_actions.md`, `context/next_codex_prompt.md`: updated web status and next actions.
+- `.gitignore`: ignored Vercel local project metadata.
+- `vercel.json`: added root-level Vercel config for building the Astro site from `site/`.
+- `site/package-lock.json`: repaired the incomplete Pagefind optional package entry that caused Vercel `npm install` to fail with `Invalid Version`.
+- `state/progress.yaml`: marked the web site as deployed and recorded the production URL.
+- `state/next_actions.md`: added deployment maintenance notes.
+- `context/current_context.md`: refreshed by `scripts/export_context_pack.py`.
+- `context/next_codex_prompt.md`: updated with the next recommended visual QA prompt.
 
-## Generated
+## Generated Or Deployed
 
-- Starlight documentation site named "TCS Self-Study OS".
-- Browser pages for Week 1 notes, exercises, solutions, labs, review, glossary, flashcards, mistakes, resources, progress, and next actions.
-- Sync and validation workflow for keeping the site aligned with repository source materials.
+- GitHub repository pushed to `git@github.com:ze2phyrzhenyin/tcslearn.git`.
+- Vercel production deployment completed for project `tcs-selfstudy-os`.
+- Production URL: `https://tcs-selfstudy-os.vercel.app`.
 
 ## Checks Run
 
-- `python3 scripts/sync_site_content.py` passed.
 - `python3 scripts/validate_site_content.py` passed.
-- `npm install` in `site/` passed.
-- `npm run build` in `site/` passed with Astro 6.2.2 and Starlight 0.38.5.
-- `npm run preview -- --host 127.0.0.1 --port 4322` started successfully.
-- `curl -I http://127.0.0.1:4322/` returned 200.
-- `curl -I http://127.0.0.1:4322/week01/day01/` returned 200.
-- `npm run check` passed with 0 errors and 0 warnings.
+- `cd site && npm run build` passed.
+- `npx vercel deploy --prod --yes` completed with `READY`.
+- `curl -I https://tcs-selfstudy-os.vercel.app/` returned HTTP 200.
+- `curl -I https://tcs-selfstudy-os.vercel.app/week01/day01/` returned HTTP 200.
+- `curl -I https://tcs-selfstudy-os.vercel.app/exercises/week01-problem-set/` returned HTTP 200.
 
-## Static Visual Review
+## Deployment Notes
 
-- Homepage: restrained hero plus six navigation cards; no gradients, animations, emojis, or marketing layout.
-- Navigation: Starlight sidebar groups match requested structure.
-- Week 1 entry: visible from homepage and sidebar.
-- Day pages: generated as long-form reading pages with page navigation.
-- Exercises and solutions: separate pages.
-- Labs: pages state that experiments are not proofs.
-- Dark mode: CSS uses variables and Starlight base theme; no hard-coded broad palette conflicts found in static review.
-- Mobile: CSS grids collapse to single-column layouts; no browser screenshot check was performed.
-- Design-system compliance: no heavy UI library, Tailwind, random icons, glassmorphism, or complex animation added.
+- The first root Vercel deployment failed because Vercel initially treated the repository root as a Python project due to root `pyproject.toml`.
+- Adding root `vercel.json` moved the build to `site/`, but the next deployment failed because `site/package-lock.json` had an incomplete optional Pagefind package entry.
+- After repairing the lock file, the root Vercel production deployment succeeded and was aliased to `https://tcs-selfstudy-os.vercel.app`.
 
 ## Unresolved Issues
 
-- Visual QA has not been performed with screenshots or manual browser inspection beyond HTTP preview checks.
-- GitHub Pages base path may need configuration if deployed under a repository subpath.
-- npm printed a local warning about an unknown `python` user config; it did not block install, build, preview, or check.
+- No browser screenshot or visual QA pass has been run yet.
+- npm reports 5 moderate audit findings in the site dependency tree; no forced dependency upgrade was applied because that may introduce breaking changes.
