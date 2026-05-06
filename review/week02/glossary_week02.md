@@ -1,0 +1,1017 @@
+# Week 2 Glossary
+
+## 1. algorithmic problem
+
+- **English term:** algorithmic problem
+- **中文:** 算法问题
+- **One-sentence explanation:** A relation from valid instances to acceptable outputs, not a piece of code.
+- **Related day:** Day 1
+- **Common confusion:** Confused with algorithm implementation.
+
+## 2. instance
+
+- **English term:** instance
+- **中文:** 实例
+- **One-sentence explanation:** A concrete input to an algorithmic problem.
+- **Related day:** Day 1
+- **Common confusion:** Confused with problem family.
+
+## 3. input size
+
+- **English term:** input size
+- **中文:** 输入规模
+- **One-sentence explanation:** The variable used for asymptotic analysis, such as n=number of elements.
+- **Related day:** Day 1
+- **Common confusion:** Omitted in Big-O statements.
+
+## 4. specification
+
+- **English term:** specification
+- **中文:** 规格
+- **One-sentence explanation:** The formal contract describing valid input and required output.
+- **Related day:** Day 1
+- **Common confusion:** Written after the algorithm instead of before.
+
+## 5. precondition
+
+- **English term:** precondition
+- **中文:** 前置条件
+- **One-sentence explanation:** Assumptions that must hold before the algorithm starts.
+- **Related day:** Day 1
+- **Common confusion:** Mixed with postcondition.
+
+## 6. postcondition
+
+- **English term:** postcondition
+- **中文:** 后置条件
+- **One-sentence explanation:** Properties the output must satisfy after termination.
+- **Related day:** Day 1
+- **Common confusion:** Replaced by vague words like sorted.
+
+## 7. correctness
+
+- **English term:** correctness
+- **中文:** 正确性
+- **One-sentence explanation:** The guarantee that every valid input leads to an output satisfying the postcondition.
+- **Related day:** Day 1
+- **Common confusion:** Confused with fast running time.
+
+## 8. partial correctness
+
+- **English term:** partial correctness
+- **中文:** 部分正确性
+- **One-sentence explanation:** If the algorithm terminates, the output is correct.
+- **Related day:** Day 1
+- **Common confusion:** Forgets termination.
+
+## 9. termination
+
+- **English term:** termination
+- **中文:** 终止性
+- **One-sentence explanation:** A proof that the algorithm eventually stops on valid inputs.
+- **Related day:** Day 1
+- **Common confusion:** Assumed from code structure.
+
+## 10. stability
+
+- **English term:** stability
+- **中文:** 稳定性
+- **One-sentence explanation:** Equal keys keep their original relative order.
+- **Related day:** Day 1
+- **Common confusion:** Confused with in-place.
+
+## 11. in-place
+
+- **English term:** in-place
+- **中文:** 原地
+- **One-sentence explanation:** Uses only limited auxiliary storage under an explicit convention.
+- **Related day:** Day 1
+- **Common confusion:** Confused with stable.
+
+## 12. comparison model
+
+- **English term:** comparison model
+- **中文:** 比较模型
+- **One-sentence explanation:** A model where order information comes only from pairwise comparisons.
+- **Related day:** Day 1
+- **Common confusion:** Applied to non-comparison sorting.
+
+## 13. decision tree
+
+- **English term:** decision tree
+- **中文:** 决策树
+- **One-sentence explanation:** A tree representing possible comparison outcomes of a deterministic comparison algorithm.
+- **Related day:** Day 1
+- **Common confusion:** Leaves not linked to permutations.
+
+## 14. lower bound
+
+- **English term:** lower bound
+- **中文:** 下界
+- **One-sentence explanation:** A statement that every algorithm in a model needs at least some resource.
+- **Related day:** Day 1
+- **Common confusion:** Treated as one slow algorithm.
+
+## 15. upper bound
+
+- **English term:** upper bound
+- **中文:** 上界
+- **One-sentence explanation:** A resource guarantee achieved by a particular algorithm.
+- **Related day:** Day 1
+- **Common confusion:** Confused with lower bound.
+
+## 16. permutation
+
+- **English term:** permutation
+- **中文:** 排列
+- **One-sentence explanation:** A reordering preserving exactly the multiset of input elements.
+- **Related day:** Day 1
+- **Common confusion:** Sortedness proved without permutation.
+
+## 17. sorting problem
+
+- **English term:** sorting problem
+- **中文:** 排序问题
+- **One-sentence explanation:** Output a sorted permutation of the input sequence.
+- **Related day:** Day 1
+- **Common confusion:** Specification too vague.
+
+## 18. insertion sort
+
+- **English term:** insertion sort
+- **中文:** 插入排序
+- **One-sentence explanation:** A sorting algorithm that inserts each next element into a sorted prefix.
+- **Related day:** Day 1
+- **Common confusion:** Invariant not stated.
+
+## 19. merge sort
+
+- **English term:** merge sort
+- **中文:** 归并排序
+- **One-sentence explanation:** A divide-and-conquer sorting algorithm that merges sorted halves.
+- **Related day:** Day 1/2
+- **Common confusion:** Correctness reduced only to recurrence.
+
+## 20. heapsort
+
+- **English term:** heapsort
+- **中文:** 堆排序
+- **One-sentence explanation:** A comparison sorting algorithm based on heap operations.
+- **Related day:** Day 1/3
+- **Common confusion:** Heap confused with BST.
+
+## 21. Stirling approximation
+
+- **English term:** Stirling approximation
+- **中文:** Stirling 近似
+- **One-sentence explanation:** An asymptotic approximation for n!, often used for log(n!) intuition.
+- **Related day:** Day 1
+- **Common confusion:** Used without needing a full proof.
+
+## 22. divide and conquer
+
+- **English term:** divide and conquer
+- **中文:** 分治
+- **One-sentence explanation:** Solve by dividing into smaller subproblems and combining results.
+- **Related day:** Day 2
+- **Common confusion:** Combine step omitted.
+
+## 23. recursive decomposition
+
+- **English term:** recursive decomposition
+- **中文:** 递归分解
+- **One-sentence explanation:** The precise definition of subproblems and smaller sizes.
+- **Related day:** Day 2
+- **Common confusion:** Subproblem not equivalent to original problem type.
+
+## 24. combine step
+
+- **English term:** combine step
+- **中文:** 合并步骤
+- **One-sentence explanation:** The operation turning subproblem outputs into a full output.
+- **Related day:** Day 2
+- **Common confusion:** Assumed without proof.
+
+## 25. recursive correctness proof
+
+- **English term:** recursive correctness proof
+- **中文:** 递归正确性证明
+- **One-sentence explanation:** An induction proof using recursive-call specifications.
+- **Related day:** Day 2
+- **Common confusion:** Treats recursive calls as magic.
+
+## 26. recurrence
+
+- **English term:** recurrence
+- **中文:** 递推式
+- **One-sentence explanation:** An equation or inequality describing T(n) using smaller T values.
+- **Related day:** Day 2
+- **Common confusion:** No base case.
+
+## 27. recursion tree
+
+- **English term:** recursion tree
+- **中文:** 递归树
+- **One-sentence explanation:** A level-by-level expansion of recurrence costs.
+- **Related day:** Day 2
+- **Common confusion:** Counts only internal levels.
+
+## 28. substitution method
+
+- **English term:** substitution method
+- **中文:** 替换法
+- **One-sentence explanation:** Guess a bound and prove it by induction.
+- **Related day:** Day 2
+- **Common confusion:** Constants not chosen to satisfy induction.
+
+## 29. Master theorem
+
+- **English term:** Master theorem
+- **中文:** 主定理
+- **One-sentence explanation:** A theorem for basic recurrences T(n)=aT(n/b)+f(n).
+- **Related day:** Day 2
+- **Common confusion:** Applied outside its form.
+
+## 30. binary search
+
+- **English term:** binary search
+- **中文:** 二分搜索
+- **One-sentence explanation:** Search in a sorted array by repeatedly discarding half.
+- **Related day:** Day 2
+- **Common confusion:** Sorted precondition omitted.
+
+## 31. selection
+
+- **English term:** selection
+- **中文:** 选择问题
+- **One-sentence explanation:** Find the k-th smallest element without fully sorting.
+- **Related day:** Day 2
+- **Common confusion:** Solved by sorting without noting baseline nature.
+
+## 32. quickselect
+
+- **English term:** quickselect
+- **中文:** 快速选择
+- **One-sentence explanation:** Partition-based selection that recurses on one side.
+- **Related day:** Day 2/7
+- **Common confusion:** Expected and worst-case times confused.
+
+## 33. median-of-medians
+
+- **English term:** median-of-medians
+- **中文:** 中位数的中位数
+- **One-sentence explanation:** A deterministic pivot strategy with guaranteed pivot quality.
+- **Related day:** Day 2
+- **Common confusion:** Pivot quality not stated.
+
+## 34. Karatsuba multiplication
+
+- **English term:** Karatsuba multiplication
+- **中文:** Karatsuba 乘法
+- **One-sentence explanation:** A divide-and-conquer multiplication method using fewer recursive products.
+- **Related day:** Day 2
+- **Common confusion:** Included only as intuition.
+
+## 35. base case
+
+- **English term:** base case
+- **中文:** 基例
+- **One-sentence explanation:** The smallest input or state where recurrence/proof starts.
+- **Related day:** Day 2/6
+- **Common confusion:** Treated as coding detail.
+
+## 36. data structure
+
+- **English term:** data structure
+- **中文:** 数据结构
+- **One-sentence explanation:** A representation supporting a specified operation interface.
+- **Related day:** Day 3
+- **Common confusion:** Confused with abstract data type.
+
+## 37. abstract data type
+
+- **English term:** abstract data type
+- **中文:** 抽象数据类型
+- **One-sentence explanation:** An interface and behavior independent of representation.
+- **Related day:** Day 3
+- **Common confusion:** Implementation details leaked into spec.
+
+## 38. interface
+
+- **English term:** interface
+- **中文:** 接口
+- **One-sentence explanation:** The named operations with inputs, outputs, and behavior.
+- **Related day:** Day 3
+- **Common confusion:** Not separated from representation.
+
+## 39. representation invariant
+
+- **English term:** representation invariant
+- **中文:** 表示不变量
+- **One-sentence explanation:** A condition every valid internal state must maintain.
+- **Related day:** Day 3
+- **Common confusion:** Not used in correctness proof.
+
+## 40. sequence interface
+
+- **English term:** sequence interface
+- **中文:** 序列接口
+- **One-sentence explanation:** Operations over ordered elements, such as get, set, insert, delete.
+- **Related day:** Day 3
+- **Common confusion:** Assumed to have all operations equally fast.
+
+## 41. set interface
+
+- **English term:** set interface
+- **中文:** 集合接口
+- **One-sentence explanation:** Operations over membership, insertion, and deletion without duplicates.
+- **Related day:** Day 3
+- **Common confusion:** Confused with mathematical set only.
+
+## 42. stack
+
+- **English term:** stack
+- **中文:** 栈
+- **One-sentence explanation:** A LIFO data type.
+- **Related day:** Day 3
+- **Common confusion:** Confused with recursion itself.
+
+## 43. queue
+
+- **English term:** queue
+- **中文:** 队列
+- **One-sentence explanation:** A FIFO data type used by BFS.
+- **Related day:** Day 3/4
+- **Common confusion:** Replaced by stack changes algorithm properties.
+
+## 44. priority queue
+
+- **English term:** priority queue
+- **中文:** 优先队列
+- **One-sentence explanation:** Supports insert and extracting min or max priority.
+- **Related day:** Day 3
+- **Common confusion:** Confused with sorted array.
+
+## 45. binary heap
+
+- **English term:** binary heap
+- **中文:** 二叉堆
+- **One-sentence explanation:** Array-based nearly complete tree satisfying heap invariant.
+- **Related day:** Day 3
+- **Common confusion:** Confused with BST.
+
+## 46. heap invariant
+
+- **English term:** heap invariant
+- **中文:** 堆不变量
+- **One-sentence explanation:** Each parent key is no larger than its children in min-heap.
+- **Related day:** Day 3
+- **Common confusion:** Demands total sortedness.
+
+## 47. heapify
+
+- **English term:** heapify
+- **中文:** 堆化
+- **One-sentence explanation:** Restore heap invariant from a local violation or an array.
+- **Related day:** Day 3
+- **Common confusion:** Complexity confused with sorting.
+
+## 48. extract-min
+
+- **English term:** extract-min
+- **中文:** 取最小
+- **One-sentence explanation:** Priority queue operation removing and returning minimum key.
+- **Related day:** Day 3
+- **Common confusion:** Precondition nonempty omitted.
+
+## 49. dictionary
+
+- **English term:** dictionary
+- **中文:** 字典
+- **One-sentence explanation:** Key-value interface with insert, find, delete.
+- **Related day:** Day 3
+- **Common confusion:** Confused with ordered map.
+
+## 50. hash table
+
+- **English term:** hash table
+- **中文:** 哈希表
+- **One-sentence explanation:** Dictionary representation using hash buckets.
+- **Related day:** Day 3
+- **Common confusion:** Worst-case ignored.
+
+## 51. hash collision
+
+- **English term:** hash collision
+- **中文:** 哈希冲突
+- **One-sentence explanation:** Two keys map to the same bucket.
+- **Related day:** Day 3
+- **Common confusion:** Treated as impossible.
+
+## 52. load factor
+
+- **English term:** load factor
+- **中文:** 负载因子
+- **One-sentence explanation:** Number of stored keys divided by number of buckets.
+- **Related day:** Day 3
+- **Common confusion:** Used without bucket count.
+
+## 53. chaining
+
+- **English term:** chaining
+- **中文:** 链地址法
+- **One-sentence explanation:** Store colliding keys in a bucket list.
+- **Related day:** Day 3
+- **Common confusion:** Expected bound stated without assumption.
+
+## 54. dynamic array
+
+- **English term:** dynamic array
+- **中文:** 动态数组
+- **One-sentence explanation:** Array that resizes when capacity is exhausted.
+- **Related day:** Day 3
+- **Common confusion:** Worst-case append confused with amortized append.
+
+## 55. amortized analysis
+
+- **English term:** amortized analysis
+- **中文:** 摊还分析
+- **One-sentence explanation:** Bounding average cost per operation over a worst-case sequence.
+- **Related day:** Day 3
+- **Common confusion:** Confused with average-case.
+
+## 56. aggregate method
+
+- **English term:** aggregate method
+- **中文:** 聚合法
+- **One-sentence explanation:** Bound total cost of m operations directly.
+- **Related day:** Day 3
+- **Common confusion:** Only checks one expensive operation.
+
+## 57. accounting method
+
+- **English term:** accounting method
+- **中文:** 记账法
+- **One-sentence explanation:** Charge operations extra credit to pay future expensive operations.
+- **Related day:** Day 3
+- **Common confusion:** Credits not tied to invariant.
+
+## 58. potential method
+
+- **English term:** potential method
+- **中文:** 势能法
+- **One-sentence explanation:** Use a nonnegative potential function to store prepaid work.
+- **Related day:** Day 3
+- **Common confusion:** Potential allowed to become negative.
+
+## 59. graph representation
+
+- **English term:** graph representation
+- **中文:** 图表示
+- **One-sentence explanation:** Encoding vertices and edges as lists, matrices, or other structures.
+- **Related day:** Day 4
+- **Common confusion:** Representation cost ignored.
+
+## 60. adjacency list
+
+- **English term:** adjacency list
+- **中文:** 邻接表
+- **One-sentence explanation:** For each vertex store its outgoing neighbors.
+- **Related day:** Day 4
+- **Common confusion:** Matrix complexity used accidentally.
+
+## 61. adjacency matrix
+
+- **English term:** adjacency matrix
+- **中文:** 邻接矩阵
+- **One-sentence explanation:** A |V| by |V| table indicating edges or weights.
+- **Related day:** Day 4
+- **Common confusion:** Space too high for sparse graphs.
+
+## 62. BFS
+
+- **English term:** BFS
+- **中文:** 广度优先搜索
+- **One-sentence explanation:** Traversal by increasing unweighted distance layers.
+- **Related day:** Day 4
+- **Common confusion:** Used on weighted shortest paths.
+
+## 63. DFS
+
+- **English term:** DFS
+- **中文:** 深度优先搜索
+- **One-sentence explanation:** Traversal that explores deeply before backtracking.
+- **Related day:** Day 4
+- **Common confusion:** Assumed to find shortest path.
+
+## 64. discovery time
+
+- **English term:** discovery time
+- **中文:** 发现时间
+- **One-sentence explanation:** When DFS first visits a vertex.
+- **Related day:** Day 4
+- **Common confusion:** Confused with BFS distance.
+
+## 65. finishing time
+
+- **English term:** finishing time
+- **中文:** 完成时间
+- **One-sentence explanation:** When DFS finishes all outgoing edges of a vertex.
+- **Related day:** Day 4
+- **Common confusion:** Used without directed-edge reasoning.
+
+## 66. parent tree
+
+- **English term:** parent tree
+- **中文:** 父指针树
+- **One-sentence explanation:** Tree or forest formed by first-discovery edges.
+- **Related day:** Day 4
+- **Common confusion:** Confused with all graph edges.
+
+## 67. connected components
+
+- **English term:** connected components
+- **中文:** 连通分量
+- **One-sentence explanation:** Maximal mutually reachable sets in undirected graph.
+- **Related day:** Day 4
+- **Common confusion:** Directed SCC confused with undirected components.
+
+## 68. reachability
+
+- **English term:** reachability
+- **中文:** 可达性
+- **One-sentence explanation:** Existence of a directed or undirected path from one vertex to another.
+- **Related day:** Day 4
+- **Common confusion:** Direction ignored.
+
+## 69. shortest path
+
+- **English term:** shortest path
+- **中文:** 最短路径
+- **One-sentence explanation:** A path minimizing total length or weight under a specified model.
+- **Related day:** Day 4
+- **Common confusion:** Unweighted and weighted versions mixed.
+
+## 70. BFS invariant
+
+- **English term:** BFS invariant
+- **中文:** BFS 不变量
+- **One-sentence explanation:** Queue processes vertices in nondecreasing distance layers.
+- **Related day:** Day 4
+- **Common confusion:** Queue order not used.
+
+## 71. DFS invariant
+
+- **English term:** DFS invariant
+- **中文:** DFS 不变量
+- **One-sentence explanation:** Marked vertices are reachable through discovery paths.
+- **Related day:** Day 4
+- **Common confusion:** Termination not argued.
+
+## 72. topological order
+
+- **English term:** topological order
+- **中文:** 拓扑序
+- **One-sentence explanation:** A vertex order where every edge u->v places u before v.
+- **Related day:** Day 4
+- **Common confusion:** Used on cyclic graph.
+
+## 73. DAG
+
+- **English term:** DAG
+- **中文:** 有向无环图
+- **One-sentence explanation:** A directed graph with no directed cycles.
+- **Related day:** Day 4/6
+- **Common confusion:** Undirected acyclic graph confused with DAG.
+
+## 74. Dijkstra algorithm
+
+- **English term:** Dijkstra algorithm
+- **中文:** Dijkstra 算法
+- **One-sentence explanation:** Shortest path algorithm for nonnegative edge weights.
+- **Related day:** Day 4
+- **Common confusion:** Applied to negative weights.
+
+## 75. greedy algorithm
+
+- **English term:** greedy algorithm
+- **中文:** 贪心算法
+- **One-sentence explanation:** Algorithm that commits to local choices without backtracking.
+- **Related day:** Day 5
+- **Common confusion:** Equated with choosing largest.
+
+## 76. locally optimal choice
+
+- **English term:** locally optimal choice
+- **中文:** 局部最优选择
+- **One-sentence explanation:** Best choice under current criterion.
+- **Related day:** Day 5
+- **Common confusion:** Assumed globally safe.
+
+## 77. globally optimal solution
+
+- **English term:** globally optimal solution
+- **中文:** 全局最优解
+- **One-sentence explanation:** A feasible solution with best objective value.
+- **Related day:** Day 5
+- **Common confusion:** Feasibility omitted.
+
+## 78. exchange argument
+
+- **English term:** exchange argument
+- **中文:** 交换论证
+- **One-sentence explanation:** Transform an optimal solution into one containing greedy choice.
+- **Related day:** Day 5
+- **Common confusion:** Claims every optimal solution already contains it.
+
+## 79. stays-ahead argument
+
+- **English term:** stays-ahead argument
+- **中文:** 领先论证
+- **One-sentence explanation:** Show greedy partial solution is never behind optimal partial solution.
+- **Related day:** Day 5
+- **Common confusion:** Wrong comparison quantity.
+
+## 80. cut property
+
+- **English term:** cut property
+- **中文:** 割性质
+- **One-sentence explanation:** In MST, a light edge crossing a cut can be safe.
+- **Related day:** Day 5
+- **Common confusion:** Cut not defined.
+
+## 81. interval scheduling
+
+- **English term:** interval scheduling
+- **中文:** 区间调度
+- **One-sentence explanation:** Select maximum number of compatible intervals.
+- **Related day:** Day 5
+- **Common confusion:** Sorted by start time.
+
+## 82. activity selection
+
+- **English term:** activity selection
+- **中文:** 活动选择
+- **One-sentence explanation:** Classical interval scheduling formulation.
+- **Related day:** Day 5
+- **Common confusion:** Same as weighted interval scheduling.
+
+## 83. fractional knapsack
+
+- **English term:** fractional knapsack
+- **中文:** 分数背包
+- **One-sentence explanation:** Knapsack where fractions of items may be taken.
+- **Related day:** Day 5
+- **Common confusion:** Confused with 0/1 knapsack.
+
+## 84. coin change
+
+- **English term:** coin change
+- **中文:** 找零问题
+- **One-sentence explanation:** Represent amount using coins, often minimizing number of coins.
+- **Related day:** Day 5
+- **Common confusion:** Greedy assumed always optimal.
+
+## 85. minimum spanning tree
+
+- **English term:** minimum spanning tree
+- **中文:** 最小生成树
+- **One-sentence explanation:** Minimum-weight tree spanning all vertices of a connected graph.
+- **Related day:** Day 5
+- **Common confusion:** Used for directed graph without changes.
+
+## 86. Kruskal algorithm
+
+- **English term:** Kruskal algorithm
+- **中文:** Kruskal 算法
+- **One-sentence explanation:** Add edges by increasing weight when they connect different components.
+- **Related day:** Day 5
+- **Common confusion:** Cycle check omitted.
+
+## 87. Prim algorithm
+
+- **English term:** Prim algorithm
+- **中文:** Prim 算法
+- **One-sentence explanation:** Grow an MST from a vertex by repeatedly adding light crossing edge.
+- **Related day:** Day 5
+- **Common confusion:** Priority queue role omitted.
+
+## 88. matroid intuition
+
+- **English term:** matroid intuition
+- **中文:** 拟阵直觉
+- **One-sentence explanation:** A structure where greedy can be correct under exchange axioms.
+- **Related day:** Day 5
+- **Common confusion:** Treated as prerequisite.
+
+## 89. dynamic programming
+
+- **English term:** dynamic programming
+- **中文:** 动态规划
+- **One-sentence explanation:** Compute overlapping subproblems by memoization or tabulation.
+- **Related day:** Day 6
+- **Common confusion:** Reduced to memorizing formulas.
+
+## 90. optimal substructure
+
+- **English term:** optimal substructure
+- **中文:** 最优子结构
+- **One-sentence explanation:** Optimal solution can be built from optimal subsolutions.
+- **Related day:** Day 6
+- **Common confusion:** Assumed without proof.
+
+## 91. overlapping subproblems
+
+- **English term:** overlapping subproblems
+- **中文:** 重叠子问题
+- **One-sentence explanation:** Same subproblems appear repeatedly in recursion.
+- **Related day:** Day 6
+- **Common confusion:** Confused with divide-and-conquer independent subproblems.
+
+## 92. state
+
+- **English term:** state
+- **中文:** 状态
+- **One-sentence explanation:** Index and meaning of a DP table entry.
+- **Related day:** Day 6
+- **Common confusion:** Missing information.
+
+## 93. transition
+
+- **English term:** transition
+- **中文:** 转移
+- **One-sentence explanation:** Rule computing a state from dependency states.
+- **Related day:** Day 6
+- **Common confusion:** Cases not exhaustive.
+
+## 94. memoization
+
+- **English term:** memoization
+- **中文:** 记忆化
+- **One-sentence explanation:** Top-down recursion with cached results.
+- **Related day:** Day 6
+- **Common confusion:** No base case.
+
+## 95. tabulation
+
+- **English term:** tabulation
+- **中文:** 填表法
+- **One-sentence explanation:** Bottom-up computation in dependency order.
+- **Related day:** Day 6
+- **Common confusion:** Order violates dependencies.
+
+## 96. computation order
+
+- **English term:** computation order
+- **中文:** 计算顺序
+- **One-sentence explanation:** Order ensuring all needed states are available.
+- **Related day:** Day 6
+- **Common confusion:** Ignored in proof.
+
+## 97. reconstruction
+
+- **English term:** reconstruction
+- **中文:** 恢复解
+- **One-sentence explanation:** Recover an actual solution from choices or parents.
+- **Related day:** Day 6
+- **Common confusion:** Confused with computing optimal value.
+
+## 98. longest increasing subsequence
+
+- **English term:** longest increasing subsequence
+- **中文:** 最长递增子序列
+- **One-sentence explanation:** Longest subsequence with strictly increasing values.
+- **Related day:** Day 6
+- **Common confusion:** Subsequence confused with substring.
+
+## 99. edit distance
+
+- **English term:** edit distance
+- **中文:** 编辑距离
+- **One-sentence explanation:** Minimum edits transforming one string into another.
+- **Related day:** Day 6
+- **Common confusion:** Base cases missing.
+
+## 100. 0/1 knapsack
+
+- **English term:** 0/1 knapsack
+- **中文:** 0/1 背包
+- **One-sentence explanation:** Knapsack where each item is taken or not taken.
+- **Related day:** Day 6
+- **Common confusion:** Fractional greedy applied.
+
+## 101. subset sum
+
+- **English term:** subset sum
+- **中文:** 子集和
+- **One-sentence explanation:** Decide if some subset reaches a target sum.
+- **Related day:** Day 6
+- **Common confusion:** Pseudo-polynomial ignored.
+
+## 102. randomized algorithm
+
+- **English term:** randomized algorithm
+- **中文:** 随机算法
+- **One-sentence explanation:** Algorithm that uses random bits during execution.
+- **Related day:** Day 7
+- **Common confusion:** Random input distribution confused with algorithm randomness.
+
+## 103. random bits
+
+- **English term:** random bits
+- **中文:** 随机比特
+- **One-sentence explanation:** Internal random choices made by the algorithm.
+- **Related day:** Day 7
+- **Common confusion:** Not included in sample space.
+
+## 104. Las Vegas algorithm
+
+- **English term:** Las Vegas algorithm
+- **中文:** Las Vegas 算法
+- **One-sentence explanation:** Always correct, running time random.
+- **Related day:** Day 7
+- **Common confusion:** Confused with Monte Carlo.
+
+## 105. Monte Carlo algorithm
+
+- **English term:** Monte Carlo algorithm
+- **中文:** Monte Carlo 算法
+- **One-sentence explanation:** May err with bounded probability, often time-bounded.
+- **Related day:** Day 7
+- **Common confusion:** Failure probability omitted.
+
+## 106. expected running time
+
+- **English term:** expected running time
+- **中文:** 期望运行时间
+- **One-sentence explanation:** Expectation of running time over algorithm randomness.
+- **Related day:** Day 7
+- **Common confusion:** Treated as per-run guarantee.
+
+## 107. failure probability
+
+- **English term:** failure probability
+- **中文:** 失败概率
+- **One-sentence explanation:** Probability of bad event under specified randomness.
+- **Related day:** Day 7
+- **Common confusion:** Bad event not defined.
+
+## 108. amplification
+
+- **English term:** amplification
+- **中文:** 放大
+- **One-sentence explanation:** Independent repetition to reduce failure probability.
+- **Related day:** Day 7
+- **Common confusion:** Independence omitted.
+
+## 109. randomized quicksort
+
+- **English term:** randomized quicksort
+- **中文:** 随机快速排序
+- **One-sentence explanation:** Quicksort with random pivot choices.
+- **Related day:** Day 7
+- **Common confusion:** Correctness tied incorrectly to randomness.
+
+## 110. randomized quickselect
+
+- **English term:** randomized quickselect
+- **中文:** 随机快速选择
+- **One-sentence explanation:** Quickselect with random pivot choices.
+- **Related day:** Day 7
+- **Common confusion:** Worst-case ignored.
+
+## 111. union bound review
+
+- **English term:** union bound review
+- **中文:** 并集界复习
+- **One-sentence explanation:** Probability of union is at most sum of probabilities.
+- **Related day:** Day 7
+- **Common confusion:** Used as equality.
+
+## 112. algorithm design checklist
+
+- **English term:** algorithm design checklist
+- **中文:** 算法设计清单
+- **One-sentence explanation:** A structured list requiring problem, input, output, assumptions, idea, proof, and complexity.
+- **Related day:** Day 7
+- **Common confusion:** Used after coding rather than before.
+
+## 113. proof pattern checklist
+
+- **English term:** proof pattern checklist
+- **中文:** 证明模式清单
+- **One-sentence explanation:** A guide for choosing loop invariant, induction, exchange, DP, amortized, or randomized proof.
+- **Related day:** Day 7
+- **Common confusion:** One pattern forced onto every problem.
+
+## 114. worst-case running time
+
+- **English term:** worst-case running time
+- **中文:** 最坏情况运行时间
+- **One-sentence explanation:** Maximum running time over all valid inputs of size n and, if relevant, random choices.
+- **Related day:** Day 1/7
+- **Common confusion:** Confused with expected time.
+
+## 115. average-case running time
+
+- **English term:** average-case running time
+- **中文:** 平均情况运行时间
+- **One-sentence explanation:** Expected time over an explicitly stated input distribution.
+- **Related day:** Day 3
+- **Common confusion:** Input distribution omitted.
+
+## 116. expected-case analysis
+
+- **English term:** expected-case analysis
+- **中文:** 期望情况分析
+- **One-sentence explanation:** Analysis of a random variable, often over algorithm random bits or hashing assumptions.
+- **Related day:** Day 3/7
+- **Common confusion:** Mixed with amortized analysis.
+
+## 117. preprocessing time
+
+- **English term:** preprocessing time
+- **中文:** 预处理时间
+- **One-sentence explanation:** Time spent building a structure before answering operations or queries.
+- **Related day:** Day 3
+- **Common confusion:** Merged with query time.
+
+## 118. query time
+
+- **English term:** query time
+- **中文:** 查询时间
+- **One-sentence explanation:** Time for one query after preprocessing.
+- **Related day:** Day 3
+- **Common confusion:** Not separated from build time.
+
+## 119. space complexity
+
+- **English term:** space complexity
+- **中文:** 空间复杂度
+- **One-sentence explanation:** Memory used as a function of input size and representation choices.
+- **Related day:** Day 1/3
+- **Common confusion:** Auxiliary space and output space mixed.
+
+## 120. edge case
+
+- **English term:** edge case
+- **中文:** 边界情况
+- **One-sentence explanation:** A small or special input that must still satisfy the specification.
+- **Related day:** Day 1
+- **Common confusion:** Checked by examples but not in proof.
+
+## 121. model assumption
+
+- **English term:** model assumption
+- **中文:** 模型假设
+- **One-sentence explanation:** A restriction such as comparison model, RAM model, uniform hashing, or nonnegative weights.
+- **Related day:** Day 1/4/7
+- **Common confusion:** Conclusion stated without the model.
+
+## 122. RAM model
+
+- **English term:** RAM model
+- **中文:** RAM 模型
+- **One-sentence explanation:** An abstract machine model where basic memory operations cost constant time.
+- **Related day:** Day 1
+- **Common confusion:** Implementation details overinterpreted.
+
+## 123. partition
+
+- **English term:** partition
+- **中文:** 划分
+- **One-sentence explanation:** Split elements around a pivot into less, equal, and greater groups.
+- **Related day:** Day 2/7
+- **Common confusion:** Duplicates ignored.
+
+## 124. pivot quality
+
+- **English term:** pivot quality
+- **中文:** 枢轴质量
+- **One-sentence explanation:** A measure of how balanced partition sizes are after selecting a pivot.
+- **Related day:** Day 2
+- **Common confusion:** Pivot value confused with median value.
+
+## 125. uniform hashing
+
+- **English term:** uniform hashing
+- **中文:** 均匀哈希
+- **One-sentence explanation:** Assumption that each key is equally likely to map to each bucket.
+- **Related day:** Day 3/7
+- **Common confusion:** Treated as true for every hash function.
+
+## 126. pairwise independence
+
+- **English term:** pairwise independence
+- **中文:** 两两独立
+- **One-sentence explanation:** Any two random choices are independent, often enough for collision expectation.
+- **Related day:** Day 7
+- **Common confusion:** Confused with full independence.
+
+## 127. bad event
+
+- **English term:** bad event
+- **中文:** 坏事件
+- **One-sentence explanation:** The event whose probability is bounded in randomized analysis.
+- **Related day:** Day 7
+- **Common confusion:** Failure probability stated without event.

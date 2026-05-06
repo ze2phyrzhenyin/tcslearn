@@ -1,0 +1,89 @@
+# Week 2 Proof Patterns
+
+## 1. Loop invariant proof
+
+- **When to use:** Use for iterative algorithms such as insertion sort and binary search.
+- **Template:** State invariant; prove initialization; prove maintenance; prove termination implies postcondition.
+- **Minimal example:** Insertion sort prefix sorted invariant.
+- **Common mistake:** Invariant is too weak to imply sorted output.
+- **One exercise:** Prove binary search invariant.
+
+## 2. Recursive correctness proof
+
+- **When to use:** Use for recursive algorithms with smaller inputs.
+- **Template:** Induct on input size; use recursive-call specification; prove combine step.
+- **Minimal example:** Merge sort with merge lemma.
+- **Common mistake:** Using conclusion for size n inside induction step.
+- **One exercise:** Prove min/max divide-and-conquer.
+
+## 3. Divide-and-conquer induction
+
+- **When to use:** Use when subproblems cover original problem.
+- **Template:** Define subproblem; prove smaller calls correct; prove combine preserves output spec.
+- **Minimal example:** Merge sorted halves.
+- **Common mistake:** No proof that subproblems cover all elements.
+- **One exercise:** Prove closest-pair-style simplified split problem.
+
+## 4. Decision tree lower bound
+
+- **When to use:** Use for comparison-model lower bounds.
+- **Template:** Map algorithms to binary trees; count leaves; relate height to worst-case comparisons.
+- **Minimal example:** Comparison sorting needs n! leaves.
+- **Common mistake:** Counting inputs rather than distinguishable outputs.
+- **One exercise:** Prove lower bound for finding max needs n-1 comparisons.
+
+## 5. Representation invariant proof
+
+- **When to use:** Use for data structure operations.
+- **Template:** State internal invariant; show each operation preserves it and meets interface spec.
+- **Minimal example:** Heap insert preserves parent <= child.
+- **Common mistake:** Invariant not connected to operation output.
+- **One exercise:** Prove hash table find using bucket invariant.
+
+## 6. Amortized analysis proof
+
+- **When to use:** Use for sequences of operations with occasional expensive steps.
+- **Template:** Choose aggregate/accounting/potential; bound total cost over m operations.
+- **Minimal example:** Dynamic array doubling total copy cost O(m).
+- **Common mistake:** Calling it average-case.
+- **One exercise:** Prove binary counter increment amortized O(1).
+
+## 7. BFS shortest path invariant
+
+- **When to use:** Use for unweighted shortest paths.
+- **Template:** Queue processes vertices by nondecreasing distance; first discovery fixes shortest distance.
+- **Minimal example:** BFS from source in unweighted graph.
+- **Common mistake:** Applying to weighted graph.
+- **One exercise:** Prove BFS distances on directed graph.
+
+## 8. Greedy exchange argument
+
+- **When to use:** Use when proving a greedy choice is safe.
+- **Template:** Take an optimal solution; exchange first conflicting part with greedy choice; preserve feasibility and value.
+- **Minimal example:** Interval scheduling earliest finish.
+- **Common mistake:** Claiming all optimal solutions already contain greedy choice.
+- **One exercise:** Prove fractional knapsack density greedy.
+
+## 9. DP induction over states
+
+- **When to use:** Use for dynamic programming recurrences.
+- **Template:** Define state; base cases; transition covers all cases; induct over computation order.
+- **Minimal example:** Edit distance dp[i][j].
+- **Common mistake:** State omits needed information.
+- **One exercise:** Prove LIS recurrence.
+
+## 10. Randomized algorithm expectation proof
+
+- **When to use:** Use for expected running time.
+- **Template:** Define sample space; define random variable; use linearity or recurrence over randomness.
+- **Minimal example:** Randomized quickselect pivot quality intuition.
+- **Common mistake:** Taking expectation over input distribution by accident.
+- **One exercise:** Define random variable for quicksort comparisons.
+
+## 11. Failure probability and amplification proof
+
+- **When to use:** Use for Monte Carlo guarantees.
+- **Template:** Define bad event; repeat independently; combine with product, union bound, or tail bound.
+- **Minimal example:** Repeat a one-sided test r times.
+- **Common mistake:** Multiplying probabilities without independence.
+- **One exercise:** Bound failure probability after r independent repetitions.

@@ -131,6 +131,123 @@ LAB_PAGES = [
     },
 ]
 
+WEEK2_DAY_PAGES = [
+    {
+        "day": "Day 1",
+        "slug": "day01",
+        "title": "Specifications, Sorting, Lower Bounds",
+        "source": "notes/week02/day01-specifications-sorting-lower-bounds.md",
+        "exercise": "/exercises/week02-problem-set/#day-1-algorithm-specifications-sorting-and-comparison-lower-bounds",
+        "hardest": "Separating problem specification from algorithm and proving the comparison sorting lower bound.",
+        "output": "Sorting specification, insertion-sort invariant, merge-sort recurrence, and lower-bound proof.",
+    },
+    {
+        "day": "Day 2",
+        "slug": "day02",
+        "title": "Divide and Conquer, Selection",
+        "source": "notes/week02/day02-divide-and-conquer-selection.md",
+        "exercise": "/exercises/week02-problem-set/#day-2-divide-and-conquer-recurrence-proofs-and-selection",
+        "hardest": "Recursive correctness proofs and expected versus worst-case quickselect analysis.",
+        "output": "Binary search, merge sort, quickselect, recurrences, and divide-and-conquer lab.",
+    },
+    {
+        "day": "Day 3",
+        "slug": "day03",
+        "title": "Data Structures and Amortization",
+        "source": "notes/week02/day03-data-structures-heaps-hashing-amortization.md",
+        "exercise": "/exercises/week02-problem-set/#day-3-data-structures-heaps-hashing-and-amortized-analysis",
+        "hardest": "Keeping interface, representation invariant, expected time, and amortized time separate.",
+        "output": "Heap, hashing, and dynamic-array amortization proof practice.",
+    },
+    {
+        "day": "Day 4",
+        "slug": "day04",
+        "title": "Graph Algorithms",
+        "source": "notes/week02/day04-graph-algorithms-bfs-dfs-shortest-paths.md",
+        "exercise": "/exercises/week02-problem-set/#day-4-graph-algorithms-i-bfs-dfs-shortest-paths",
+        "hardest": "BFS shortest-path invariant and graph representation complexity.",
+        "output": "BFS, DFS, components, topological order, and graph lab.",
+    },
+    {
+        "day": "Day 5",
+        "slug": "day05",
+        "title": "Greedy Algorithms",
+        "source": "notes/week02/day05-greedy-algorithms-exchange-arguments.md",
+        "exercise": "/exercises/week02-problem-set/#day-5-greedy-algorithms-and-exchange-arguments",
+        "hardest": "Writing exchange arguments instead of relying on local-choice intuition.",
+        "output": "Interval scheduling proof, fractional knapsack, coin-change counterexamples, and MST intuition.",
+    },
+    {
+        "day": "Day 6",
+        "slug": "day06",
+        "title": "Dynamic Programming",
+        "source": "notes/week02/day06-dynamic-programming-optimal-substructure.md",
+        "exercise": "/exercises/week02-problem-set/#day-6-dynamic-programming-and-optimal-substructure",
+        "hardest": "Choosing state definitions and proving recurrences by induction over state order.",
+        "output": "LIS, edit distance, knapsack, reconstruction, and greedy-versus-DP lab.",
+    },
+    {
+        "day": "Day 7",
+        "slug": "day07",
+        "title": "Randomized Algorithms",
+        "source": "notes/week02/day07-randomized-algorithms-synthesis.md",
+        "exercise": "/exercises/week02-problem-set/#day-7-randomized-algorithms-and-synthesis",
+        "hardest": "Sample spaces, expected running time, failure probability, and amplification.",
+        "output": "Randomized quicksort/quickselect, Monte Carlo toy tests, amplification, and proof synthesis.",
+    },
+]
+
+WEEK2_LAB_PAGES = [
+    {
+        "slug": "week02-sorting",
+        "title": "Week 2 Lab: Sorting and Lower Bounds",
+        "source": "labs/week02/sorting_and_lower_bounds.py",
+        "concept": "Growth rates and decision-tree lower-bound intuition for comparison sorting.",
+        "command": "python3 labs/week02/sorting_and_lower_bounds.py",
+        "expected": "A text table comparing n log n, n^2, and log2(n!).",
+    },
+    {
+        "slug": "week02-divide-and-conquer",
+        "title": "Week 2 Lab: Divide and Conquer",
+        "source": "labs/week02/divide_and_conquer_sandbox.py",
+        "concept": "Binary search, merge sort, quickselect, and recurrence expansion examples.",
+        "command": "python3 labs/week02/divide_and_conquer_sandbox.py",
+        "expected": "Text output for recurrence values and a quickselect median.",
+    },
+    {
+        "slug": "week02-data-structures",
+        "title": "Week 2 Lab: Data Structures",
+        "source": "labs/week02/heaps_hashing_amortization.py",
+        "concept": "Heap invariants, chained hash table collisions, and dynamic-array resize costs.",
+        "command": "python3 labs/week02/heaps_hashing_amortization.py",
+        "expected": "Assertions plus dynamic-array copy counts.",
+    },
+    {
+        "slug": "week02-graphs",
+        "title": "Week 2 Lab: Graph Algorithms",
+        "source": "labs/week02/graph_algorithms.py",
+        "concept": "BFS, DFS, connected components, unweighted shortest paths, and topological sort.",
+        "command": "python3 labs/week02/graph_algorithms.py",
+        "expected": "BFS distance and DFS order summaries.",
+    },
+    {
+        "slug": "week02-greedy-dp",
+        "title": "Week 2 Lab: Greedy and DP",
+        "source": "labs/week02/greedy_vs_dp_examples.py",
+        "concept": "Greedy successes, greedy counterexamples, and dynamic-programming examples.",
+        "command": "python3 labs/week02/greedy_vs_dp_examples.py",
+        "expected": "Coin-change counterexample, LIS length, and edit distance output.",
+    },
+    {
+        "slug": "week02-randomized",
+        "title": "Week 2 Lab: Randomized Algorithms",
+        "source": "labs/week02/randomized_algorithms.py",
+        "concept": "Randomized quicksort, quickselect, Monte Carlo failure, and amplification simulation.",
+        "command": "python3 labs/week02/randomized_algorithms.py",
+        "expected": "Sorted output and toy failure-rate statistics.",
+    },
+]
+
 
 def quote(value: str) -> str:
     return value.replace("\\", "\\\\").replace('"', '\\"')
@@ -152,6 +269,25 @@ def sanitize_mdx(text: str) -> str:
     """Escape characters that MDX treats as JSX/expression syntax in prose."""
     out: list[str] = []
     in_fence = False
+    in_display_math = False
+
+    def escape_prose_with_inline_math(line: str) -> str:
+        result: list[str] = []
+        index = 0
+        while index < len(line):
+            start = line.find("\\(", index)
+            if start == -1:
+                result.append(line[index:].replace("{", "\\{").replace("}", "\\}").replace("<", "&lt;"))
+                break
+            result.append(line[index:start].replace("{", "\\{").replace("}", "\\}").replace("<", "&lt;"))
+            end = line.find("\\)", start + 2)
+            if end == -1:
+                result.append(line[start:].replace("{", "\\{").replace("}", "\\}").replace("<", "&lt;"))
+                break
+            result.append("$" + line[start + 2 : end] + "$")
+            index = end + 2
+        return "".join(result)
+
     for line in text.splitlines():
         if line.strip().startswith("```"):
             in_fence = not in_fence
@@ -160,10 +296,21 @@ def sanitize_mdx(text: str) -> str:
         if in_fence:
             out.append(line)
             continue
-        if line.startswith(">"):
-            out.append(line.replace("{", "\\{").replace("}", "\\}").replace("<", "&lt;"))
+        if line.strip() == "\\[":
+            in_display_math = True
+            out.append("$$")
             continue
-        out.append(line.replace("{", "\\{").replace("}", "\\}").replace("<", "&lt;"))
+        if line.strip() == "\\]":
+            in_display_math = False
+            out.append("$$")
+            continue
+        if in_display_math:
+            out.append(line)
+            continue
+        if line.startswith(">"):
+            out.append(escape_prose_with_inline_math(line))
+            continue
+        out.append(escape_prose_with_inline_math(line))
     return "\n".join(out).strip() + "\n"
 
 
@@ -265,7 +412,7 @@ def tex_to_mdx(path: Path) -> str:
         if line.startswith("\\title") or line.startswith("\\author") or line.startswith("\\date"):
             continue
         lines.append(line)
-    return "\n".join(lines).replace("\\_", "_").strip() + "\n"
+    return sanitize_mdx("\n".join(lines).replace("\\_", "_"))
 
 
 def parse_source_blocks(path: Path) -> list[dict[str, object]]:
@@ -344,10 +491,10 @@ def progress_mdx() -> str:
         "",
         f"- **Current week:** {current.group(1) if current else 'Not set'}",
         f"- **Current phase:** {phase.group(1) if phase else 'Not set'}",
-        "- **Generated:** Week 1",
-        "- **Completed:** None recorded yet",
-        "- **Pending:** Study Week 1 Day 1 and record mistakes",
-        "- **Weak areas:** Quantifiers, proof rigor, induction, probability sample spaces, asymptotic variables",
+        "- **Content generation completed:** Week 1, Week 2",
+        "- **Study completed:** None recorded yet",
+        "- **Pending:** Study Week 2 Day 1 and record sorting-specification, invariant, lower-bound, and recurrence mistakes",
+        "- **Weak areas:** Quantifiers, proof rigor, induction, probability sample spaces, asymptotic variables, algorithm specification, loop invariants, lower-bound models",
         f"- **Next target:** {target.group(1) if target else 'Not set'}",
         "",
         "## Raw Progress",
@@ -535,6 +682,60 @@ def week_overview_mdx() -> str:
     return "\n".join(parts)
 
 
+def week2_overview_mdx() -> str:
+    parts = [
+        "## Week Title",
+        "",
+        "Algorithmic Thinking, Data Structures, and Proof Patterns",
+        "",
+        "## Purpose",
+        "",
+        "建立理论计算机科学视角下的算法基础：formal specification、correctness proof、worst-case/expected/amortized analysis、algorithmic paradigms，以及后续 string algorithms、learning theory、randomized algorithms 和 complexity theory 需要的证明模式。",
+        "",
+        "## Prerequisites",
+        "",
+        "- Week 1 definitions, induction, loop invariants, graphs, probability, and asymptotics.",
+        "- Basic Python ability for small labs.",
+        "- Willingness to write specifications before algorithms.",
+        "",
+        "## 7-Day Learning Path",
+        "",
+    ]
+    for day in WEEK2_DAY_PAGES:
+        parts.extend(
+            [
+                f"### [{day['day']}: {day['title']}](/week02/{day['slug']}/)",
+                "",
+                f"- **Goal:** {day['output']}",
+                f"- **Hardest point:** {day['hardest']}",
+                f"- **Output:** {day['output']}",
+                f"- **Exercises:** [Problem set section]({day['exercise']})",
+                "",
+            ]
+        )
+    parts.extend(
+        [
+            "## Labs",
+            "",
+            "- [Sorting and Lower Bounds](/labs/week02-sorting/)",
+            "- [Divide and Conquer](/labs/week02-divide-and-conquer/)",
+            "- [Data Structures](/labs/week02-data-structures/)",
+            "- [Graph Algorithms](/labs/week02-graphs/)",
+            "- [Greedy and DP](/labs/week02-greedy-dp/)",
+            "- [Randomized Algorithms](/labs/week02-randomized/)",
+            "",
+            "## Review Checklist",
+            "",
+            "- Can I write a problem specification before an algorithm?",
+            "- Can I choose the right proof pattern for correctness?",
+            "- Can I separate worst-case, expected, and amortized claims?",
+            "- Can I state model assumptions for lower bounds and randomized algorithms?",
+            "- Can I explain why a lab result is not a proof?",
+        ]
+    )
+    return "\n".join(parts)
+
+
 def sync(report: dict[str, list[str]]) -> None:
     write_generated(
         "week01/overview.mdx",
@@ -621,6 +822,94 @@ def sync(report: dict[str, list[str]]) -> None:
     )
 
     write_generated(
+        "week02/overview.mdx",
+        "Week 2 Overview",
+        "Seven-day path for algorithmic thinking, data structures, and proof patterns.",
+        week2_overview_mdx(),
+        "curriculum/weeks/week02-algorithms-foundations.yaml",
+        report,
+    )
+
+    for index, day in enumerate(WEEK2_DAY_PAGES):
+        source = ROOT / day["source"]
+        body = read_or_placeholder(source, day["source"]).replace(
+            "Generate Week 1 content first.", "Generate Week 2 content first."
+        )
+        prev_link = "/week02/overview/" if index == 0 else f"/week02/{WEEK2_DAY_PAGES[index - 1]['slug']}/"
+        next_link = "/review/week02-review/" if index == len(WEEK2_DAY_PAGES) - 1 else f"/week02/{WEEK2_DAY_PAGES[index + 1]['slug']}/"
+        body += f"""
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="{prev_link}">Previous</a>
+  <a class="button-link" href="{next_link}">Next</a>
+  <a class="button-link" href="/review/week02-review/">Review</a>
+  <a class="button-link" href="/exercises/week02-problem-set/">Exercises</a>
+</div>
+"""
+        write_generated(
+            f"week02/{day['slug']}.mdx",
+            f"{day['day']}: {day['title']}",
+            f"Week 2 {day['day']} study note.",
+            body,
+            day["source"],
+            report,
+        )
+
+    write_generated(
+        "exercises/week02-problem-set.mdx",
+        "Week 2 Problem Set",
+        "Browser-readable Week 2 problem set without solutions.",
+        tex_to_mdx(ROOT / "exercises/week02/week02_problem_set.tex"),
+        "exercises/week02/week02_problem_set.tex",
+        report,
+    )
+    write_generated(
+        "exercises/week02-solutions.mdx",
+        "Week 2 Solutions",
+        "Browser-readable Week 2 solutions with proof strategies and common mistakes.",
+        tex_to_mdx(ROOT / "exercises/week02/week02_solutions.tex"),
+        "exercises/week02/week02_solutions.tex",
+        report,
+    )
+
+    write_generated(
+        "labs/week02-overview.mdx",
+        "Week 2 Labs Overview",
+        "How to run and interpret Week 2 algorithm labs.",
+        read_or_placeholder(ROOT / "labs/week02/README.md", "labs/week02/README.md"),
+        "labs/week02/README.md",
+        report,
+    )
+    for lab in WEEK2_LAB_PAGES:
+        write_generated(
+            f"labs/{lab['slug']}.mdx",
+            lab["title"],
+            lab["concept"],
+            lab_mdx(lab),
+            lab["source"],
+            report,
+        )
+
+    week2_review_pages = [
+        ("review/week02-review.mdx", "Week 2 Review", "Week 2 review and repair checklist.", "review/week02/week02_review.md"),
+        ("review/glossary-week02.mdx", "Week 2 Glossary", "Week 2 glossary.", "review/week02/glossary_week02.md"),
+        ("review/mistakes-week02.mdx", "Week 2 Mistakes", "Week 2 mistakes grouped by topic.", "review/week02/mistakes_to_watch.md"),
+        ("review/proof-patterns-week02.mdx", "Week 2 Proof Patterns", "Proof patterns for Week 2 algorithms.", "review/week02/proof_patterns_week02.md"),
+    ]
+    for rel, title, desc, source in week2_review_pages:
+        write_generated(rel, title, desc, read_or_placeholder(ROOT / source, source), source, report)
+    write_generated(
+        "review/flashcards-week02.mdx",
+        "Week 2 Flashcards",
+        "Week 2 flashcards in Q/A format.",
+        flashcards_mdx(ROOT / "review/week02/flashcards_week02.md"),
+        "review/week02/flashcards_week02.md",
+        report,
+    )
+
+    write_generated(
         "meta/resources.mdx",
         "Resources",
         "Official and legal sources used by the self-study system.",
@@ -662,4 +951,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

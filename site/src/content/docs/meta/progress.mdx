@@ -9,19 +9,19 @@ description: "Current learning progress and state."
 
 ## Current Status
 
-- **Current week:** week01-foundations
-- **Current phase:** week01_generated
-- **Generated:** Week 1
-- **Completed:** None recorded yet
-- **Pending:** Study Week 1 Day 1 and record mistakes
-- **Weak areas:** Quantifiers, proof rigor, induction, probability sample spaces, asymptotic variables
-- **Next target:** Study Week 1 Day 1 and then request diagnostic feedback or whole-week weakness repair.
+- **Current week:** week02-algorithms-foundations
+- **Current phase:** week02_content_completed
+- **Content generation completed:** Week 1, Week 2
+- **Study completed:** None recorded yet
+- **Pending:** Study Week 2 Day 1 and record sorting-specification, invariant, lower-bound, and recurrence mistakes
+- **Weak areas:** Quantifiers, proof rigor, induction, probability sample spaces, asymptotic variables, algorithm specification, loop invariants, lower-bound models
+- **Next target:** Study Week 2 Day 1, focusing on sorting specification, loop invariant, merge sort recurrence, and comparison lower bound.
 
 ## Raw Progress
 
 ```yaml
-current_phase: "week01_generated"
-current_week: "week01-foundations"
+current_phase: "week02_content_completed"
+current_week: "week02-algorithms-foundations"
 current_day: null
 web_site:
   status: "deployed"
@@ -35,15 +35,16 @@ completed_weeks: []
 completed_days: []
 active_modules:
   - "mathematical_foundations"
-next_target: "Study Week 1 Day 1 and then request diagnostic feedback or whole-week weakness repair."
+  - "algorithms_foundations"
+next_target: "Study Week 2 Day 1, focusing on sorting specification, loop invariant, merge sort recurrence, and comparison lower bound."
 last_updated: "2026-05-06"
 notes:
-  - "Week 1 generated but not completed."
-  - "Primary focus: mathematical and conceptual foundations for theoretical computer science."
-  - "Astro + Starlight web documentation site created under site/."
+  - "Week 1 content generation completed. Study completion is not recorded."
+  - "Week 2 content generation completed. Study completion is not recorded."
+  - "Astro + Starlight web documentation site exists under site/."
 generated_weeks:
   - week_id: "week01-foundations"
-    status: "generated_not_completed"
+    status: "content_completed"
     generated_on: "2026-05-06"
     outputs:
       - "curriculum/weeks/week01-foundations.yaml"
@@ -51,44 +52,53 @@ generated_weeks:
       - "exercises/week01/"
       - "labs/week01/"
       - "review/week01/"
+  - week_id: "week02-algorithms-foundations"
+    status: "content_completed"
+    generated_on: "2026-05-06"
+    outputs:
+      - "curriculum/weeks/week02-algorithms-foundations.yaml"
+      - "notes/week02/"
+      - "exercises/week02/"
+      - "labs/week02/"
+      - "review/week02/"
 ```
 
 ## Next Actions
 
 # Next Actions
 
-## Immediate
+## Immediate Week 2 Start
 
-1. Start with `notes/week01/day01-logic-sets-functions.md`.
-2. Handwrite Day 1 definitions and quantifier negation rules.
-3. Attempt `exercises/week01/day01_exercises.tex` before reading any solution.
-4. If you want a smaller first session, do Day 1 exercises 1-6 only, then request diagnostic feedback.
-5. To read in the browser, run `make site-dev` and open the local URL printed by Astro.
+1. Start with `notes/week02/day01-specifications-sorting-lower-bounds.md`.
+2. Handwrite the sorting problem specification: input, output, precondition, postcondition, and input size.
+3. Do `exercises/week02/day01_exercises.tex` problems 1-8 before reading solutions.
+4. Focus on the full proof of comparison sorting lower bound via decision tree.
+5. Run `python3 labs/week02/sorting_and_lower_bounds.py` and write one sentence explaining why the lab is not a proof.
+6. Record mistakes in `state/mistakes_log.md`, especially loop invariant and lower-bound model errors.
 
 ## After Day 1 Study
 
-1. Record mistakes in `state/mistakes_log.md`.
-2. Record unclear definitions in `state/open_questions.md`.
-3. Review `review/week01/flashcards_week01.md` cards tagged `logic`, `sets`, and `functions`.
-4. Copy `context/next_codex_prompt.md` to ask Codex for Day 1 or whole-week diagnostic feedback.
+1. Redo insertion sort loop invariant without looking.
+2. Re-solve the merge sort recurrence with a recursion tree.
+3. Explain why counting sort does not violate the comparison lower bound.
+4. Copy `context/next_codex_prompt.md` to request diagnostic feedback.
 
 ## Weekly
 
-1. Run all Week 1 labs after Day 7.
-2. Take `review/week01/self_test_week01.md` under a 90-minute timer.
-3. Use `review/week01/mistakes_to_watch.md` to classify errors.
-4. Ask Codex for targeted repair drills before generating Week 2.
+1. Run each Week 2 lab after its corresponding day.
+2. Use `review/week02/proof_patterns_week02.md` as the main proof-pattern checklist.
+3. Take `review/week02/self_test_week02.md` under a 120-minute timer after Day 7.
+4. Use `review/week02/mistakes_to_watch.md` to classify errors before generating Week 3.
 
 ## Web Site
 
 1. Run `make site-sync` after changing notes, exercises, labs, review, resources, or state.
 2. Run `make site-build` before deployment.
 3. Production site is deployed at `https://tcs-selfstudy-os.vercel.app`.
-4. Next Codex web task should be a visual polish pass with browser checks for homepage, Week 1 overview, Day 1, Problem Set, and a Lab page.
+4. The next web task should only sync or polish content; do not redesign the site.
 
 ## Deployment Maintenance
 
 1. Git remote: `git@github.com:ze2phyrzhenyin/tcslearn.git`.
 2. Vercel project: `tcs-selfstudy-os`.
 3. Root deployment uses `vercel.json` to build `site/` and publish `site/dist`.
-4. If Vercel install fails with `Invalid Version`, inspect `site/package-lock.json` for incomplete optional package entries before redeploying.

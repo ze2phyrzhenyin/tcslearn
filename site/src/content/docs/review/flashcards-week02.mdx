@@ -1,0 +1,960 @@
+---
+title: "Week 2 Flashcards"
+description: "Week 2 flashcards in Q/A format."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `review/week02/flashcards_week02.md`
+
+## Flashcards
+
+<div class="qa-card">
+
+**Q:** What is algorithmic problem, and what is its main trap?
+
+**A:** algorithmic problem means A relation from valid instances to acceptable outputs, not a piece of code. Main trap: Confused with algorithm implementation.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is instance, and what is its main trap?
+
+**A:** instance means A concrete input to an algorithmic problem. Main trap: Confused with problem family.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is input size, and what is its main trap?
+
+**A:** input size means The variable used for asymptotic analysis, such as n=number of elements. Main trap: Omitted in Big-O statements.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is specification, and what is its main trap?
+
+**A:** specification means The formal contract describing valid input and required output. Main trap: Written after the algorithm instead of before.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is precondition, and what is its main trap?
+
+**A:** precondition means Assumptions that must hold before the algorithm starts. Main trap: Mixed with postcondition.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is postcondition, and what is its main trap?
+
+**A:** postcondition means Properties the output must satisfy after termination. Main trap: Replaced by vague words like sorted.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is correctness, and what is its main trap?
+
+**A:** correctness means The guarantee that every valid input leads to an output satisfying the postcondition. Main trap: Confused with fast running time.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is partial correctness, and what is its main trap?
+
+**A:** partial correctness means If the algorithm terminates, the output is correct. Main trap: Forgets termination.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is termination, and what is its main trap?
+
+**A:** termination means A proof that the algorithm eventually stops on valid inputs. Main trap: Assumed from code structure.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is stability, and what is its main trap?
+
+**A:** stability means Equal keys keep their original relative order. Main trap: Confused with in-place.
+
+**Tag:** `amortized_analysis`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is in-place, and what is its main trap?
+
+**A:** in-place means Uses only limited auxiliary storage under an explicit convention. Main trap: Confused with stable.
+
+**Tag:** `graphs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is comparison model, and what is its main trap?
+
+**A:** comparison model means A model where order information comes only from pairwise comparisons. Main trap: Applied to non-comparison sorting.
+
+**Tag:** `bfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is decision tree, and what is its main trap?
+
+**A:** decision tree means A tree representing possible comparison outcomes of a deterministic comparison algorithm. Main trap: Leaves not linked to permutations.
+
+**Tag:** `dfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is lower bound, and what is its main trap?
+
+**A:** lower bound means A statement that every algorithm in a model needs at least some resource. Main trap: Treated as one slow algorithm.
+
+**Tag:** `greedy`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is upper bound, and what is its main trap?
+
+**A:** upper bound means A resource guarantee achieved by a particular algorithm. Main trap: Confused with lower bound.
+
+**Tag:** `dynamic_programming`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is permutation, and what is its main trap?
+
+**A:** permutation means A reordering preserving exactly the multiset of input elements. Main trap: Sortedness proved without permutation.
+
+**Tag:** `randomized_algorithms`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is sorting problem, and what is its main trap?
+
+**A:** sorting problem means Output a sorted permutation of the input sequence. Main trap: Specification too vague.
+
+**Tag:** `proof_patterns`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is insertion sort, and what is its main trap?
+
+**A:** insertion sort means A sorting algorithm that inserts each next element into a sorted prefix. Main trap: Invariant not stated.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is merge sort, and what is its main trap?
+
+**A:** merge sort means A divide-and-conquer sorting algorithm that merges sorted halves. Main trap: Correctness reduced only to recurrence.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is heapsort, and what is its main trap?
+
+**A:** heapsort means A comparison sorting algorithm based on heap operations. Main trap: Heap confused with BST.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Stirling approximation, and what is its main trap?
+
+**A:** Stirling approximation means An asymptotic approximation for n!, often used for log(n!) intuition. Main trap: Used without needing a full proof.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is divide and conquer, and what is its main trap?
+
+**A:** divide and conquer means Solve by dividing into smaller subproblems and combining results. Main trap: Combine step omitted.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is recursive decomposition, and what is its main trap?
+
+**A:** recursive decomposition means The precise definition of subproblems and smaller sizes. Main trap: Subproblem not equivalent to original problem type.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is combine step, and what is its main trap?
+
+**A:** combine step means The operation turning subproblem outputs into a full output. Main trap: Assumed without proof.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is recursive correctness proof, and what is its main trap?
+
+**A:** recursive correctness proof means An induction proof using recursive-call specifications. Main trap: Treats recursive calls as magic.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is recurrence, and what is its main trap?
+
+**A:** recurrence means An equation or inequality describing T(n) using smaller T values. Main trap: No base case.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is recursion tree, and what is its main trap?
+
+**A:** recursion tree means A level-by-level expansion of recurrence costs. Main trap: Counts only internal levels.
+
+**Tag:** `amortized_analysis`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is substitution method, and what is its main trap?
+
+**A:** substitution method means Guess a bound and prove it by induction. Main trap: Constants not chosen to satisfy induction.
+
+**Tag:** `graphs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Master theorem, and what is its main trap?
+
+**A:** Master theorem means A theorem for basic recurrences T(n)=aT(n/b)+f(n). Main trap: Applied outside its form.
+
+**Tag:** `bfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is binary search, and what is its main trap?
+
+**A:** binary search means Search in a sorted array by repeatedly discarding half. Main trap: Sorted precondition omitted.
+
+**Tag:** `dfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is selection, and what is its main trap?
+
+**A:** selection means Find the k-th smallest element without fully sorting. Main trap: Solved by sorting without noting baseline nature.
+
+**Tag:** `greedy`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is quickselect, and what is its main trap?
+
+**A:** quickselect means Partition-based selection that recurses on one side. Main trap: Expected and worst-case times confused.
+
+**Tag:** `dynamic_programming`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is median-of-medians, and what is its main trap?
+
+**A:** median-of-medians means A deterministic pivot strategy with guaranteed pivot quality. Main trap: Pivot quality not stated.
+
+**Tag:** `randomized_algorithms`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Karatsuba multiplication, and what is its main trap?
+
+**A:** Karatsuba multiplication means A divide-and-conquer multiplication method using fewer recursive products. Main trap: Included only as intuition.
+
+**Tag:** `proof_patterns`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is base case, and what is its main trap?
+
+**A:** base case means The smallest input or state where recurrence/proof starts. Main trap: Treated as coding detail.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is data structure, and what is its main trap?
+
+**A:** data structure means A representation supporting a specified operation interface. Main trap: Confused with abstract data type.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is abstract data type, and what is its main trap?
+
+**A:** abstract data type means An interface and behavior independent of representation. Main trap: Implementation details leaked into spec.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is interface, and what is its main trap?
+
+**A:** interface means The named operations with inputs, outputs, and behavior. Main trap: Not separated from representation.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is representation invariant, and what is its main trap?
+
+**A:** representation invariant means A condition every valid internal state must maintain. Main trap: Not used in correctness proof.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is sequence interface, and what is its main trap?
+
+**A:** sequence interface means Operations over ordered elements, such as get, set, insert, delete. Main trap: Assumed to have all operations equally fast.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is set interface, and what is its main trap?
+
+**A:** set interface means Operations over membership, insertion, and deletion without duplicates. Main trap: Confused with mathematical set only.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is stack, and what is its main trap?
+
+**A:** stack means A LIFO data type. Main trap: Confused with recursion itself.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is queue, and what is its main trap?
+
+**A:** queue means A FIFO data type used by BFS. Main trap: Replaced by stack changes algorithm properties.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is priority queue, and what is its main trap?
+
+**A:** priority queue means Supports insert and extracting min or max priority. Main trap: Confused with sorted array.
+
+**Tag:** `amortized_analysis`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is binary heap, and what is its main trap?
+
+**A:** binary heap means Array-based nearly complete tree satisfying heap invariant. Main trap: Confused with BST.
+
+**Tag:** `graphs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is heap invariant, and what is its main trap?
+
+**A:** heap invariant means Each parent key is no larger than its children in min-heap. Main trap: Demands total sortedness.
+
+**Tag:** `bfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is heapify, and what is its main trap?
+
+**A:** heapify means Restore heap invariant from a local violation or an array. Main trap: Complexity confused with sorting.
+
+**Tag:** `dfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is extract-min, and what is its main trap?
+
+**A:** extract-min means Priority queue operation removing and returning minimum key. Main trap: Precondition nonempty omitted.
+
+**Tag:** `greedy`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is dictionary, and what is its main trap?
+
+**A:** dictionary means Key-value interface with insert, find, delete. Main trap: Confused with ordered map.
+
+**Tag:** `dynamic_programming`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is hash table, and what is its main trap?
+
+**A:** hash table means Dictionary representation using hash buckets. Main trap: Worst-case ignored.
+
+**Tag:** `randomized_algorithms`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is hash collision, and what is its main trap?
+
+**A:** hash collision means Two keys map to the same bucket. Main trap: Treated as impossible.
+
+**Tag:** `proof_patterns`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is load factor, and what is its main trap?
+
+**A:** load factor means Number of stored keys divided by number of buckets. Main trap: Used without bucket count.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is chaining, and what is its main trap?
+
+**A:** chaining means Store colliding keys in a bucket list. Main trap: Expected bound stated without assumption.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is dynamic array, and what is its main trap?
+
+**A:** dynamic array means Array that resizes when capacity is exhausted. Main trap: Worst-case append confused with amortized append.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is amortized analysis, and what is its main trap?
+
+**A:** amortized analysis means Bounding average cost per operation over a worst-case sequence. Main trap: Confused with average-case.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is aggregate method, and what is its main trap?
+
+**A:** aggregate method means Bound total cost of m operations directly. Main trap: Only checks one expensive operation.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is accounting method, and what is its main trap?
+
+**A:** accounting method means Charge operations extra credit to pay future expensive operations. Main trap: Credits not tied to invariant.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is potential method, and what is its main trap?
+
+**A:** potential method means Use a nonnegative potential function to store prepaid work. Main trap: Potential allowed to become negative.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is graph representation, and what is its main trap?
+
+**A:** graph representation means Encoding vertices and edges as lists, matrices, or other structures. Main trap: Representation cost ignored.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is adjacency list, and what is its main trap?
+
+**A:** adjacency list means For each vertex store its outgoing neighbors. Main trap: Matrix complexity used accidentally.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is adjacency matrix, and what is its main trap?
+
+**A:** adjacency matrix means A |V| by |V| table indicating edges or weights. Main trap: Space too high for sparse graphs.
+
+**Tag:** `amortized_analysis`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is BFS, and what is its main trap?
+
+**A:** BFS means Traversal by increasing unweighted distance layers. Main trap: Used on weighted shortest paths.
+
+**Tag:** `graphs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is DFS, and what is its main trap?
+
+**A:** DFS means Traversal that explores deeply before backtracking. Main trap: Assumed to find shortest path.
+
+**Tag:** `bfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is discovery time, and what is its main trap?
+
+**A:** discovery time means When DFS first visits a vertex. Main trap: Confused with BFS distance.
+
+**Tag:** `dfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is finishing time, and what is its main trap?
+
+**A:** finishing time means When DFS finishes all outgoing edges of a vertex. Main trap: Used without directed-edge reasoning.
+
+**Tag:** `greedy`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is parent tree, and what is its main trap?
+
+**A:** parent tree means Tree or forest formed by first-discovery edges. Main trap: Confused with all graph edges.
+
+**Tag:** `dynamic_programming`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is connected components, and what is its main trap?
+
+**A:** connected components means Maximal mutually reachable sets in undirected graph. Main trap: Directed SCC confused with undirected components.
+
+**Tag:** `randomized_algorithms`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is reachability, and what is its main trap?
+
+**A:** reachability means Existence of a directed or undirected path from one vertex to another. Main trap: Direction ignored.
+
+**Tag:** `proof_patterns`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is shortest path, and what is its main trap?
+
+**A:** shortest path means A path minimizing total length or weight under a specified model. Main trap: Unweighted and weighted versions mixed.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is BFS invariant, and what is its main trap?
+
+**A:** BFS invariant means Queue processes vertices in nondecreasing distance layers. Main trap: Queue order not used.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is DFS invariant, and what is its main trap?
+
+**A:** DFS invariant means Marked vertices are reachable through discovery paths. Main trap: Termination not argued.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is topological order, and what is its main trap?
+
+**A:** topological order means A vertex order where every edge u->v places u before v. Main trap: Used on cyclic graph.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is DAG, and what is its main trap?
+
+**A:** DAG means A directed graph with no directed cycles. Main trap: Undirected acyclic graph confused with DAG.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Dijkstra algorithm, and what is its main trap?
+
+**A:** Dijkstra algorithm means Shortest path algorithm for nonnegative edge weights. Main trap: Applied to negative weights.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is greedy algorithm, and what is its main trap?
+
+**A:** greedy algorithm means Algorithm that commits to local choices without backtracking. Main trap: Equated with choosing largest.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is locally optimal choice, and what is its main trap?
+
+**A:** locally optimal choice means Best choice under current criterion. Main trap: Assumed globally safe.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is globally optimal solution, and what is its main trap?
+
+**A:** globally optimal solution means A feasible solution with best objective value. Main trap: Feasibility omitted.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is exchange argument, and what is its main trap?
+
+**A:** exchange argument means Transform an optimal solution into one containing greedy choice. Main trap: Claims every optimal solution already contains it.
+
+**Tag:** `amortized_analysis`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is stays-ahead argument, and what is its main trap?
+
+**A:** stays-ahead argument means Show greedy partial solution is never behind optimal partial solution. Main trap: Wrong comparison quantity.
+
+**Tag:** `graphs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is cut property, and what is its main trap?
+
+**A:** cut property means In MST, a light edge crossing a cut can be safe. Main trap: Cut not defined.
+
+**Tag:** `bfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is interval scheduling, and what is its main trap?
+
+**A:** interval scheduling means Select maximum number of compatible intervals. Main trap: Sorted by start time.
+
+**Tag:** `dfs`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is activity selection, and what is its main trap?
+
+**A:** activity selection means Classical interval scheduling formulation. Main trap: Same as weighted interval scheduling.
+
+**Tag:** `greedy`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is fractional knapsack, and what is its main trap?
+
+**A:** fractional knapsack means Knapsack where fractions of items may be taken. Main trap: Confused with 0/1 knapsack.
+
+**Tag:** `dynamic_programming`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is coin change, and what is its main trap?
+
+**A:** coin change means Represent amount using coins, often minimizing number of coins. Main trap: Greedy assumed always optimal.
+
+**Tag:** `randomized_algorithms`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is minimum spanning tree, and what is its main trap?
+
+**A:** minimum spanning tree means Minimum-weight tree spanning all vertices of a connected graph. Main trap: Used for directed graph without changes.
+
+**Tag:** `proof_patterns`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Kruskal algorithm, and what is its main trap?
+
+**A:** Kruskal algorithm means Add edges by increasing weight when they connect different components. Main trap: Cycle check omitted.
+
+**Tag:** `specifications`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is Prim algorithm, and what is its main trap?
+
+**A:** Prim algorithm means Grow an MST from a vertex by repeatedly adding light crossing edge. Main trap: Priority queue role omitted.
+
+**Tag:** `sorting`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is matroid intuition, and what is its main trap?
+
+**A:** matroid intuition means A structure where greedy can be correct under exchange axioms. Main trap: Treated as prerequisite.
+
+**Tag:** `lower_bounds`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is dynamic programming, and what is its main trap?
+
+**A:** dynamic programming means Compute overlapping subproblems by memoization or tabulation. Main trap: Reduced to memorizing formulas.
+
+**Tag:** `divide_and_conquer`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is optimal substructure, and what is its main trap?
+
+**A:** optimal substructure means Optimal solution can be built from optimal subsolutions. Main trap: Assumed without proof.
+
+**Tag:** `recurrences`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is overlapping subproblems, and what is its main trap?
+
+**A:** overlapping subproblems means Same subproblems appear repeatedly in recursion. Main trap: Confused with divide-and-conquer independent subproblems.
+
+**Tag:** `selection`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is state, and what is its main trap?
+
+**A:** state means Index and meaning of a DP table entry. Main trap: Missing information.
+
+**Tag:** `data_structures`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is transition, and what is its main trap?
+
+**A:** transition means Rule computing a state from dependency states. Main trap: Cases not exhaustive.
+
+**Tag:** `heaps`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is memoization, and what is its main trap?
+
+**A:** memoization means Top-down recursion with cached results. Main trap: No base case.
+
+**Tag:** `hashing`
+
+</div>
+
+<div class="qa-card">
+
+**Q:** What is tabulation, and what is its main trap?
+
+**A:** tabulation means Bottom-up computation in dependency order. Main trap: Order violates dependencies.
+
+**Tag:** `amortized_analysis`
+
+</div>

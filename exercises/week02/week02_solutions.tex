@@ -1,0 +1,150 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb,enumitem,geometry}
+\geometry{margin=1in}
+\setlist[enumerate]{leftmargin=*}
+\title{Week 2 Solutions: Algorithmic Thinking, Data Structures, and Proof Patterns}
+\author{TCS Self-Study OS}
+\date{Generated 2026-05-06}
+
+\begin{document}
+\maketitle
+
+每题包含 proof strategy 或 solution idea，并列出 common mistake。算法题分 correctness 和 complexity；randomized 题说明 sample space；amortized 题说明方法。
+
+\section{Day 1 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 1.} Strategy: 先定义 input domain 和 output relation。Solution: Input 是长度为 n 的可比较元素序列 A。Output 是序列 B，满足 B 是 A 的 permutation，且对所有 1<=i<n 有 B\_i <= B\_{i+1}。Precondition 是元素之间有 total preorder 或 total order；postcondition 是 permutation 加 sortedness。n 是元素数。Common mistake: 只写“输出排好序数组”，没有 permutation 条件。
+  \item \textbf{Problem 2.} Strategy: 用常见算法区分两个性质。Solution: 标准 merge sort 可 stable，但需要 O(n) auxiliary space，因此不是严格 O(1) in-place。标准 heapsort 通常 in-place，但相等 key 的记录可能交换相对顺序，因此不 stable。Common mistake: 以为 stable 描述空间，in-place 描述相等元素。
+  \item \textbf{Problem 3.} Strategy: initialization, maintenance, termination。Solution: i=1 时单元素前缀满足 sortedness 和 permutation。维护时，while 只把大于 key 的元素右移，不改变前缀多重集合；找到位置后插入 key，左边 <= key，右边 > key，因此 A[0..i+1) sorted。终止 i=n 得整个数组 sorted permutation。Common mistake: 只说“插入到正确位置”但不证明 permutation 保持。
+  \item \textbf{Problem 4.} Strategy: 每层成本求和。Solution: 第 l 层有 2\textasciicircum{}l 个子问题，每个大小 n/2\textasciicircum{}l，merge 总成本为 2\textasciicircum{}l c(n/2\textasciicircum{}l)=cn。深度 log\_2 n。叶子总成本为 dn。总成本 cn log\_2 n + dn = O(n log n)。Common mistake: 忽略叶子成本或默认 n 必为 2 的幂；一般 n 可用上下取整处理。
+  \item \textbf{Problem 5.} Strategy: 不同排列需要不同输出。Solution: 对两两不同元素，存在 n! 种可能相对顺序。若两个不同排列到达同一个 leaf，deterministic algorithm 会输出同一个 permutation，但正确排序要求两个输入的相对顺序不同，所以至少一个输出错误。因此每个排列需要独立 leaf，leaves >= n!。Common mistake: 把输入值数量和相对顺序数量混淆。
+  \item \textbf{Problem 6.} Strategy: 检查 model。Solution: comparison lower bound 只适用于只能通过比较获得顺序信息的算法。Counting sort 使用 key 的整数范围和数组计数，利用了非比较操作和 key universe 假设，因此不在 comparison model 内。Common mistake: 把所有 sorting algorithms 都放进 comparison model。
+  \item \textbf{Problem 7.} Strategy: 合并同一模型中的 upper/lower bound。Solution: 存在 comparison sorting algorithm merge sort 达到 O(n log n)，且任何 comparison sorting algorithm worst-case 至少 Omega(n log n)，所以 comparison sorting problem 的 optimal worst-case comparison complexity 是 Theta(n log n)。Common mistake: 对单个算法说 lower bound，而不是对问题/模型说 optimal complexity。
+\end{enumerate}
+
+\section{Day 2 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 8.} Strategy: specification first。Solution: Precondition: A sorted, lo=0, hi=n-1。Postcondition: 返回某个 index i with A[i]=x，或证明不存在。Invariant: 若 x 在原数组中，则至少一个出现位置仍在当前区间 [lo,hi]。Common mistake: 忘记 sortedness precondition。
+  \item \textbf{Problem 9.} Strategy: 展开或 recursion tree。Solution: n 是 input size。每层成本 1，规模折半到 1 需要 log\_2 n 层，所以 T(n)=Theta(log n)。Common mistake: 写 O(log) 而不写变量。
+  \item \textbf{Problem 10.} Strategy: induction on n。Solution: n<=1 成立。假设所有小于 n 的数组都被正确排序。算法递归排序左右两半，由 IH 得 L,R 是各自 sorted permutations。merge lemma 保证 merge(L,R) 是 L union R 的 sorted permutation，也就是 A 的 sorted permutation。Common mistake: 证明了 sortedness 但没有证明 permutation。
+  \item \textbf{Problem 11.} Strategy: 猜 T(n)<=c n log\_2 n。Solution: 对 n>=2，T(n)<=2 c(n/2)log(n/2)+n = c n log n - c n + n <= c n log n，当 c>=1。base 可调大 c 覆盖。Common mistake: induction 假设没有写适用范围。
+  \item \textbf{Problem 12.} Strategy: 比较 output specification。Solution: Selection 只要求第 k 小元素，不要求输出所有元素的 total order。Baseline 是先 sort 再取第 k 个，时间 O(n log n)，但 specification 允许更快算法如 expected O(n) quickselect。Common mistake: 把排序作为 selection 的一部分。
+  \item \textbf{Problem 13.} Strategy: 定义 middle-half pivot。Solution: 若 pivot rank 在 [n/4,3n/4]，递归子问题规模至多 3n/4，称为 good。随机 uniform pivot 落在这一区间的概率至少 1/2。因此期望经过常数次 partition 得到一次规模显著下降，累计线性层级成本为 O(n)。Common mistake: 把这个直觉当完整 tail proof。
+  \item \textbf{Problem 14.} Strategy: 子问题返回 pair。Solution: 分成两半递归求 (min,max)，combine 用两次比较合并。T(n)=2T(n/2)+O(1)，所以 T(n)=O(n)。Correctness by induction: 子 pair 对子数组正确，combine 取两个 min 的较小者和两个 max 的较大者。Common mistake: combine step 没有 specification。
+\end{enumerate}
+
+\section{Day 3 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 15.} Strategy: interface 不提 heap array。Solution: insert(Q,x) 返回包含旧元素加 x 的 priority queue；extract-min(Q) 在 Q 非空时返回最小 key 元素并从 Q 删除一个该元素。Precondition for extract-min: Q nonempty。Common mistake: 在 interface 中写 parent/child array details。
+  \item \textbf{Problem 16.} Strategy: 检查每个 parent-child edge。Solution: parent 1 <= 3,2；3 <= 7,5；2 <= 4，所以满足 min-heap invariant。Common mistake: 要求整个左子树小于右子树。
+  \item \textbf{Problem 17.} Strategy: violation path。Solution: append 新元素后，只有新叶到 root 的路径可能违反 parent<=child。每次与 parent swap 后，当前 child 位置满足与其 children 的关系，因为较大 parent 被放下且不小于原 child 的 children；路径外边不变。循环停止时 root 或 parent<=child，全树 invariant 恢复。Common mistake: 不说明路径外边为什么不受影响。
+  \item \textbf{Problem 18.} Strategy: bucket length expectation。Solution: 查询 key 的 bucket 中包含该 key 和其他碰撞 keys。每个其他 key 进入同一 bucket 的概率 1/m，期望碰撞数 (n-1)/m <= alpha。遍历成本为 1 加期望碰撞数，所以 O(1+alpha)。Common mistake: 忘记这是 expectation under hashing assumption。
+  \item \textbf{Problem 19.} Strategy: resize sizes are powers of two。Solution: 扩容时复制 1,2,4,...,2\textasciicircum{}r 个元素，最大复制规模小于 m。几何和 <2m。普通写入 m 次，总成本 O(m)，amortized O(1)。Common mistake: 只看某次 resize O(n) 就否定 amortized O(1)。
+  \item \textbf{Problem 20.} Strategy: 选 Phi=2n-c after at least half-full invariant。Solution: 在 load 维持足够高的模型中可用 Phi=2n-c。普通 append 增加实际成本 1、potential 增加 2；积累信用。满时 n=c，resize 到 2c 后 append，复制 c 个元素，但 potential 从约 c 降到常数级，释放 O(c) 信用支付复制。Common mistake: potential 取负而未修正。
+  \item \textbf{Problem 21.} Strategy: interface/spec/assumption。Solution: Interface: insert, find, delete by key。Chaining representation invariant: key k 存在于 bucket h(k)。Worst-case 所有 keys collision，operation O(n)。Under uniform hashing and bounded alpha，expected O(1)。Common mistake: 对 adversarial keys 仍声称 worst-case O(1)。
+\end{enumerate}
+
+\section{Day 4 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 22.} Strategy: count storage。Solution: adjacency list 用 O(|V|+|E|) 存 headers 和 edges；adjacency matrix 用 O(|V|\textasciicircum{}2) entries。Dense graph 中 matrix 可接受，sparse graph 中 list 更省。Common mistake: 对所有图都写 O(|E|)。
+  \item \textbf{Problem 23.} Strategy: layer expansion。Solution: dist(1)=0, dist(2)=1, dist(3)=2, dist(4)=3；parents: parent(2)=1, parent(3)=2, parent(4)=3。Common mistake: parent tree 与原图所有边混淆。
+  \item \textbf{Problem 24.} Strategy: layer invariant。Solution: BFS queue 按非降 distance 处理。若 v 第一次由 u 发现，则存在 path length dist[u]+1。若有更短 path，其前驱 w distance 更小，会在 u 之前或同层更早处理并发现 v，矛盾。因此 dist[v] shortest。Common mistake: 未说明 queue order。
+  \item \textbf{Problem 25.} Strategy: construct long branch first。Solution: 图有 edges s-a, a-b, b-t, s-t。若 DFS 从 s 先访问 a，则找到 s-a-b-t 长度 3；shortest path 是 s-t 长度 1。Common mistake: 把 DFS reachability 与 shortest path 混淆。
+  \item \textbf{Problem 26.} Strategy: outer loop over vertices。Solution: 对每个 unvisited vertex 启动 BFS/DFS，访问到的集合是一个 component。每个 vertex 入队/入栈一次，每条 edge 被检查常数次，复杂度 O(|V|+|E|)。Common mistake: 只从一个 source 出发。
+  \item \textbf{Problem 27.} Strategy: edge finish relation。Solution: 对任意 edge u->v。若 DFS 从 u 发现 v，则 v 完成后 u 才完成，finish(u)>finish(v)。若 v 已完成，则 finish(v)<finish(u)。若 v 在递归栈中则有 cycle，与 DAG 矛盾。因此 u 总在 v 前。Common mistake: 不排除 back edge。
+  \item \textbf{Problem 28.} Strategy: settled invariant breaks。Solution: Dijkstra 的 invariant 是每次取出的最小 tentative distance 已最终确定。若存在负权边，之后可能通过尚未处理 vertex 把已确定 vertex 的距离降低，破坏 invariant。Common mistake: 认为只要没有 negative cycle 就可直接用 Dijkstra。
+\end{enumerate}
+
+\section{Day 5 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 29.} Strategy: compare greedy vs optimal。Solution: Greedy 选 4，剩 2，得 4+1+1 共 3 枚；最优为 3+3 共 2 枚。Common mistake: 用 canonical coin systems 的经验推广到任意系统。
+  \item \textbf{Problem 30.} Strategy: sort by finish。Solution: finish order: [1,2), [0,3), [2,4), [3,5)。选 [1,2)，再选 [2,4)，不能选 [3,5) 因为与 [2,4) 重叠。输出 2 个 intervals。Common mistake: 按 start time 选。
+  \item \textbf{Problem 31.} Strategy: replace first optimal interval。Solution: 令 g 为最早结束 interval，O 为任意 optimal solution，o 为 O 中最早结束 interval。因为 f\_g <= f\_o，用 g 替换 o 不会与 O 中其他 intervals 冲突，且大小不变，所以存在包含 g 的 optimal solution。Common mistake: 说所有 optimal 都包含 g。
+  \item \textbf{Problem 32.} Strategy: compare kth finish times。Solution: 令 g\_k 是 greedy 第 k 个 interval，o\_k 是任一 optimal solution 的第 k 个 interval。证明 f(g\_k) <= f(o\_k) 对所有 k 成立。若 optimal 有 r 个 intervals，greedy 至少也可安排到 r 个。Common mistake: 比较 start time 而不是 finish time。
+  \item \textbf{Problem 33.} Strategy: exchange equal weight。Solution: 若某解取了低 density item 的正重量，同时高 density item 未取满，则把一小段重量从低 density 换到高 density，价值不降且若 density 严格更高则增加。重复得到按 density 的 greedy form。Common mistake: 套用到 0/1 knapsack。
+  \item \textbf{Problem 34.} Strategy: component cut。Solution: 当前 forest 的某个 component S 与 V\S 形成 cut。Kruskal 选择的连接该 component 到外部的最轻安全边跨越此 cut。根据 cut property，该 light edge 属于某个 MST，可加入而不破坏存在最优扩展。Common mistake: 未说明 cut 如何由 component 给出。
+  \item \textbf{Problem 35.} Strategy: 一个长 interval 堵住多个短 interval。Solution: intervals [0,10), [1,2), [2,3), [3,4)。Earliest start 选 [0,10) 得 1；earliest finish 可选三个短 interval。Common mistake: 只凭直觉说开始早更好。
+\end{enumerate}
+
+\section{Day 6 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 36.} Strategy: avoid ambiguity。Solution: dp[i] 表示以 A[i] 结尾的 longest increasing subsequence length。最终答案是 max\_i dp[i]。Common mistake: 以为 dp[n-1] 就是答案。
+  \item \textbf{Problem 37.} Strategy: empty prefix。Solution: dp[i][0]=i，因为把长度 i 的 string 变空需要 i 次 delete；dp[0][j]=j，因为从空变成长度 j 的 string 需要 j 次 insert。Common mistake: base case 全设为 0。
+  \item \textbf{Problem 38.} Strategy: previous element case split。Solution: dp[i]=1+max{dp[j]:j<i,A[j]<A[i]}，若集合空则 dp[i]=1。任何以 i 结尾的 increasing subsequence 的前一个 index 必为 j<i 且 A[j]<A[i]；反之任意这样的 subsequence 可接 A[i]。Common mistake: 用 A[j]<=A[i] 改变问题为 nondecreasing。
+  \item \textbf{Problem 39.} Strategy: last operation。Solution: dp[i][j]=min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)，其中 cost=0 if x[i-1]=y[j-1] else 1。三项对应 delete x last, insert y last, match/substitute。Common mistake: index i 与字符 x[i-1] 混淆。
+  \item \textbf{Problem 40.} Strategy: dependencies smaller。Solution: dp[i][j] 依赖 dp[i-1][j], dp[i][j-1], dp[i-1][j-1]。按行主序填时，上一行和左侧当前行已计算，依赖满足。Common mistake: 使用未计算状态。
+  \item \textbf{Problem 41.} Strategy: include/exclude item。Solution: dp[i][w]=dp[i-1][w] if weight\_i>w，否则 max(skip, value\_i+dp[i-1][w-weight\_i])。时间 O(nW)，但 W 的二进制编码长度是 log W，所以该复杂度不一定是输入长度的 polynomial。Common mistake: 忽略数字编码。
+  \item \textbf{Problem 42.} Strategy: parent pointers。Solution: 计算 dp[i] 时记录达到最大值的前驱 parent[i]。从 max dp 的 index 反复跟 parent 回溯，再 reverse。Common mistake: 只计算 value 却声称已经输出解。
+\end{enumerate}
+
+\section{Day 7 Solutions}
+\begin{enumerate}
+  \item \textbf{Problem 43.} Strategy: correctness vs time。Solution: Las Vegas 总输出正确，时间随机，如 randomized quickselect 若一直运行到确定 rank。Monte Carlo 时间受控但可错，如抽样 majority toy test。Common mistake: 认为 randomized 就一定可能错。
+  \item \textbf{Problem 44.} Strategy: random choices sequence。Solution: sample space 是每次递归 pivot rank 或 pivot index 的所有可能序列，概率由每层 uniform pivot choice 决定。Running time 是该 sample space 上的 random variable。Common mistake: 把输入分布当成算法随机性。
+  \item \textbf{Problem 45.} Strategy: quantify randomness vs input。Solution: Expected time 固定输入后对算法 random bits 取期望；worst-case time 对输入和随机选择中的最坏路径取最大。Randomized quickselect expected O(n)，但某些 pivot 序列导致 O(n\textasciicircum{}2)。Common mistake: 认为 expected O(n) 表示所有运行都 O(n)。
+  \item \textbf{Problem 46.} Strategy: independence product。Solution: sample space 是 r 次 independent random bits。整体 failure 事件是每次都失败，概率 <=(1/3)\textasciicircum{}r。Common mistake: 没有独立性就相乘。
+  \item \textbf{Problem 47.} Strategy: count bad runs。Solution: 整体错误当且仅当超过 r/2 次 base run 错误。可用 binomial tail 或 Chernoff bound 控制。Common mistake: 以为只要有一次正确就 majority 正确。
+  \item \textbf{Problem 48.} Strategy: correctness conditional on any pivot。Solution: 对任意 pivot，partition 得 L,E,G 且所有 L<=E<=G。递归排序 L,G 后 concatenation sorted permutation。随机性只影响运行时间分析，不影响 correctness。Common mistake: 把随机 pivot 当成正确性必要条件。
+  \item \textbf{Problem 49.} Strategy: define random hash function。Solution: 若 h(k) uniform over m buckets 且 pairwise collision probability 1/m，则 Pr[h(x)=h(y)]=1/m。Bucket length 的 expectation 用 indicators I\_y=1[h(y)=h(x)] 求和。Common mistake: 不说明 hash function 的随机模型。
+\end{enumerate}
+
+\section{Self-Test Answer Key}
+\begin{enumerate}
+  \item Short answers should define the requested term, state the relevant model or assumption, and give one example or non-example.
+  \item Correctness proofs are graded for specification, invariant or induction hypothesis, maintenance/step argument, termination, and edge cases.
+  \item Complexity analyses must name variables and distinguish worst-case, expected, and amortized claims.
+  \item Design questions must include problem statement, input, output, algorithm idea, pseudocode, correctness, and complexity.
+  \item Randomized answers must define the sample space, random variables, bad event, and independence assumptions.
+  \item The comprehensive problem should combine a clean specification, at least one proof pattern, and a final complexity statement.
+\end{enumerate}
+
+\section{Self-Test Solution Outlines}
+
+\subsection*{Short Answer}
+\begin{enumerate}
+  \item An algorithmic problem is a family of valid instances together with acceptable outputs. An algorithm is a procedure proposed to solve that problem.
+  \item Binary search precondition: array is sorted and finite. Postcondition: return an index containing the target, or report that no such index exists.
+  \item The comparison model allows pairwise comparisons and forbids using numeric key structure such as counting buckets unless that operation is part of the model.
+  \item Stability preserves relative order of equal keys. In-place concerns auxiliary space. Neither property implies the other.
+  \item A representation invariant is a condition all valid internal states of a data structure must satisfy.
+  \item Amortized analysis bounds a worst-case sequence of operations. Average-case analysis requires an input or randomness distribution.
+  \item BFS invariant: vertices are processed by nondecreasing distance layers, and first discovery gives a shortest unweighted path length.
+  \item Greedy choice is safe means there exists an optimal solution containing the greedy choice, so committing to it does not reduce optimal value.
+  \item For edit distance, dp[i][j] is the minimum number of edits turning the first i characters of x into the first j characters of y.
+  \item Las Vegas algorithms are always correct but may have random running time. Monte Carlo algorithms may err with bounded probability.
+\end{enumerate}
+
+\subsection*{Algorithm Correctness Proofs}
+\begin{enumerate}
+  \item Use the sorted-prefix invariant: before outer iteration i, A[0..i) is a sorted permutation of the original prefix. Prove initialization, maintenance by shifting, and termination at i=n.
+  \item Induct on n. Recursive calls sort both halves by induction. The merge lemma says merging two sorted permutations gives a sorted permutation of their union.
+  \item After appending, only the new leaf-to-root path can violate heap order. Each swap moves the violation upward and preserves off-path edges. Stop condition restores parent-child order everywhere.
+  \item Use the BFS layer invariant. If v is first discovered from u, then a path of length dist[u]+1 exists. A shorter path would have a predecessor in an earlier layer, processed before u.
+  \item Use exchange argument. Replace the first interval of an optimal solution with the earliest-finishing interval; feasibility and cardinality are preserved, then recurse on the remaining compatible intervals.
+\end{enumerate}
+
+\subsection*{Complexity Analysis}
+\begin{enumerate}
+  \item In T(n)=2T(n/2)+n, each recursion-tree level costs n and there are log n levels, so T(n)=Theta(n log n).
+  \item Binary search halves the candidate interval each comparison, so worst-case comparisons are Theta(log n).
+  \item Chained hash search is expected O(1+alpha) under simple uniform hashing, where alpha=n/m. Worst case is O(n) if all keys collide.
+  \item Dynamic array doubling copies 1+2+4+...+less than m elements over m appends, so total cost is O(m) and amortized cost is O(1) by aggregate method.
+\end{enumerate}
+
+\subsection*{Design Questions}
+\begin{enumerate}
+  \item Min/max divide-and-conquer returns a pair for each half and combines by comparing two minima and two maxima. Correctness is induction on subarray length; time satisfies T(n)=2T(n/2)+O(1)=O(n).
+  \item LIS design: dp[i] is LIS length ending at i; parent[i] stores predecessor. Transition checks all j<i with A[j]<A[i]. Reconstruction follows parent from an index with maximum dp value.
+  \item Components design: scan all vertices; start BFS or DFS at each unvisited vertex; the reached set is one component. Each vertex and edge is processed a constant number of times, so time is O(|V|+|E|).
+\end{enumerate}
+
+\subsection*{Randomized and Amortized Questions}
+\begin{enumerate}
+  \item Randomized quickselect sample space is the sequence of pivot choices. Running time is the number of comparisons or partition work as a random variable over that sample space.
+  \item Repeat the Monte Carlo algorithm r independent times. If overall failure means all runs fail, probability is at most (1/4)\textasciicircum{}r. If majority vote is used, the bad event is more than half the runs failing.
+\end{enumerate}
+
+\subsection*{Comprehensive Question}
+For shortest paths in a DAG, topologically sort reachable vertices from s, initialize dist[s]=0 and other distances to infinity, then relax outgoing edges in topological order. Correctness is induction over topological order: when vertex u is processed, all possible predecessors of u have already been processed, so dist[u] is final. Each edge is relaxed once after topological ordering, so time is O(|V|+|E|) with adjacency lists, and space is O(|V|+|E|) for the graph plus O(|V|) for distances and parents.
+
+\end{document}

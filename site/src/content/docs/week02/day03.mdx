@@ -1,0 +1,150 @@
+---
+title: "Day 3: Data Structures and Amortization"
+description: "Week 2 Day 3 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week02/day03-data-structures-heaps-hashing-amortization.md`
+
+# Data Structures, Heaps, Hashing, and Amortized Analysis
+
+## 1. 今日目标
+
+理解 data structure = interface + representation + invariant + operation analysis。
+
+## 2. 为什么这个主题对 TCS 重要
+
+理论算法分析要说明抽象数据类型支持什么操作、在什么假设下达到什么复杂度。 本周始终区分 problem、algorithm、model、proof 和 experiment。
+
+## 3. Week 1 依赖概念
+
+functions, sets, invariants, worst-case vs average-case, expectation basics。如果这些概念还不稳定，先复习 Week 1 对应 note，再开始证明题。
+
+## 4. 核心定义
+
+- **data structure:** representation 支持 operations。
+- **abstract data type:** interface 与 behavior，不规定内部实现。
+- **interface:** operations 的输入输出和语义。
+- **representation invariant:** 内部状态必须持续满足的条件。
+- **priority queue:** insert 与 extract-min/max。
+- **binary heap:** 数组表示的近似完全二叉树。
+- **hash table:** hash function 到 buckets。
+- **load factor:** n/m。
+- **amortized analysis:** 一串操作的平均摊还上界。
+
+
+    ## 5. 最小例子
+
+    Priority queue interface 可以由 binary heap 实现。
+
+    ## 6. 反例或 non-example
+
+    heap 不是 binary search tree；heap 不保证左子树整体小于右子树。
+
+    ## 7. 关键算法
+
+    ### Algorithm: Binary Heap Insert
+
+- **Problem:** priority queue insert
+- **Input:** heap array H and key x
+- **Output:** heap containing old keys plus x
+- **Assumptions:** H satisfies heap invariant before insert
+- **Algorithm idea:** 把 x 放到末尾，再向上交换直到 parent &lt;= x。
+- **Pseudocode:** `append x; while parent greater: swap`
+- **Invariant or proof structure:** heap invariant can only be violated along path from new leaf to root。
+- **Correctness proof:** 每次交换修复当前 parent-child violation；未在路径上的边未改变；停止时路径上也满足 invariant。
+- **Time complexity:** O(log n)。
+- **Space complexity:** O(1) extra。
+- **Edge cases:** duplicate keys, empty heap
+- **Common mistakes:** 认为 append 后全局都可能坏，证明失去焦点。
+
+### Algorithm: Chained Hash Table Find
+
+- **Problem:** dictionary lookup
+- **Input:** table of buckets and key k
+- **Output:** stored value or missing
+- **Assumptions:** hash function maps keys to bucket indices
+- **Algorithm idea:** 只查 h(k) 对应 bucket 的链。
+- **Pseudocode:** `scan bucket table[h(k)]`
+- **Invariant or proof structure:** representation invariant: every key is stored in bucket h(key)。
+- **Correctness proof:** 若 k 存在，由 invariant 它只能在 bucket h(k)；遍历该 bucket 会找到它。
+- **Time complexity:** Expected O(1+alpha) under uniform hashing; worst-case O(n)。
+- **Space complexity:** O(n+m) for n items and m buckets。
+- **Edge cases:** collisions, equal hash but unequal keys
+- **Common mistakes:** 只说 hash table 是 O(1)，不写 hashing assumption。
+
+### Algorithm: Dynamic Array Append
+
+- **Problem:** sequence append
+- **Input:** dynamic array with capacity c and size n
+- **Output:** array with x appended
+- **Assumptions:** 0 &lt;= n &lt;= c
+- **Algorithm idea:** 若满则扩容为 2c，再复制元素并写入 x。
+- **Pseudocode:** `if n==c: allocate 2c and copy; A[n]=x; n+=1`
+- **Invariant or proof structure:** representation invariant: first n slots are sequence, c>=n。
+- **Correctness proof:** resize 复制保持顺序；写入新 slot 后 size 增 1，capacity 仍覆盖 size。
+- **Time complexity:** Worst-case O(n), amortized O(1)。
+- **Space complexity:** O(c)。
+- **Edge cases:** initial capacity 0, many appends
+- **Common mistakes:** 把 amortized O(1) 当成每次 worst-case O(1)。
+
+    ## 8. 正确性证明模板
+
+    1. **Statement:** 写清 problem、input、output、precondition、postcondition。
+    2. **Invariant / induction variable:** loop 用 invariant，recursive algorithm 用 input size induction，data structure 用 representation invariant，DP 用 state order。
+    3. **Initialization / base case:** 说明最小状态或第一轮循环满足条件。
+    4. **Maintenance / induction step:** 假设之前状态满足 specification，证明一步操作后仍满足。
+    5. **Termination:** 说明算法会停止，并把 invariant 转化成 postcondition。
+    6. **Edge cases:** 空输入、单元素、重复元素、不可达状态、ties、invalid precondition。
+
+    ## 9. 复杂度分析模板
+
+    - 声明变量，例如 $n$ 是元素数，$|V|$ 是 vertices 数，$|E|$ 是 edges 数。
+    - 分清 preprocessing、single operation、query、total running time 和 space。
+    - Worst-case 要对所有输入取最大；expected time 要说明随机性；amortized time 要说明操作序列。
+    - Recurrence 必须包含 base case；randomized analysis 必须定义 sample space 和 random variable。
+
+    ## 10. 常见错误
+
+1. interface 和 implementation 混写。
+2. heap 与 BST 混淆。
+3. hashing assumption 缺失。
+4. amortized 与 average-case 混淆。
+
+
+## 11. 与 string algorithms / learning theory / complexity theory 的联系
+
+Heaps、hashing 和 dynamic arrays 是后续 graph、string index、randomized hashing 的基础。
+
+## 12. 必做练习
+
+- 阅读本 note 的所有 algorithm blocks，并手写每个 algorithm 的 Problem/Input/Output。
+- 完成 `exercises/week02/day03_exercises.tex` 的前 8 到 10 题。
+- 在 `state/mistakes_log.md` 中记录至少一个容易犯错点，即使你还没有做错。
+
+## 13. 选做练习
+
+- 把本日一个 correctness proof 改写成 Statement/Definitions/Assumptions/Goal/Strategy/Proof/Check。
+- 找一个 small input，手算 algorithm 的中间状态，并标注 invariant。
+
+## 14. 自测问题
+
+- 今天的 problem specification 是什么？
+- 哪个 invariant 或 induction hypothesis 支撑 correctness proof？
+- 复杂度里的变量是什么？
+- 哪个 conclusion 依赖模型假设或随机性假设？
+
+## 15. 明天复习什么
+
+明天开始前，用 10 分钟复述今天的 specification、proof template 和最容易犯的错误。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week02/day02/">Previous</a>
+  <a class="button-link" href="/week02/day04/">Next</a>
+  <a class="button-link" href="/review/week02-review/">Review</a>
+  <a class="button-link" href="/exercises/week02-problem-set/">Exercises</a>
+</div>

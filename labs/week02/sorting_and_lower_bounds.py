@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+"""Week 2 Day 1 lab: sorting growth and comparison lower-bound intuition.
+
+Mathematical meaning: comparison sorting lower bounds are proved by decision
+ trees, not by this program. The tables below only make n log n, n^2, and
+ log2(n!) numerically concrete.
+"""
+
+from __future__ import annotations
+
+import math
+from typing import List
+
+
+def insertion_sort(values: List[int]) -> List[int]:
+    arr = values[:]
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+
+def merge_sort(values: List[int]) -> List[int]:
+    if len(values) <= 1:
+        return values[:]
+    mid = len(values) // 2
+    left = merge_sort(values[:mid])
+    right = merge_sort(values[mid:])
+    out: List[int] = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            out.append(left[i])
+            i += 1
+        else:
+            out.append(right[j])
+            j += 1
+    return out + left[i:] + right[j:]
+
+
+def log2_factorial(n: int) -> float:
+    return sum(math.log2(k) for k in range(1, n + 1))
+
+
+def run_tests() -> None:
+    samples = [[], [1], [3, 1, 2], [5, 4, 3, 2, 1], [2, 2, 1]]
+    for sample in samples:
+        assert insertion_sort(sample) == sorted(sample)
+        assert merge_sort(sample) == sorted(sample)
+    assert log2_factorial(1) == 0.0
+
+
+def main() -> None:
+    run_tests()
+    print("Week 2 Day 1: sorting growth intuition")
+    print("Experiment is not a proof: comparison lower bound needs decision trees.")
+    print(" n | n log2 n | n^2 | log2(n!) lower-bound quantity")
+    for n in [2, 4, 8, 16, 32, 64, 128]:
+        nlogn = n * math.log2(n)
+        print(f"{n:3d} | {nlogn:8.1f} | {n*n:5d} | {log2_factorial(n):10.1f}")
+
+
+if __name__ == "__main__":
+    main()

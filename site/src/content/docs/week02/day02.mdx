@@ -1,0 +1,150 @@
+---
+title: "Day 2: Divide and Conquer, Selection"
+description: "Week 2 Day 2 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week02/day02-divide-and-conquer-selection.md`
+
+# Divide and Conquer, Recurrence Proofs, and Selection
+
+## 1. 今日目标
+
+掌握 recursive correctness proof 与 recurrence analysis，把 selection 与 sorting 区分开。
+
+## 2. 为什么这个主题对 TCS 重要
+
+Divide-and-conquer 把 Week 1 的 induction、recurrence 和 asymptotics 变成算法证明工具。 本周始终区分 problem、algorithm、model、proof 和 experiment。
+
+## 3. Week 1 依赖概念
+
+strong induction, recurrence, recursion tree, Big-O/Theta, probability expectation preview。如果这些概念还不稳定，先复习 Week 1 对应 note，再开始证明题。
+
+## 4. 核心定义
+
+- **divide and conquer:** divide, solve, combine。
+- **recursive decomposition:** 子问题必须规模变小且覆盖原问题。
+- **combine step:** 子答案变成原答案。
+- **recurrence:** T(n) 与较小 T(k) 的关系。
+- **substitution method:** 猜测界并用 induction 证明。
+- **recursion tree:** 按层展开成本。
+- **selection problem:** 输出第 k 小，不要求排序。
+- **quickselect:** 只递归 rank 所在一侧。
+- **median-of-medians:** 保证 pivot quality 的确定性方法。
+
+
+    ## 5. 最小例子
+
+    Binary search 的子问题仍是“在有序区间中找 x”。
+
+    ## 6. 反例或 non-example
+
+    随意拆输入但没有 combine specification，不是完整分治算法。
+
+    ## 7. 关键算法
+
+    ### Algorithm: Binary Search
+
+- **Problem:** membership/search in sorted array
+- **Input:** sorted array A and target x
+- **Output:** index of x or -1
+- **Assumptions:** A is sorted in nondecreasing order
+- **Algorithm idea:** 维护闭区间 [lo,hi] 包含所有可能位置。
+- **Pseudocode:** `while lo&lt;=hi: compare A[mid] with x and discard one side`
+- **Invariant or proof structure:** invariant: 若 x 在 A 中，则某个合法位置仍在 [lo,hi]。
+- **Correctness proof:** discard 的一侧由 sortedness 排除；循环结束 lo>hi 时没有可能位置。
+- **Time complexity:** O(log n) comparisons。
+- **Space complexity:** O(1)。
+- **Edge cases:** empty array, duplicate targets
+- **Common mistakes:** 没有把 sortedness 写成 precondition。
+
+### Algorithm: Quickselect
+
+- **Problem:** selection problem
+- **Input:** array A and rank k
+- **Output:** the k-th smallest element
+- **Assumptions:** 1 &lt;= k &lt;= n; elements comparable
+- **Algorithm idea:** 选 pivot，partition 后只递归到包含第 k 小元素的一侧。
+- **Pseudocode:** `split L,E,G by pivot; recurse into rank-containing part`
+- **Invariant or proof structure:** induction on n and partition rank cases。
+- **Correctness proof:** partition 把元素按与 pivot 的关系分类；rank 落在哪一类由 |L| 与 |E| 决定；递归规模减小。
+- **Time complexity:** random pivot expected O(n), worst-case O(n^2)。
+- **Space complexity:** O(n) if copying partitions, O(1) if in-place。
+- **Edge cases:** duplicates, k at extremes
+- **Common mistakes:** 把 expected time 写成 worst-case time。
+
+### Algorithm: Median-of-Medians Selection
+
+- **Problem:** deterministic selection
+- **Input:** array A and rank k
+- **Output:** the k-th smallest element
+- **Assumptions:** groups of constant size, usually 5
+- **Algorithm idea:** 分组取中位数，递归找中位数的中位数作为 pivot。
+- **Pseudocode:** `group by 5; select median of medians; partition; recurse`
+- **Invariant or proof structure:** pivot quality lemma + induction。
+- **Correctness proof:** pivot 至少大于常数比例元素，也小于常数比例元素，因此递归子问题至多固定比例 n。
+- **Time complexity:** T(n) &lt;= T(n/5)+T(7n/10)+O(n)=O(n)。
+- **Space complexity:** O(n) with simple copying。
+- **Edge cases:** small n, duplicates
+- **Common mistakes:** 只背结论但不说明 pivot quality。
+
+    ## 8. 正确性证明模板
+
+    1. **Statement:** 写清 problem、input、output、precondition、postcondition。
+    2. **Invariant / induction variable:** loop 用 invariant，recursive algorithm 用 input size induction，data structure 用 representation invariant，DP 用 state order。
+    3. **Initialization / base case:** 说明最小状态或第一轮循环满足条件。
+    4. **Maintenance / induction step:** 假设之前状态满足 specification，证明一步操作后仍满足。
+    5. **Termination:** 说明算法会停止，并把 invariant 转化成 postcondition。
+    6. **Edge cases:** 空输入、单元素、重复元素、不可达状态、ties、invalid precondition。
+
+    ## 9. 复杂度分析模板
+
+    - 声明变量，例如 $n$ 是元素数，$|V|$ 是 vertices 数，$|E|$ 是 edges 数。
+    - 分清 preprocessing、single operation、query、total running time 和 space。
+    - Worst-case 要对所有输入取最大；expected time 要说明随机性；amortized time 要说明操作序列。
+    - Recurrence 必须包含 base case；randomized analysis 必须定义 sample space 和 random variable。
+
+    ## 10. 常见错误
+
+1. recursive base case 缺失。
+2. Master theorem 硬套。
+3. selection 与 sorting 混淆。
+4. quickselect expected/worst-case 混淆。
+
+
+## 11. 与 string algorithms / learning theory / complexity theory 的联系
+
+Selection、recurrence 和 recursive proof 会在 randomized algorithms 与 string preprocessing 中反复出现。
+
+## 12. 必做练习
+
+- 阅读本 note 的所有 algorithm blocks，并手写每个 algorithm 的 Problem/Input/Output。
+- 完成 `exercises/week02/day02_exercises.tex` 的前 8 到 10 题。
+- 在 `state/mistakes_log.md` 中记录至少一个容易犯错点，即使你还没有做错。
+
+## 13. 选做练习
+
+- 把本日一个 correctness proof 改写成 Statement/Definitions/Assumptions/Goal/Strategy/Proof/Check。
+- 找一个 small input，手算 algorithm 的中间状态，并标注 invariant。
+
+## 14. 自测问题
+
+- 今天的 problem specification 是什么？
+- 哪个 invariant 或 induction hypothesis 支撑 correctness proof？
+- 复杂度里的变量是什么？
+- 哪个 conclusion 依赖模型假设或随机性假设？
+
+## 15. 明天复习什么
+
+明天开始前，用 10 分钟复述今天的 specification、proof template 和最容易犯的错误。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week02/day01/">Previous</a>
+  <a class="button-link" href="/week02/day03/">Next</a>
+  <a class="button-link" href="/review/week02-review/">Review</a>
+  <a class="button-link" href="/exercises/week02-problem-set/">Exercises</a>
+</div>

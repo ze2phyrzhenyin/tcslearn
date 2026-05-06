@@ -14,7 +14,7 @@ Each solution gives a strategy, a complete argument, and a common mistake. Proba
 ### Solution 1
 
 **Strategy.** Flip each quantifier and negate the predicate. **Solution.**
-$$\exists x\in\mathbb{Z}\ \forall y\in\mathbb{Z}\ \exists z\in\mathbb{Z}\ (x+y\ge z).$$
+$$\exists x\in\mathbb\{Z\}\ \forall y\in\mathbb\{Z\}\ \exists z\in\mathbb\{Z\}\ (x+y\ge z).$$
 The domains remain unchanged. **Common mistake.** Negating only the inequality while leaving quantifiers unchanged.
 ### Solution 2
 
@@ -24,7 +24,7 @@ The domains remain unchanged. **Common mistake.** Negating only the inequality w
 **Strategy.** Prove double inclusion using membership definitions. **Solution.** If $x\in A\cap(B\cup C)$, then $x\in A$ and $(x\in B$ or $x\in C)$. Hence $(x\in A\cap B)$ or $(x\in A\cap C)$, so $x$ is in the right side. Conversely, if $x$ is in the right side, then either $x\in A\cap B$ or $x\in A\cap C$. In both cases $x\in A$ and $x\in B\cup C$, so $x$ is in the left side. **Common mistake.** Proving only one inclusion.
 ### Solution 4
 
-**Strategy.** For injective, equate outputs. For surjective, solve $3x+2=y$ in integers. **Solution.** If $f(a)=f(b)$, then $3a+2=3b+2$, so $a=b$; $f$ is injective. It is not surjective onto $\mathbb{Z}$: $0$ would require $3x+2=0$, so $x=-2/3\notin\mathbb{Z}$. **Common mistake.** Showing many values are hit instead of every codomain value.
+**Strategy.** For injective, equate outputs. For surjective, solve $3x+2=y$ in integers. **Solution.** If $f(a)=f(b)$, then $3a+2=3b+2$, so $a=b$; $f$ is injective. It is not surjective onto $\mathbb\{Z\}$: $0$ would require $3x+2=0$, so $x=-2/3\notin\mathbb\{Z\}$. **Common mistake.** Showing many values are hit instead of every codomain value.
 ### Solution 5
 
 **Strategy.** Check reflexive, symmetric, transitive. **Solution.** Define $a\sim b$ iff $m$ divides $a-b$. Reflexive: $m\mid a-a=0$. Symmetric: if $m\mid a-b$, then $m\mid -(a-b)=b-a$. Transitive: if $m\mid a-b$ and $m\mid b-c$, then $m\mid(a-b)+(b-c)=a-c$. Thus $\sim$ is an equivalence relation. **Common mistake.** Forgetting to state $m$ is a fixed positive integer.
@@ -32,24 +32,24 @@ The domains remain unchanged. **Common mistake.** Negating only the inequality w
 
 **Strategy.** Use the definition of preimage. **Solution.** For $x\in A$,
 $$
-x\in f^{-1}(S\cap T)\iff f(x)\in S\cap T\iff f(x)\in S\text{ and }f(x)\in T
+x\in f^\{-1\}(S\cap T)\iff f(x)\in S\cap T\iff f(x)\in S\text\{ and \}f(x)\in T
 $$
 $$
-\iff x\in f^{-1}(S)\text{ and }x\in f^{-1}(T)\iff x\in f^{-1}(S)\cap f^{-1}(T).
+\iff x\in f^\{-1\}(S)\text\{ and \}x\in f^\{-1\}(T)\iff x\in f^\{-1\}(S)\cap f^\{-1\}(T).
 $$
-Therefore the sets are equal. **Common mistake.** Assuming $f^{-1}$ is an inverse function.
+Therefore the sets are equal. **Common mistake.** Assuming $f^\{-1\}$ is an inverse function.
 ## Day 2 Solutions
 [label=**2.\arabic*.**]
 ### Solution 7
 
-**Strategy.** Ordinary induction on $n$. **Solution.** Base $n=1$: both sides are $1$. Assume $\sum_{i=1}^k i=k(k+1)/2$. Then
+**Strategy.** Ordinary induction on $n$. **Solution.** Base $n=1$: both sides are $1$. Assume $\sum_\{i=1\}^k i=k(k+1)/2$. Then
 $$
-\sum_{i=1}^{k+1}i=\frac{k(k+1)}2+(k+1)=\frac{(k+1)(k+2)}2.
+\sum_\{i=1\}^\{k+1\}i=\frac\{k(k+1)\}2+(k+1)=\frac\{(k+1)(k+2)\}2.
 $$
 Thus the claim holds for all $n\ge1$. **Common mistake.** Using the formula for $k+1$ inside the induction step.
 ### Solution 8
 
-**Strategy.** Induct on $n$ and preserve divisibility. **Solution.** Base $n=0$: $7^0-1=0$ is divisible by $6$. Assume $6\mid 7^k-1$. Then $7^{k+1}-1=7(7^k-1)+6$, a sum of multiples of $6$. **Common mistake.** Forgetting that $0$ is divisible by $6$.
+**Strategy.** Induct on $n$ and preserve divisibility. **Solution.** Base $n=0$: $7^0-1=0$ is divisible by $6$. Assume $6\mid 7^k-1$. Then $7^\{k+1\}-1=7(7^k-1)+6$, a sum of multiples of $6$. **Common mistake.** Forgetting that $0$ is divisible by $6$.
 ### Solution 9
 
 **Strategy.** Strong induction; if $n$ is composite, factor into smaller integers. **Solution.** Base $n=2$ is prime. Assume every integer $2,\ldots,k$ is a product of primes. For $k+1$, if prime, done. If composite, $k+1=ab$ with $2\le a,b\le k$. By the hypothesis, $a$ and $b$ are products of primes, so $k+1$ is. **Common mistake.** Using only $P(k)$ when the factor could be much smaller.
@@ -58,7 +58,7 @@ Thus the claim holds for all $n\ge1$. **Common mistake.** Using the formula for 
 **Strategy.** Structural induction on the recursive definition. **Solution.** Base: $\epsilon$ has length $0$, finite. Step: assume $w$ has finite length $\ell$. Then $0w$ and $1w$ have length $\ell+1$, finite. Therefore every generated string has finite length. **Common mistake.** Inducting on length without first connecting length to the recursive definition.
 ### Solution 11
 
-**Strategy.** Use prefix invariant. **Solution.** Consider loop: $s=0$; for $i=0$ to $n-1$, set $s=s+a_i$. Invariant before iteration $i$: $s=\sum_{j=0}^{i-1}a_j$. Initialization: before $i=0$, empty sum is $0$. Maintenance: after adding $a_i$, $s=\sum_{j=0}^{i}a_j$, which is the invariant for $i+1$. Termination: at $i=n$, $s=\sum_{j=0}^{n-1}a_j$. Complexity is $O(n)$ additions. **Common mistake.** Stating only the final postcondition as the invariant.
+**Strategy.** Use prefix invariant. **Solution.** Consider loop: $s=0$; for $i=0$ to $n-1$, set $s=s+a_i$. Invariant before iteration $i$: $s=\sum_\{j=0\}^\{i-1\}a_j$. Initialization: before $i=0$, empty sum is $0$. Maintenance: after adding $a_i$, $s=\sum_\{j=0\}^\{i\}a_j$, which is the invariant for $i+1$. Termination: at $i=n$, $s=\sum_\{j=0\}^\{n-1\}a_j$. Complexity is $O(n)$ additions. **Common mistake.** Stating only the final postcondition as the invariant.
 ### Solution 12
 
 **Strategy.** Prove invariant and termination. **Solution.** Euclid repeatedly replaces $(a,b)$ by $(b,a\bmod b)$ until $b=0$. The invariant is $\gcd(a,b)$ is unchanged because common divisors of $a,b$ are exactly common divisors of $b,a-qb=a\bmod b$. Termination holds because the second component strictly decreases and remains nonnegative. At termination $(d,0)$ has gcd $d$, so the algorithm returns the original gcd. Complexity is separate from correctness and is not required here. **Common mistake.** Saying the numbers get smaller without identifying the decreasing measure.
@@ -89,7 +89,7 @@ Thus the claim holds for all $n\ge1$. **Common mistake.** Using the formula for 
 **Strategy.** Product rule; order matters, repetition allowed. **Solution.** Each of 5 positions has 3 choices, so there are $3^5=243$ strings. **Common mistake.** Using combinations even though positions are ordered.
 ### Solution 20
 
-**Strategy.** Use combinations. **Solution.** A 3-element subset is unordered and has no repetition, so the count is $\binom{10}{3}=120$. **Common mistake.** Counting ordered triples $10\cdot9\cdot8$.
+**Strategy.** Use combinations. **Solution.** A 3-element subset is unordered and has no repetition, so the count is $\binom\{10\}\{3\}=120$. **Common mistake.** Counting ordered triples $10\cdot9\cdot8$.
 ### Solution 21
 
 **Strategy.** Inclusion-exclusion. **Solution.** Multiples of 2: $\lfloor100/2\rfloor=50$. Multiples of 5: $20$. Multiples of both are multiples of 10: $10$. Count is $50+20-10=60$. **Common mistake.** Forgetting to subtract the intersection.
@@ -101,48 +101,48 @@ Thus the claim holds for all $n\ge1$. **Common mistake.** Using the formula for 
 **Strategy.** Induct using a leaf. **Solution.** Base $n=1$: zero edges. For $n>1$, a finite tree has a leaf. Remove the leaf and its incident edge; the remaining graph is a tree on $n-1$ vertices. By induction it has $n-2$ edges. Adding back the leaf adds one edge, so the original has $n-1$ edges. **Common mistake.** Using the theorem itself to justify the existence of a leaf.
 ### Solution 24
 
-**Strategy.** Define the rooted tree by prefix extension. **Solution.** Vertices are all binary strings of length at most 3: $1+2+4+8=15$ vertices. Edges connect $w$ to $w0$ and $w1$ when $|w|<3$. Since this is a tree, edges are $15-1=14$; directly, $2+4+8=14$. **Common mistake.** Counting only strings of length exactly 3.
+**Strategy.** Define the rooted tree by prefix extension. **Solution.** Vertices are all binary strings of length at most 3: $1+2+4+8=15$ vertices. Edges connect $w$ to $w0$ and $w1$ when $|w|&lt;3$. Since this is a tree, edges are $15-1=14$; directly, $2+4+8=14$. **Common mistake.** Counting only strings of length exactly 3.
 ## Day 5 Solutions
 [label=**5.\arabic*.**]
 ### Solution 25
 
-**Strategy.** Condition on a smaller sample space. **Solution.** Sample space is ordered pairs $(i,j)$ with $i,j\in\{1,\ldots,6\}$. Given first die is 3, possible outcomes are $(3,1),\ldots,(3,6)$, equally likely. Sum 7 occurs only at $(3,4)$, so probability is $1/6$. **Common mistake.** Continuing to divide by 36 after conditioning.
+**Strategy.** Condition on a smaller sample space. **Solution.** Sample space is ordered pairs $(i,j)$ with $i,j\in\\{1,\ldots,6\\}$. Given first die is 3, possible outcomes are $(3,1),\ldots,(3,6)$, equally likely. Sum 7 occurs only at $(3,4)$, so probability is $1/6$. **Common mistake.** Continuing to divide by 36 after conditioning.
 ### Solution 26
 
-**Strategy.** Use one coin flip. **Solution.** Sample space $\Omega=\{H,T\}$. Events $A=\{H\}$ and $B=\{T\}$ are disjoint and have probability $1/2$. Since $\Pr[A\cap B]=0$ but $\Pr[A]\Pr[B]=1/4$, they are not independent. **Common mistake.** Thinking disjoint means unrelated and therefore independent.
+**Strategy.** Use one coin flip. **Solution.** Sample space $\Omega=\\{H,T\\}$. Events $A=\\{H\\}$ and $B=\\{T\\}$ are disjoint and have probability $1/2$. Since $\Pr[A\cap B]=0$ but $\Pr[A]\Pr[B]=1/4$, they are not independent. **Common mistake.** Thinking disjoint means unrelated and therefore independent.
 ### Solution 27
 
-**Strategy.** Use indicators. **Solution.** Sample space is $\{H,T\}^n$. Let $I_i=1$ if flip $i$ is heads and $0$ otherwise. Then $X=\sum_{i=1}^n I_i$ and $\mathbb{E}[I_i]=1/2$. By linearity, $\mathbb{E}[X]=n/2$. **Common mistake.** Claiming linearity requires independence; it does not.
+**Strategy.** Use indicators. **Solution.** Sample space is $\\{H,T\\}^n$. Let $I_i=1$ if flip $i$ is heads and $0$ otherwise. Then $X=\sum_\{i=1\}^n I_i$ and $\mathbb\{E\}[I_i]=1/2$. By linearity, $\mathbb\{E\}[X]=n/2$. **Common mistake.** Claiming linearity requires independence; it does not.
 ### Solution 28
 
-**Strategy.** Indicator for each empty bin. **Solution.** Sample space is all functions from $m$ balls to $n$ bins, with independent uniform choices. Let $I_j=1$ if bin $j$ is empty. Then $\Pr[I_j=1]=(1-1/n)^m$. The number of empty bins is $X=\sum_{j=1}^n I_j$, so $\mathbb{E}[X]=n(1-1/n)^m$. **Common mistake.** Assuming the empty-bin events are independent; expectation does not need that.
+**Strategy.** Indicator for each empty bin. **Solution.** Sample space is all functions from $m$ balls to $n$ bins, with independent uniform choices. Let $I_j=1$ if bin $j$ is empty. Then $\Pr[I_j=1]=(1-1/n)^m$. The number of empty bins is $X=\sum_\{j=1\}^n I_j$, so $\mathbb\{E\}[X]=n(1-1/n)^m$. **Common mistake.** Assuming the empty-bin events are independent; expectation does not need that.
 ### Solution 29
 
 **Strategy.** Apply union bound. **Solution.** Let $A_i$ be the event that test $i$ fails. Then
 $$
-\Pr[\text{some failure}]=\Pr\left[\bigcup_{i=1}^m A_i\right]\le\sum_{i=1}^m\Pr[A_i]\le m(\delta/m)=\delta.
+\Pr[\text\{some failure\}]=\Pr\left[\bigcup_\{i=1\}^m A_i\right]\le\sum_\{i=1\}^m\Pr[A_i]\le m(\delta/m)=\delta.
 $$
 **Common mistake.** Multiplying success probabilities without independence.
 ### Solution 30
 
 **Strategy.** State Hoeffding and interpret randomness. **Solution.** The sample space is the product space generating independent $X_1,\ldots,X_n\in[0,1]$ with common mean $\mu$. Hoeffding gives
 $$
-\Pr\left[\left|\frac1n\sum_{i=1}^n X_i-\mu\right|\ge\epsilon\right]\le2e^{-2n\epsilon^2}.
+\Pr\left[\left|\frac1n\sum_\{i=1\}^n X_i-\mu\right|\ge\epsilon\right]\le2e^\{-2n\epsilon^2\}.
 $$
 This resembles generalization because empirical averages over random samples concentrate near population expectations. **Common mistake.** Forgetting independence and boundedness assumptions.
 ## Day 6 Solutions
 [label=**6.\arabic*.**]
 ### Solution 31
 
-**Strategy.** Apply definitions. **Solution.** For $x=(1,-2,2)$, $\|x\|_1=1+2+2=5$, $\|x\|_2=\sqrt{1+4+4}=3$, and $\|x\|_\infty=2$. **Common mistake.** Dropping absolute values in $\|x\|_1$.
+**Strategy.** Apply definitions. **Solution.** For $x=(1,-2,2)$, $\|x\|_1=1+2+2=5$, $\|x\|_2=\sqrt\{1+4+4\}=3$, and $\|x\|_\infty=2$. **Common mistake.** Dropping absolute values in $\|x\|_1$.
 ### Solution 32
 
-**Strategy.** Compare max, square root of sum of squares, and sum of absolute values. **Solution.** Since every $|x_i|\le\sqrt{\sum_j x_j^2}$, $\|x\|_\infty\le\|x\|_2$. Also $\sum_i x_i^2\le(\sum_i |x_i|)^2$, so taking square roots gives $\|x\|_2\le\|x\|_1$. **Common mistake.** Assuming all norms are equal.
+**Strategy.** Compare max, square root of sum of squares, and sum of absolute values. **Solution.** Since every $|x_i|\le\sqrt\{\sum_j x_j^2\}$, $\|x\|_\infty\le\|x\|_2$. Also $\sum_i x_i^2\le(\sum_i |x_i|)^2$, so taking square roots gives $\|x\|_2\le\|x\|_1$. **Common mistake.** Assuming all norms are equal.
 ### Solution 33
 
-**Strategy.** Use Cauchy-Schwarz with the all-ones vector. **Solution.** Let $\mathbf{1}=(1,\ldots,1)$. Then $\sum_i x_i=\langle x,\mathbf{1}\rangle$, so
+**Strategy.** Use Cauchy-Schwarz with the all-ones vector. **Solution.** Let $\mathbf\{1\}=(1,\ldots,1)$. Then $\sum_i x_i=\langle x,\mathbf\{1\}\rangle$, so
 $$
-|\sum_i x_i|=|\langle x,\mathbf{1}\rangle|\le\|x\|_2\|\mathbf{1}\|_2=\sqrt d\|x\|_2.
+|\sum_i x_i|=|\langle x,\mathbf\{1\}\rangle|\le\|x\|_2\|\mathbf\{1\}\|_2=\sqrt d\|x\|_2.
 $$
 **Common mistake.** Using Cauchy-Schwarz without naming the second vector.
 ### Solution 34
@@ -165,7 +165,7 @@ because the difference equals $\lambda(1-\lambda)(x-y)^2\ge0$. Thus $f$ is conve
 **Strategy.** Specify input, output, and yes condition. **Solution.** Input: a finite sequence $(a_1,\ldots,a_n)$ of integers encoded in binary with delimiters. Output: yes/no. Yes-instance condition: there exist $i\ne j$ such that $a_i=a_j$. Size can be total encoding length or number of elements plus bit lengths. **Common mistake.** Giving an algorithm before defining the problem.
 ### Solution 38
 
-**Strategy.** Define a subset of $\Sigma^*$. **Solution.** $L=\{w\in\{0,1\}^*: w \text{ ends with }01\}$. Members of length at most 3 are $01,001,101$. The empty string and strings of length 1 are not in $L$. **Common mistake.** Including strings that contain 01 but do not end in 01.
+**Strategy.** Define a subset of $\Sigma^*$. **Solution.** $L=\\{w\in\\{0,1\\}^*: w \text\{ ends with \}01\\}$. Members of length at most 3 are $01,001,101$. The empty string and strings of length 1 are not in $L$. **Common mistake.** Including strings that contain 01 but do not end in 01.
 ### Solution 39
 
 **Strategy.** Track parity of ones. **Solution.** States are $E,O$ for even and odd number of ones seen. Start $E$; accepting state $E$. On symbol $0$, stay in the same state. On symbol $1$, switch $E\leftrightarrow O$. This DFA accepts exactly strings with even number of ones by invariant: current state records parity of ones in the prefix read. **Common mistake.** Forgetting that the empty string has zero ones and should be accepted.
@@ -227,7 +227,7 @@ Same as Solution 2.3.
 Same as Solution 4.5.
 ### Item 57
 
-For events $A,B$ in sample space $\Omega$, $\mathbf{1}_{A\cup B}\le \mathbf{1}_A+\mathbf{1}_B$ pointwise. Taking expectations gives $\Pr[A\cup B]\le\Pr[A]+\Pr[B]$.
+For events $A,B$ in sample space $\Omega$, $\mathbf\{1\}_\{A\cup B\}\le \mathbf\{1\}_A+\mathbf\{1\}_B$ pointwise. Taking expectations gives $\Pr[A\cup B]\le\Pr[A]+\Pr[B]$.
 ### Item 58
 
 Same parity invariant as Solution 7.3: after reading any prefix, the DFA state records whether the number of ones in that prefix is even or odd.
@@ -249,7 +249,7 @@ Given the first die is 2, the second die must be 6 for sum 8, so the probability
 [label=**SM\arabic*.**]
 ### Item 63
 
-Input: strings $p,t\in\Sigma^*$. Output yes iff there exists index $i$ such that $t_i\cdots t_{i+|p|-1}=p$, with edge case $p=\epsilon$ specified by convention.
+Input: strings $p,t\in\Sigma^*$. Output yes iff there exists index $i$ such that $t_i\cdots t_\{i+|p|-1\}=p$, with edge case $p=\epsilon$ specified by convention.
 ### Item 64
 
 Vertices are $\epsilon,0,1,00,01,10,11$. Edges connect each string of length less than 2 to its one-symbol extensions. There are 7 vertices and 6 edges.

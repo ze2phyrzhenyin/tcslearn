@@ -1,5 +1,6 @@
-current_phase: "week01_generated"
-current_week: "week01-foundations"
+
+current_phase: "week02_content_completed"
+current_week: "week02-algorithms-foundations"
 current_day: null
 web_site:
   status: "deployed"
@@ -13,15 +14,16 @@ completed_weeks: []
 completed_days: []
 active_modules:
   - "mathematical_foundations"
-next_target: "Study Week 1 Day 1 and then request diagnostic feedback or whole-week weakness repair."
+  - "algorithms_foundations"
+next_target: "Study Week 2 Day 1, focusing on sorting specification, loop invariant, merge sort recurrence, and comparison lower bound."
 last_updated: "2026-05-06"
 notes:
-  - "Week 1 generated but not completed."
-  - "Primary focus: mathematical and conceptual foundations for theoretical computer science."
-  - "Astro + Starlight web documentation site created under site/."
+  - "Week 1 content generation completed. Study completion is not recorded."
+  - "Week 2 content generation completed. Study completion is not recorded."
+  - "Astro + Starlight web documentation site exists under site/."
 generated_weeks:
   - week_id: "week01-foundations"
-    status: "generated_not_completed"
+    status: "content_completed"
     generated_on: "2026-05-06"
     outputs:
       - "curriculum/weeks/week01-foundations.yaml"
@@ -29,3 +31,12 @@ generated_weeks:
       - "exercises/week01/"
       - "labs/week01/"
       - "review/week01/"
+  - week_id: "week02-algorithms-foundations"
+    status: "content_completed"
+    generated_on: "2026-05-06"
+    outputs:
+      - "curriculum/weeks/week02-algorithms-foundations.yaml"
+      - "notes/week02/"
+      - "exercises/week02/"
+      - "labs/week02/"
+      - "review/week02/"

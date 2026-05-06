@@ -1,0 +1,131 @@
+# Graph Algorithms I: BFS, DFS, and Shortest Paths Foundations
+
+## 1. 今日目标
+
+把 graph language 转化为 traversal algorithms，并用 invariant 证明 reachability 和 shortest path。
+
+## 2. 为什么这个主题对 TCS 重要
+
+图是算法、自动机、依赖关系、状态空间和 reductions 的共同语言。 本周始终区分 problem、algorithm、model、proof 和 experiment。
+
+## 3. Week 1 依赖概念
+
+graphs, trees, queues, induction, loop invariants, asymptotic variables。如果这些概念还不稳定，先复习 Week 1 对应 note，再开始证明题。
+
+## 4. 核心定义
+
+- **adjacency list:** 每个 vertex 存 outgoing neighbors。
+- **adjacency matrix:** V x V 矩阵表示边。
+- **BFS:** 按 distance layer 扩展。
+- **DFS:** 深入再回溯。
+- **discovery/finishing time:** DFS 时间戳。
+- **parent tree:** first-discovery edges。
+- **connected components:** undirected reachability classes。
+- **topological ordering:** DAG 中 edge u->v 要求 u 在 v 前。
+- **Dijkstra:** nonnegative weighted shortest paths。
+
+
+    ## 5. 最小例子
+
+    BFS 从 source 先访问 distance 0，再访问 distance 1，再访问 distance 2。
+
+    ## 6. 反例或 non-example
+
+    DFS 第一次找到的 path 不保证 shortest path。
+
+    ## 7. 关键算法
+
+    ### Algorithm: BFS Shortest Paths
+
+- **Problem:** unweighted shortest paths from source
+- **Input:** graph G=(V,E), source s
+- **Output:** distance and parent for reachable vertices
+- **Assumptions:** unweighted or equal-weight graph
+- **Algorithm idea:** 用 queue 按 layer 扩展，首次发现 vertex 时确定 distance。
+- **Pseudocode:** `dist[s]=0; pop queue; discover unseen neighbors`
+- **Invariant or proof structure:** BFS invariant: queue 中 vertices 的距离按非降顺序排列。
+- **Correctness proof:** 首次发现 v 时存在长度 dist[u]+1 的 path；任何更短 path 的前驱会在更早 layer 被处理。
+- **Time complexity:** O(|V|+|E|) with adjacency lists。
+- **Space complexity:** O(|V|)。
+- **Edge cases:** disconnected graph, directed edges
+- **Common mistakes:** 把 BFS shortest path 用到 weighted graph。
+
+### Algorithm: DFS Reachability
+
+- **Problem:** visit all reachable vertices
+- **Input:** graph G and start set
+- **Output:** discovery/finish times and parent forest
+- **Assumptions:** finite graph
+- **Algorithm idea:** 递归或 stack 访问未访问 neighbor。
+- **Pseudocode:** `visit(u): mark u; recursively visit unseen neighbors; finish u`
+- **Invariant or proof structure:** marked vertices are reachable through parent pointers from a start。
+- **Correctness proof:** mark start is reachable；recursive visit(v) only occurs across edge u->v from reachable u。
+- **Time complexity:** O(|V|+|E|)。
+- **Space complexity:** O(|V|) recursion/stack。
+- **Edge cases:** directed graph, recursion depth
+- **Common mistakes:** 以为 DFS discovery order 给出 shortest path。
+
+### Algorithm: Topological Sort by DFS
+
+- **Problem:** order DAG vertices
+- **Input:** directed acyclic graph
+- **Output:** linear order of vertices
+- **Assumptions:** graph is a DAG
+- **Algorithm idea:** DFS finishing time reverse order。
+- **Pseudocode:** `run DFS; output vertices by decreasing finish time`
+- **Invariant or proof structure:** for every edge u->v in DAG, finish[u] > finish[v]。
+- **Correctness proof:** tree/cross edge cases preserve finish order; a back edge would imply cycle, excluded by DAG assumption。
+- **Time complexity:** O(|V|+|E|)。
+- **Space complexity:** O(|V|)。
+- **Edge cases:** cycle detection needed if graph may not be DAG
+- **Common mistakes:** 不检查 DAG precondition。
+
+    ## 8. 正确性证明模板
+
+    1. **Statement:** 写清 problem、input、output、precondition、postcondition。
+    2. **Invariant / induction variable:** loop 用 invariant，recursive algorithm 用 input size induction，data structure 用 representation invariant，DP 用 state order。
+    3. **Initialization / base case:** 说明最小状态或第一轮循环满足条件。
+    4. **Maintenance / induction step:** 假设之前状态满足 specification，证明一步操作后仍满足。
+    5. **Termination:** 说明算法会停止，并把 invariant 转化成 postcondition。
+    6. **Edge cases:** 空输入、单元素、重复元素、不可达状态、ties、invalid precondition。
+
+    ## 9. 复杂度分析模板
+
+    - 声明变量，例如 \(n\) 是元素数，\(|V|\) 是 vertices 数，\(|E|\) 是 edges 数。
+    - 分清 preprocessing、single operation、query、total running time 和 space。
+    - Worst-case 要对所有输入取最大；expected time 要说明随机性；amortized time 要说明操作序列。
+    - Recurrence 必须包含 base case；randomized analysis 必须定义 sample space 和 random variable。
+
+    ## 10. 常见错误
+
+1. BFS/DFS 性质混淆。
+2. visited set 缺失。
+3. Dijkstra 用在负权图。
+4. graph representation 复杂度不区分。
+
+
+## 11. 与 string algorithms / learning theory / complexity theory 的联系
+
+State graphs、automata、dependency DAG 和 reductions 都需要 graph traversal 语言。
+
+## 12. 必做练习
+
+- 阅读本 note 的所有 algorithm blocks，并手写每个 algorithm 的 Problem/Input/Output。
+- 完成 `exercises/week02/day04_exercises.tex` 的前 8 到 10 题。
+- 在 `state/mistakes_log.md` 中记录至少一个容易犯错点，即使你还没有做错。
+
+## 13. 选做练习
+
+- 把本日一个 correctness proof 改写成 Statement/Definitions/Assumptions/Goal/Strategy/Proof/Check。
+- 找一个 small input，手算 algorithm 的中间状态，并标注 invariant。
+
+## 14. 自测问题
+
+- 今天的 problem specification 是什么？
+- 哪个 invariant 或 induction hypothesis 支撑 correctness proof？
+- 复杂度里的变量是什么？
+- 哪个 conclusion 依赖模型假设或随机性假设？
+
+## 15. 明天复习什么
+
+明天开始前，用 10 分钟复述今天的 specification、proof template 和最容易犯的错误。

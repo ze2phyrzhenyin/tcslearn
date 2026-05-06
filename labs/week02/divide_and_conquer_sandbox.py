@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+"""Week 2 Day 2 lab: divide-and-conquer examples.
+
+Mathematical meaning: binary search, merge sort, and quickselect require
+ specifications and induction proofs. Numerical recurrence expansion suggests
+ growth rates but does not prove asymptotic bounds.
+"""
+
+from __future__ import annotations
+
+import random
+from typing import Callable, List
+
+
+def binary_search(arr: List[int], target: int) -> int:
+    lo, hi = 0, len(arr) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            return mid
+        if arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+
+
+def merge_sort(arr: List[int]) -> List[int]:
+    if len(arr) <= 1:
+        return arr[:]
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    out: List[int] = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            out.append(left[i]); i += 1
+        else:
+            out.append(right[j]); j += 1
+    return out + left[i:] + right[j:]
+
+
+def quickselect(arr: List[int], k: int, rng: random.Random | None = None) -> int:
+    """Return the k-th smallest element, where k is zero-indexed."""
+    if not 0 <= k < len(arr):
+        raise ValueError("k out of range")
+    rng = rng or random.Random(0)
+    values = arr[:]
+    while True:
+        pivot = rng.choice(values)
+        lows = [x for x in values if x < pivot]
+        equals = [x for x in values if x == pivot]
+        highs = [x for x in values if x > pivot]
+        if k < len(lows):
+            values = lows
+        elif k < len(lows) + len(equals):
+            return pivot
+        else:
+            k -= len(lows) + len(equals)
+            values = highs
+
+
+def recurrence_values(n_values: List[int], recurrence: Callable[[int], int]) -> list[tuple[int, int]]:
+    return [(n, recurrence(n)) for n in n_values]
+
+
+def t_merge(n: int) -> int:
+    if n <= 1:
+        return 1
+    return t_merge(n // 2) + t_merge(n - n // 2) + n
+
+
+def t_binary(n: int) -> int:
+    if n <= 1:
+        return 1
+    return t_binary(n // 2) + 1
+
+
+def run_tests() -> None:
+    arr = [1, 3, 5, 7, 9]
+    assert binary_search(arr, 1) == 0
+    assert binary_search(arr, 9) == 4
+    assert binary_search(arr, 2) == -1
+    assert merge_sort([3, 1, 2, 2]) == [1, 2, 2, 3]
+    assert quickselect([5, 1, 4, 2, 3], 0, random.Random(1)) == 1
+    assert quickselect([5, 1, 4, 2, 3], 2, random.Random(1)) == 3
+
+
+def main() -> None:
+    run_tests()
+    print("Week 2 Day 2: divide-and-conquer sandbox")
+    print("Experiment is not a proof: use induction and recurrence analysis.")
+    print(" n | binary recurrence | merge recurrence")
+    for n in [1, 2, 4, 8, 16, 32, 64]:
+        print(f"{n:3d} | {t_binary(n):17d} | {t_merge(n):16d}")
+    data = [9, 1, 8, 2, 7, 3, 6]
+    print("quickselect median:", quickselect(data, len(data)//2, random.Random(7)))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,149 @@
+---
+title: "Day 7: Randomized Algorithms"
+description: "Week 2 Day 7 study note."
+---
+
+> **Generated page.** This page is generated from repository learning materials. Edit the source file, not this generated page.
+>
+> Source: `notes/week02/day07-randomized-algorithms-synthesis.md`
+
+# Randomized Algorithms, Synthesis, and Algorithm-Proof Review
+
+## 1. 今日目标
+
+收束算法证明体系，并引入 randomized algorithms 的基本语言。
+
+## 2. 为什么这个主题对 TCS 重要
+
+Randomization 是严谨的算法设计工具，需要精确说明随机性、sample space 和 failure probability。 本周始终区分 problem、algorithm、model、proof 和 experiment。
+
+## 3. Week 1 依赖概念
+
+sample space, random variables, expectation, union bound, proof templates。如果这些概念还不稳定，先复习 Week 1 对应 note，再开始证明题。
+
+## 4. 核心定义
+
+- **randomized algorithm:** 使用 random bits 的算法。
+- **Las Vegas algorithm:** 输出总正确，时间随机。
+- **Monte Carlo algorithm:** 时间受控但允许小概率错误。
+- **expected running time:** 对随机性取期望的时间。
+- **failure probability:** 错误事件的概率。
+- **amplification:** 独立重复降低 failure probability。
+- **randomized quicksort/quickselect:** random pivot 算法。
+- **high-probability guarantee:** 以 1-delta 概率满足。
+
+
+    ## 5. 最小例子
+
+    Randomized quickselect 的 sample space 是 pivot choices 的所有随机序列。
+
+    ## 6. 反例或 non-example
+
+    随机跑几次看到快，不是 expected-time proof。
+
+    ## 7. 关键算法
+
+    ### Algorithm: Randomized Quicksort
+
+- **Problem:** sorting problem
+- **Input:** array A
+- **Output:** sorted permutation
+- **Assumptions:** pivots chosen uniformly from current subarray
+- **Algorithm idea:** 随机选 pivot 后递归排序小于和大于 pivot 的部分。
+- **Pseudocode:** `choose random pivot; partition L,E,G; recurse`
+- **Invariant or proof structure:** correctness independent of pivot randomness。
+- **Correctness proof:** partition preserves all elements；recursive calls sort smaller groups；concatenation sorted because L &lt;= E &lt;= G。
+- **Time complexity:** Expected O(n log n), worst-case O(n^2)。
+- **Space complexity:** O(n) with copying。
+- **Edge cases:** duplicates, recursion depth
+- **Common mistakes:** 把 expected time 当作 every run 的 guarantee。
+
+### Algorithm: Monte Carlo Majority Toy Test
+
+- **Problem:** test if sample appears to have majority value
+- **Input:** array A, value x, trials t
+- **Output:** accept/reject guess
+- **Assumptions:** random indices sampled independently
+- **Algorithm idea:** 随机抽 t 个位置，若都不是 x 则 reject，否则 accept。
+- **Pseudocode:** `repeat t times: sample index; if A[i]==x accept; else after loop reject`
+- **Invariant or proof structure:** failure event is missing x in all sampled positions。
+- **Correctness proof:** 若 x 占比 p，每次 miss 概率 1-p；独立重复 t 次 failure probability (1-p)^t。
+- **Time complexity:** O(t)。
+- **Space complexity:** O(1)。
+- **Edge cases:** p close to 0, independence of trials
+- **Common mistakes:** 不说明 sample space。
+
+### Algorithm: Amplification by Independent Repetition
+
+- **Problem:** reduce failure probability
+- **Input:** base Monte Carlo algorithm with error &lt;= p &lt; 1/2
+- **Output:** new algorithm with smaller error
+- **Assumptions:** independent runs available
+- **Algorithm idea:** 重复 r 次并 majority vote。
+- **Pseudocode:** `run A independently r times; output majority answer`
+- **Invariant or proof structure:** overall error requires more than r/2 bad runs。
+- **Correctness proof:** 错误次数超过 r/2 才整体错误；独立性让 tail bound 可用。
+- **Time complexity:** r times base running time。
+- **Space complexity:** O(r) or streaming counter。
+- **Edge cases:** ties when r even
+- **Common mistakes:** 重复但没有独立随机性。
+
+    ## 8. 正确性证明模板
+
+    1. **Statement:** 写清 problem、input、output、precondition、postcondition。
+    2. **Invariant / induction variable:** loop 用 invariant，recursive algorithm 用 input size induction，data structure 用 representation invariant，DP 用 state order。
+    3. **Initialization / base case:** 说明最小状态或第一轮循环满足条件。
+    4. **Maintenance / induction step:** 假设之前状态满足 specification，证明一步操作后仍满足。
+    5. **Termination:** 说明算法会停止，并把 invariant 转化成 postcondition。
+    6. **Edge cases:** 空输入、单元素、重复元素、不可达状态、ties、invalid precondition。
+
+    ## 9. 复杂度分析模板
+
+    - 声明变量，例如 $n$ 是元素数，$|V|$ 是 vertices 数，$|E|$ 是 edges 数。
+    - 分清 preprocessing、single operation、query、total running time 和 space。
+    - Worst-case 要对所有输入取最大；expected time 要说明随机性；amortized time 要说明操作序列。
+    - Recurrence 必须包含 base case；randomized analysis 必须定义 sample space 和 random variable。
+
+    ## 10. 常见错误
+
+1. randomness 未说明。
+2. Las Vegas/Monte Carlo 混淆。
+3. expected time/high probability 混淆。
+4. 把实验当证明。
+
+
+## 11. 与 string algorithms / learning theory / complexity theory 的联系
+
+Randomized guarantees 连接 hashing、learning theory generalization probability 和 complexity classes。
+
+## 12. 必做练习
+
+- 阅读本 note 的所有 algorithm blocks，并手写每个 algorithm 的 Problem/Input/Output。
+- 完成 `exercises/week02/day07_exercises.tex` 的前 8 到 10 题。
+- 在 `state/mistakes_log.md` 中记录至少一个容易犯错点，即使你还没有做错。
+
+## 13. 选做练习
+
+- 把本日一个 correctness proof 改写成 Statement/Definitions/Assumptions/Goal/Strategy/Proof/Check。
+- 找一个 small input，手算 algorithm 的中间状态，并标注 invariant。
+
+## 14. 自测问题
+
+- 今天的 problem specification 是什么？
+- 哪个 invariant 或 induction hypothesis 支撑 correctness proof？
+- 复杂度里的变量是什么？
+- 哪个 conclusion 依赖模型假设或随机性假设？
+
+## 15. 明天复习什么
+
+明天开始前，用 10 分钟复述今天的 specification、proof template 和最容易犯的错误。
+
+
+## Page Navigation
+
+<div class="page-nav-grid">
+  <a class="button-link" href="/week02/day06/">Previous</a>
+  <a class="button-link" href="/review/week02-review/">Next</a>
+  <a class="button-link" href="/review/week02-review/">Review</a>
+  <a class="button-link" href="/exercises/week02-problem-set/">Exercises</a>
+</div>

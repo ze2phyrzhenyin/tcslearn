@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Week 2 Day 4 lab: graph traversal algorithms.
+
+Mathematical meaning: BFS/DFS outputs on examples support intuition. Correctness
+requires invariants about queue layers, visited sets, and DAG finishing order.
+"""
+
+from __future__ import annotations
+
+from collections import deque
+from typing import Dict, Hashable, Iterable, List, Set, Tuple
+
+Graph = Dict[Hashable, List[Hashable]]
+
+
+def bfs_distances(graph: Graph, source: Hashable) -> tuple[dict[Hashable, int], dict[Hashable, Hashable | None]]:
+    dist = {source: 0}
+    parent: dict[Hashable, Hashable | None] = {source: None}
+    queue = deque([source])
+    while queue:
+        u = queue.popleft()
+        for v in graph.get(u, []):
+            if v not in dist:
+                dist[v] = dist[u] + 1
+                parent[v] = u
+                queue.append(v)
+    return dist, parent
+
+
+def dfs_order(graph: Graph, source: Hashable) -> tuple[list[Hashable], list[Hashable]]:
+    seen: Set[Hashable] = set()
+    discover: list[Hashable] = []
+    finish: list[Hashable] = []
+
+    def visit(u: Hashable) -> None:
+        seen.add(u)
+        discover.append(u)
+        for v in graph.get(u, []):
+            if v not in seen:
+                visit(v)
+        finish.append(u)
+
+    visit(source)
+    return discover, finish
+
+
+def connected_components(graph: Graph) -> list[set[Hashable]]:
+    seen: Set[Hashable] = set()
+    comps: list[set[Hashable]] = []
+    vertices = set(graph)
+    for nbrs in graph.values():
+        vertices.update(nbrs)
+    for s in vertices:
+        if s in seen:
+            continue
+        dist, _ = bfs_distances(graph, s)
+        comp = set(dist)
+        seen |= comp
+        comps.append(comp)
+    return comps
+
+
+def shortest_path_unweighted(graph: Graph, source: Hashable, target: Hashable) -> list[Hashable]:
+    dist, parent = bfs_distances(graph, source)
+    if target not in dist:
+        return []
+    path = []
+    cur: Hashable | None = target
+    while cur is not None:
+        path.append(cur)
+        cur = parent[cur]
+    return list(reversed(path))
+
+
+def topological_sort(graph: Graph) -> list[Hashable]:
+    seen: Set[Hashable] = set()
+    temp: Set[Hashable] = set()
+    order: list[Hashable] = []
+
+    def visit(u: Hashable) -> None:
+        if u in temp:
+            raise ValueError("cycle detected")
+        if u in seen:
+            return
+        temp.add(u)
+        for v in graph.get(u, []):
+            visit(v)
+        temp.remove(u)
+        seen.add(u)
+        order.append(u)
+
+    vertices = set(graph)
+    for nbrs in graph.values():
+        vertices.update(nbrs)
+    for v in vertices:
+        visit(v)
+    return list(reversed(order))
+
+
+def run_tests() -> None:
+    graph = {"s": ["a", "t"], "a": ["b"], "b": ["t"], "t": []}
+    dist, parent = bfs_distances(graph, "s")
+    assert dist["t"] == 1
+    assert shortest_path_unweighted(graph, "s", "t") == ["s", "t"]
+    discover, finish = dfs_order(graph, "s")
+    assert discover[0] == "s" and "t" in finish
+    undirected = {1: [2], 2: [1], 3: [4], 4: [3], 5: []}
+    comps = connected_components(undirected)
+    assert {frozenset(c) for c in comps} == {frozenset({1, 2}), frozenset({3, 4}), frozenset({5})}
+    dag = {"a": ["b", "c"], "b": ["d"], "c": ["d"], "d": []}
+    order = topological_sort(dag)
+    pos = {v: i for i, v in enumerate(order)}
+    assert all(pos[u] < pos[v] for u, nbrs in dag.items() for v in nbrs)
+
+
+def main() -> None:
+    run_tests()
+    print("Week 2 Day 4: graph algorithms")
+    print("Experiment is not a proof: BFS shortest path needs a layer invariant.")
+    graph = {"s": ["a", "t"], "a": ["b"], "b": ["t"], "t": []}
+    print("BFS distances from s:", bfs_distances(graph, "s")[0])
+    print("DFS discover/finish:", dfs_order(graph, "s"))
+
+
+if __name__ == "__main__":
+    main()

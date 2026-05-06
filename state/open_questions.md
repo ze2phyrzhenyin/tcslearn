@@ -19,3 +19,12 @@ When adding a question, use:
 - Next action:
 - Status: open
 ```
+
+## 2026-05-06 - Week 2 Generation Note
+
+- Question: Week 2 has been generated before Week 1 has been marked completed.
+- Source or file: `state/progress.yaml`.
+- Why it blocks progress: It does not block content generation, but future diagnostic feedback should not assume the learner has completed Week 1 or Week 2.
+- Next action: After studying Week 2 Day 1, request targeted feedback and update `state/mistakes_log.md`.
+- Status: open
+

@@ -1,0 +1,82 @@
+# Week 2 Mistakes to Watch
+
+## Logic of Specifications
+
+1. problem 和 algorithm 混淆.
+2. 没有先写 input/output.
+3. precondition 与 postcondition 混淆.
+4. input size 没定义.
+5. correctness proof 缺少 specification.
+6. edge cases 未纳入 postcondition.
+7. stable 和 in-place 混淆.
+8. comparison lower bound 不说明 model.
+
+## Sorting and Lower Bounds
+
+9. decision tree leaves 与 permutations 对不上.
+10. 把 lower bound 当作某个算法慢.
+11. 忘记 deterministic comparison model.
+12. 把 counting sort 当成反例.
+13. merge sort 只分析 recurrence 不证明 merge.
+14. insertion sort invariant 太弱.
+15. loop invariant 没有 termination step.
+16. worst-case input 与 average input 混淆.
+
+## Divide and Conquer
+
+17. recurrence 没有 base case.
+18. Master theorem 误用.
+19. combine step 没有 proof.
+20. recursive correctness proof 没有 induction variable.
+21. selection 不需要完整 sorting 却先排序.
+22. quickselect expected time 和 worst-case 混淆.
+23. median-of-medians 只背名字.
+24. substitution method 常数不闭合.
+
+## Data Structures
+
+25. interface 和 implementation 混写.
+26. representation invariant 没写.
+27. heap 和 BST 混淆.
+28. heap operation complexity 写成 O(1).
+29. hash table worst-case 和 expected-case 混淆.
+30. load factor 未定义.
+31. collision 被当成异常.
+32. dynamic array resize worst-case 与 amortized 混淆.
+
+## Graphs
+
+33. BFS/DFS 性质混淆.
+34. BFS shortest path 用到 weighted graph.
+35. DFS path 当 shortest path.
+36. visited set 没有用于 termination.
+37. directed graph 当 undirected.
+38. adjacency list/matrix 复杂度混淆.
+39. topological order 用在 cyclic graph.
+40. Dijkstra 用在负权图.
+
+## Greedy and DP
+
+41. greedy 缺少 exchange proof.
+42. safe choice 未定义.
+43. coin change greedy 任意化.
+44. fractional 与 0/1 knapsack 混淆.
+45. MST cut property 不说明 cut.
+46. DP state 定义不完整.
+47. DP recurrence 漏情况.
+48. base case 被省略.
+49. computation order 不合法.
+50. reconstruction 与 value computation 混淆.
+
+## Randomization and Experiments
+
+51. randomized algorithm 不说明随机性.
+52. sample space 缺失.
+53. Las Vegas 与 Monte Carlo 混淆.
+54. expected time 和 high probability 混淆.
+55. failure probability 不定义 bad event.
+56. amplification 没有 independent repetitions.
+57. hashing probability 模型没说.
+58. 把实验结果当作证明.
+59. 固定 seed 输出被当作 theorem.
+60. 没有记录 lab 局限.
